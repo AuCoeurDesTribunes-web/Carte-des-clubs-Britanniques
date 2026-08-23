@@ -644,14 +644,16 @@ const COUNTRY_EN = {
   "Pays de Galles": "Wales"
 };
 
-/* A few name variants to try against TheSportsDB, since its search is an
-   exact/near-exact match on team name rather than fuzzy full-text search. */
+/* A couple of name variants to try against TheSportsDB (its search wants a
+   fairly exact match). Kept short on purpose: the free/shared "123" key is
+   rate-limited, and firing 3-4 requests per club for 176 clubs gets throttled
+   fast, which was silently pushing almost everything onto the Wikipedia
+   fallback below. */
 function nameVariants(name){
   const variants = new Set([name]);
-  variants.add(name.replace(/\b(FC|AFC|CF)\b\.?/gi, '').replace(/\s+/g, ' ').trim());
-  variants.add(name.replace(/^AFC\s+/i, '').trim());
-  variants.add(name.replace(/\s+(FC|United|Town|City|County|Athletic|Albion|Rovers|Wanderers|Rangers)$/i, '').trim());
-  return [...variants].filter(Boolean);
+  const stripped = name.replace(/\s+\b(FC|AFC|CF)\b\.?$/i, '').trim();
+  if (stripped && stripped !== name) variants.add(stripped);
+  return [...variants];
 }
 
 function normalizeTeamName(name){
@@ -663,7 +665,7 @@ async function fetchFromSportsDB(name, countryEn){
     const url = `https://www.thesportsdb.com/api/v1/json/123/searchteams.php?t=${encodeURIComponent(variant)}`;
     try{
       const res = await fetch(url);
-      if (!res.ok) continue;
+      if (!res.ok) continue; // e.g. 429 rate-limited — try next variant, then fall through to Wikipedia
       const data = await res.json();
       let teams = (data && data.teams) || [];
       teams = teams.filter(t => t.strSport === 'Soccer');
@@ -677,16 +679,22 @@ async function fetchFromSportsDB(name, countryEn){
         teams[0];
 
       if (best && best.strTeamBadge) return best.strTeamBadge;
-    } catch(e){ /* network error — try next variant / fall through to Wikipedia */ }
+    } catch(e){ /* network/CORS error — try next variant / fall through to Wikipedia */ }
   }
   return null;
 }
 
 /* Wikipedia's search API (free, no key, CORS-enabled) as a fallback for clubs
-   TheSportsDB doesn't have — grabs the infobox image of the best-matching page. */
-async function fetchFromWikipedia(name, countryFr){
-  const query = `${name} football club ${countryFr || ''}`.trim();
-  const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages&pithumbsize=120&format=json&origin=*`;
+   TheSportsDB doesn't have. It grabs the infobox image of the best-matching
+   page — but a plain full-text search can land on a *player's* biography
+   page instead of the club's (players get "top" pageimages too, and their
+   pages often mention the club by name). To avoid showing a footballer's
+   face instead of a crest, we fetch the page's short intro alongside the
+   image and only accept the result if that intro actually describes a
+   football club. */
+async function fetchFromWikipedia(name){
+  const query = `${name} football club`;
+  const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages|extracts&pithumbsize=120&exintro=1&explaintext=1&exsentences=2&format=json&origin=*`;
   try{
     const res = await fetch(url);
     if (res.ok){
@@ -695,7 +703,9 @@ async function fetchFromWikipedia(name, countryFr){
       if (pages){
         const page = Object.values(pages)[0];
         const thumb = page && page.thumbnail && page.thumbnail.source;
-        if (thumb) return thumb;
+        const intro = ((page && page.extract) || '').toLowerCase();
+        const looksLikeClub = /football club|soccer club|association football/.test(intro);
+        if (thumb && looksLikeClub) return thumb;
       }
     }
   } catch(e){ /* offline or blocked */ }
@@ -708,15 +718,16 @@ async function fetchCrestUrl(name, league){
   const countryEn = meta ? COUNTRY_EN[meta.country] : null;
 
   let url = await fetchFromSportsDB(name, countryEn);
-  if (!url) url = await fetchFromWikipedia(name, meta && meta.country);
+  if (!url) url = await fetchFromWikipedia(name);
 
   crestCache[name] = url || null;
   return crestCache[name];
 }
 
-/* small concurrency-limited queue so we don't fire 176 requests at once */
+/* small concurrency-limited queue so we don't fire 176 requests at once —
+   kept low since the free/shared TheSportsDB key gets rate-limited quickly */
 let activeFetches = 0;
-const MAX_CONCURRENT = 4;
+const MAX_CONCURRENT = 2;
 const fetchQueue = [];
 function queueCrestFetch(entry){
   fetchQueue.push(entry);
