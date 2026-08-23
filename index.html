@@ -189,6 +189,11 @@
     width: 20px; height: 20px;
     object-fit: contain;
     flex-shrink: 0;
+    /* léger halo blanc flouté pour détacher le logo du fond noir,
+       calé sur le canal alpha du logo (fonctionne pour SVG et PNG) */
+    filter:
+      drop-shadow(0 0 2px rgba(255,255,255,.85))
+      drop-shadow(0 0 4px rgba(255,255,255,.5));
   }
   .league-row .lname{
     flex: 1;
