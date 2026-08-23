@@ -71,6 +71,14 @@ function normalize(name) {
     .replace(/[^a-z0-9]/g, '');
 }
 
+// Index de TOUS les clubs de la carte (utilisé pour reconnaître les
+// adversaires, pas seulement les clubs à domicile des compétitions
+// européennes) : construit une seule fois, avant les boucles.
+const ALL_CLUBS_INDEX = [];
+Object.values(CLUBS_DATA).forEach(clubs => {
+  clubs.forEach(c => ALL_CLUBS_INDEX.push({ club: c, norm: normalize(c.name) }));
+});
+
 const today = new Date();
 
 const fixturesByClub = {};
@@ -78,10 +86,23 @@ const unmatchedTeams = [];
 
 function pushFixture(clubName, date, opponent, label, slug) {
   if (new Date(date) < today) return; // match déjà joué : on ne l'envoie pas
+  // On essaie de faire correspondre l'adversaire à un club de la carte
+  // (CLUBS_DATA) : l'API renvoie parfois un nom légèrement différent
+  // ("Manchester United FC" au lieu de "Manchester United", "Hull City AFC"
+  // au lieu de "Hull City", "Brighton & Hove Albion FC" avec une esperluette
+  // au lieu de "and"...). Sans ça, crestPath(opponent) dans index.html
+  // génère un slug qui ne matche jamais crests-index.json, et le logo de
+  // l'adversaire ne s'affiche jamais pour ces clubs-là. On utilise donc le
+  // nom canonique de la carte quand on le reconnaît, et on ne garde le nom
+  // brut de l'API que pour les clubs hors de la carte (adversaires
+  // européens étrangers, par exemple).
+  const opponentMatch = findMatch(ALL_CLUBS_INDEX, opponent);
+  const resolvedOpponent = opponentMatch ? opponentMatch.club.name : opponent;
+
   const list = fixturesByClub[clubName] || (fixturesByClub[clubName] = []);
   list.push({
     date,
-    opponent,
+    opponent: resolvedOpponent,
     competition: label,
     competitionSlug: slug
   });
@@ -123,11 +144,6 @@ for (const [leagueKey, { code, label }] of Object.entries(DOMESTIC_COMPETITIONS)
 }
 
 // ---- Compétitions européennes : recherche dans TOUS les clubs de la carte ----
-const ALL_CLUBS_INDEX = [];
-Object.values(CLUBS_DATA).forEach(clubs => {
-  clubs.forEach(c => ALL_CLUBS_INDEX.push({ club: c, norm: normalize(c.name) }));
-});
-
 for (const { code, label } of Object.values(EUROPEAN_COMPETITIONS)) {
   const data = await apiGet(`/competitions/${code}/matches`);
   if (!data || !data.matches) {
