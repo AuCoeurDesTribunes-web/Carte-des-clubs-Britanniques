@@ -303,9 +303,10 @@
     flex-direction: column;
     gap: 3px;
     font-size: 12.5px;
-    padding: 6px 8px;
-    background: var(--panel-2);
-    border-radius: 6px;
+    padding: 7px 9px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
   }
   .fixture-competition{
     display: flex;
@@ -314,7 +315,7 @@
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: .4px;
-    color: var(--text-dim);
+    color: #666666;
   }
   .fixture-competition img{
     width: 13px;
@@ -324,11 +325,27 @@
   }
   .fixture-main{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 10px;
   }
-  .fixture-row .fixture-date{ color: var(--text-dim); white-space: nowrap; }
-  .fixture-row .fixture-opp{ font-weight: 500; text-align: right; }
+  .fixture-row .fixture-date{ color: #555555; white-space: nowrap; }
+  .fixture-opp{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fixture-opp .fixture-vs{ color: #999999; font-size: 11px; }
+  .fixture-opp .fixture-opp-crest{
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .fixture-opp .fixture-opp-name{
+    font-weight: 500;
+    color: #111111;
+  }
   .popup-fixtures.empty{
     font-size: 12px;
     color: var(--text-dim);
@@ -774,7 +791,11 @@ Object.keys(CLUBS_DATA).forEach(league => {
                 </div>
                 <div class="fixture-main">
                   <span class="fixture-date">${formatFixtureDate(f.date)}</span>
-                  <span class="fixture-opp">vs ${f.opponent}</span>
+                  <div class="fixture-opp">
+                    <span class="fixture-vs">vs</span>
+                    <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+                    <span class="fixture-opp-name" style="display:none">${f.opponent}</span>
+                  </div>
                 </div>
               </div>`).join('')}
           </div>`).join('');
