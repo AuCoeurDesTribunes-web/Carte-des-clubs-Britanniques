@@ -185,6 +185,11 @@
     flex-shrink: 0;
     box-shadow: 0 0 0 1px rgba(255,255,255,.08);
   }
+  .league-row .league-logo{
+    width: 20px; height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
   .league-row .lname{
     flex: 1;
     font-size: 13px;
@@ -199,6 +204,7 @@
   }
   .league-row.off .lname{ color: var(--text-dim); text-decoration: line-through; opacity: .55; }
   .league-row.off .swatch{ opacity: .25; }
+  .league-row.off .league-logo{ opacity: .25; }
   .league-row.off .lcount{ opacity: .4; }
 
   .sidebar-footer{
@@ -276,20 +282,53 @@
     color: var(--text-dim);
     margin-bottom: 6px;
   }
+  .fixture-month-select{
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 6px 8px;
+    font-size: 12.5px;
+    font-family: 'Inter', sans-serif;
+    background: var(--panel-2);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
   .popup-fixtures{
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin-bottom: 4px;
+    max-height: 180px;
+    overflow-y: auto;
   }
   .fixture-row{
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    gap: 3px;
     font-size: 12.5px;
-    padding: 5px 8px;
+    padding: 6px 8px;
     background: var(--panel-2);
     border-radius: 6px;
+  }
+  .fixture-competition{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--text-dim);
+  }
+  .fixture-competition img{
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .fixture-main{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
   .fixture-row .fixture-date{ color: var(--text-dim); white-space: nowrap; }
   .fixture-row .fixture-opp{ font-weight: 500; text-align: right; }
@@ -383,12 +422,6 @@
   }
 
   /* ---------- MARKER ICONS ---------- */
-  .marker-dot-icon{
-    width: 15px; height: 15px;
-    border-radius: 50%;
-    border: 2px solid #0a0e12;
-    box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 2px 6px rgba(0,0,0,.5);
-  }
   .marker-crest-icon{
     width: 34px; height: 34px;
     display: flex;
@@ -471,16 +504,6 @@
         <button data-basemap="satellite" class="active">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9Z"/></svg>
           Satellite
-        </button>
-      </div>
-      <div class="segmented" id="markerstyle-toggle">
-        <button data-style="dot" class="active">
-          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
-          Points
-        </button>
-        <button data-style="crest">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg>
-          Écussons
         </button>
       </div>
     </div>
@@ -589,9 +612,7 @@ function makeClusterIcon(cluster){
   });
 }
 
-/* ---- marker icon rendering: dot or crest ---- */
-let markerStyle = 'dot';
-
+/* ---- marker icon rendering : écussons uniquement (le mode "points" a été retiré) ---- */
 const STOPWORDS = new Set(['fc','afc','cf','the','and','united','town','city','county','athletic','albion','rovers','wanderers','rangers']);
 function initials(name){
   const words = name.replace(/[^a-zA-Z' ]/g, ' ').split(' ').filter(Boolean);
@@ -621,17 +642,29 @@ fetch('crests-index.json')
   .then(r => r.ok ? r.json() : {})
   .then(data => {
     CREST_INDEX = data || {};
-    if (markerStyle === 'crest') {
-      allMarkers.forEach(entry => {
-        entry.marker.setIcon(crestIcon(entry.name, LEAGUE_META[entry.league].hex));
-      });
-    }
+    allMarkers.forEach(entry => {
+      entry.marker.setIcon(crestIcon(entry.name, LEAGUE_META[entry.league].hex));
+    });
   })
   .catch(() => { /* crests-index.json pas encore généré — pas grave, fallback actif */ });
 
 function crestPath(name){
   const slug = slugify(name);
   return `crests/${CREST_INDEX[slug] || (slug + '.png')}`;
+}
+
+/* Même mécanisme que crests-index.json, mais pour les logos de compétition
+   (Premier League, Championship, Ligue des Champions...) que tu déposeras
+   toi-même dans le dossier competition-logos/. Le manifeste est optionnel :
+   sans lui, on devine "<slug-de-la-compétition>.png". */
+let COMPETITION_LOGO_INDEX = {};
+fetch('competition-logos-index.json')
+  .then(r => r.ok ? r.json() : {})
+  .then(data => { COMPETITION_LOGO_INDEX = data || {}; })
+  .catch(() => { /* pas de manifeste : le fallback <slug>.png suffit */ });
+
+function competitionLogoPath(slug){
+  return `competition-logos/${COMPETITION_LOGO_INDEX[slug] || (slug + '.png')}`;
 }
 
 /* Global helper called from the onerror="" attribute embedded in the raw
@@ -645,16 +678,6 @@ window.__crestFallback = function(imgEl, txt){
   box.classList.add('is-fallback');
   box.textContent = txt;
 };
-
-function dotIcon(hex){
-  return L.divIcon({
-    className: '',
-    html: `<div class="marker-dot-icon" style="background:${hex}"></div>`,
-    iconSize: [15, 15],
-    iconAnchor: [7, 7],
-    popupAnchor: [0, -8]
-  });
-}
 
 function crestIcon(name, hex){
   const txt = initials(name);
@@ -680,20 +703,48 @@ Object.keys(CLUBS_DATA).forEach(league => {
   });
 
   CLUBS_DATA[league].forEach(club => {
-    const marker = L.marker([club.lat, club.lon], { icon: dotIcon(meta.hex) });
+    const marker = L.marker([club.lat, club.lon], { icon: crestIcon(club.name, meta.hex) });
 
     const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[league]);
     const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
 
     marker.bindPopup(() => {
-      const fixtures = FIXTURES_DATA[club.name];
+      const now = new Date();
+      // Filtre de sécurité côté client : même si fixtures.json contient
+      // un match déjà joué (fichier pas encore réactualisé), il disparaît
+      // ici dès que l'heure du coup d'envoi est passée.
+      const fixtures = (FIXTURES_DATA[club.name] || []).filter(f => new Date(f.date) >= now);
       let fixturesHtml;
-      if (fixtures && fixtures.length){
-        fixturesHtml = '<div class="popup-fixtures">' + fixtures.map(f => `
-          <div class="fixture-row">
-            <span class="fixture-date">${formatFixtureDate(f.date)}</span>
-            <span class="fixture-opp">vs ${f.opponent}</span>
-          </div>`).join('') + '</div>';
+      if (fixtures.length){
+        const months = {}; // "2026-09" -> { label: "Septembre 2026", items: [...] }
+        fixtures.forEach(f => {
+          const d = new Date(f.date);
+          const key = d.getFullYear() + '-' + String(d.getMonth()).padStart(2, '0');
+          if (!months[key]){
+            const label = d.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+            months[key] = { label: label.charAt(0).toUpperCase() + label.slice(1), items: [] };
+          }
+          months[key].items.push(f);
+        });
+        const monthKeys = Object.keys(months).sort();
+        const optionsHtml = monthKeys.map((k, i) => `<option value="${i}">${months[k].label}</option>`).join('');
+        const groupsHtml = monthKeys.map((k, i) => `
+          <div class="fixture-month-group" data-month-index="${i}"${i === 0 ? '' : ' style="display:none"'}>
+            ${months[k].items.map(f => `
+              <div class="fixture-row">
+                <div class="fixture-competition">
+                  <img src="${competitionLogoPath(f.competitionSlug || slugify(f.competition))}" alt="" loading="lazy" onerror="this.style.display='none'">
+                  <span>${f.competition}</span>
+                </div>
+                <div class="fixture-main">
+                  <span class="fixture-date">${formatFixtureDate(f.date)}</span>
+                  <span class="fixture-opp">vs ${f.opponent}</span>
+                </div>
+              </div>`).join('')}
+          </div>`).join('');
+        fixturesHtml = `
+          <select class="fixture-month-select">${optionsHtml}</select>
+          <div class="popup-fixtures">${groupsHtml}</div>`;
       } else {
         fixturesHtml = `
           <div class="popup-fixtures empty">Calendrier pas encore disponible pour ce club.</div>
@@ -706,7 +757,7 @@ Object.keys(CLUBS_DATA).forEach(league => {
         <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
         <div class="popup-league" style="color:${meta.hex}">${meta.country} · ${LEAGUE_SHORT[league]}</div>
         <div class="popup-name">${club.name}</div>
-        <div class="popup-subheading">Prochains matchs à domicile</div>
+        <div class="popup-subheading">Matchs à domicile</div>
         ${fixturesHtml}
       `;
     });
@@ -716,6 +767,14 @@ Object.keys(CLUBS_DATA).forEach(league => {
       if (!popupEl) return;
       const crestWrap = popupEl.querySelector('.popup-crest');
       if (crestWrap) crestWrap.style.display = 'flex';
+      const select = popupEl.querySelector('.fixture-month-select');
+      if (select){
+        select.addEventListener('change', () => {
+          popupEl.querySelectorAll('.fixture-month-group').forEach(g => {
+            g.style.display = (g.dataset.monthIndex === select.value) ? '' : 'none';
+          });
+        });
+      }
     });
 
     group.addLayer(marker);
@@ -724,21 +783,6 @@ Object.keys(CLUBS_DATA).forEach(league => {
 
   clusterGroups[league] = group;
   if (activeLeagues.has(league)) map.addLayer(group);
-});
-
-/* ---- marker style toggle ---- */
-document.querySelectorAll('#markerstyle-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const choice = btn.dataset.style;
-    if (choice === markerStyle) return;
-    markerStyle = choice;
-    document.querySelectorAll('#markerstyle-toggle button').forEach(b => b.classList.toggle('active', b === btn));
-
-    allMarkers.forEach(entry => {
-      const hex = LEAGUE_META[entry.league].hex;
-      entry.marker.setIcon(markerStyle === 'dot' ? dotIcon(hex) : crestIcon(entry.name, hex));
-    });
-  });
 });
 
 /* ---------------- SIDEBAR: LEAGUE LIST ---------------- */
@@ -765,6 +809,7 @@ Object.keys(leaguesByCountry).forEach(country => {
     row.className = 'league-row';
     row.dataset.league = league;
     row.innerHTML = `
+      <img class="league-logo" src="${competitionLogoPath(slugify(league))}" alt="" loading="lazy" onerror="this.style.display='none'">
       <div class="swatch" style="background:${meta.hex}"></div>
       <div class="lname">${LEAGUE_SHORT[league]}</div>
       <div class="lcount">${CLUBS_DATA[league].length}</div>
