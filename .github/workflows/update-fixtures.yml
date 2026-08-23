@@ -1,0 +1,35 @@
+name: Actualiser le calendrier des matchs
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # ~07h/08h heure française (selon heure d'été/hiver)
+    - cron: '0 18 * * *'  # ~19h/20h heure française
+  workflow_dispatch: {}   # permet de lancer manuellement depuis l'onglet "Actions"
+
+permissions:
+  contents: write
+
+jobs:
+  update-fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Générer fixtures.json
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: node scripts/update-fixtures.mjs
+
+      - name: Publier les changements si nécessaire
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add fixtures.json leagues.json
+          git diff --staged --quiet || git commit -m "Actualisation automatique du calendrier"
+          git push
