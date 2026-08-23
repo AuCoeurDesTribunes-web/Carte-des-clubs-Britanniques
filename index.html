@@ -631,11 +631,61 @@ function loadedCrestIcon(url, hex){
   });
 }
 
-/* Uses Wikipedia's search API (free, no key, CORS-enabled) to find each club's
-   page and grab its infobox image — which for football clubs is the crest. */
-async function fetchCrestUrl(name){
-  if (crestCache.hasOwnProperty(name)) return crestCache[name];
-  const query = `${name} football club`;
+/* ---- crest lookup: TheSportsDB (dedicated football badges) with Wikipedia fallback ---- */
+
+/* Maps our (French) LEAGUE_META country labels to the English country names
+   TheSportsDB uses, so we can filter out same-named teams from other nations
+   (e.g. there's more than one "Athletic" or "Rovers" in the UK/Ireland). */
+const COUNTRY_EN = {
+  "Angleterre": "England",
+  "Irlande": "Republic of Ireland",
+  "Irlande du Nord": "Northern Ireland",
+  "Écosse": "Scotland",
+  "Pays de Galles": "Wales"
+};
+
+/* A few name variants to try against TheSportsDB, since its search is an
+   exact/near-exact match on team name rather than fuzzy full-text search. */
+function nameVariants(name){
+  const variants = new Set([name]);
+  variants.add(name.replace(/\b(FC|AFC|CF)\b\.?/gi, '').replace(/\s+/g, ' ').trim());
+  variants.add(name.replace(/^AFC\s+/i, '').trim());
+  variants.add(name.replace(/\s+(FC|United|Town|City|County|Athletic|Albion|Rovers|Wanderers|Rangers)$/i, '').trim());
+  return [...variants].filter(Boolean);
+}
+
+function normalizeTeamName(name){
+  return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+}
+
+async function fetchFromSportsDB(name, countryEn){
+  for (const variant of nameVariants(name)){
+    const url = `https://www.thesportsdb.com/api/v1/json/123/searchteams.php?t=${encodeURIComponent(variant)}`;
+    try{
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const data = await res.json();
+      let teams = (data && data.teams) || [];
+      teams = teams.filter(t => t.strSport === 'Soccer');
+      if (!teams.length) continue;
+
+      // Prefer: exact normalized name match, then same-country match, then first result.
+      const norm = normalizeTeamName(name);
+      let best =
+        teams.find(t => normalizeTeamName(t.strTeam || '') === norm) ||
+        (countryEn && teams.find(t => (t.strCountry || '').toLowerCase() === countryEn.toLowerCase())) ||
+        teams[0];
+
+      if (best && best.strTeamBadge) return best.strTeamBadge;
+    } catch(e){ /* network error — try next variant / fall through to Wikipedia */ }
+  }
+  return null;
+}
+
+/* Wikipedia's search API (free, no key, CORS-enabled) as a fallback for clubs
+   TheSportsDB doesn't have — grabs the infobox image of the best-matching page. */
+async function fetchFromWikipedia(name, countryFr){
+  const query = `${name} football club ${countryFr || ''}`.trim();
   const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages&pithumbsize=120&format=json&origin=*`;
   try{
     const res = await fetch(url);
@@ -645,12 +695,23 @@ async function fetchCrestUrl(name){
       if (pages){
         const page = Object.values(pages)[0];
         const thumb = page && page.thumbnail && page.thumbnail.source;
-        if (thumb){ crestCache[name] = thumb; return thumb; }
+        if (thumb) return thumb;
       }
     }
-  } catch(e){ /* offline or blocked — fall through to fallback */ }
-  crestCache[name] = null;
+  } catch(e){ /* offline or blocked */ }
   return null;
+}
+
+async function fetchCrestUrl(name, league){
+  if (crestCache.hasOwnProperty(name)) return crestCache[name];
+  const meta = league ? LEAGUE_META[league] : null;
+  const countryEn = meta ? COUNTRY_EN[meta.country] : null;
+
+  let url = await fetchFromSportsDB(name, countryEn);
+  if (!url) url = await fetchFromWikipedia(name, meta && meta.country);
+
+  crestCache[name] = url || null;
+  return crestCache[name];
 }
 
 /* small concurrency-limited queue so we don't fire 176 requests at once */
@@ -665,7 +726,7 @@ function pumpQueue(){
   while (activeFetches < MAX_CONCURRENT && fetchQueue.length){
     const entry = fetchQueue.shift();
     activeFetches++;
-    fetchCrestUrl(entry.name).then(url => {
+    fetchCrestUrl(entry.name, entry.league).then(url => {
       activeFetches--;
       if (markerStyle === 'crest'){
         const hex = LEAGUE_META[entry.league].hex;
@@ -722,7 +783,7 @@ Object.keys(CLUBS_DATA).forEach(league => {
       if (!popupEl) return;
       const crestWrap = popupEl.querySelector('.popup-crest');
       const img = crestWrap.querySelector('img');
-      const url = await fetchCrestUrl(club.name);
+      const url = await fetchCrestUrl(club.name, league);
       if (url && marker.getPopup().isOpen()){
         img.src = url;
         crestWrap.style.display = 'flex';
