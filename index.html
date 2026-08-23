@@ -453,8 +453,35 @@
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 3px; }
 
   @media (max-width: 720px){
-    #sidebar{ position: absolute; height: 100%; box-shadow: 0 0 30px rgba(0,0,0,.6); }
-    #sidebar.collapsed{ margin-left: -320px; }
+    #sidebar{
+      position: absolute;
+      height: 100%;
+      width: min(86vw, 340px);
+      min-width: 0;
+      box-shadow: 0 0 30px rgba(0,0,0,.6);
+    }
+    #sidebar.collapsed{ margin-left: min(-86vw, -340px); }
+
+    #map-controls{
+      left: 58px;
+      max-width: calc(100vw - 130px);
+      flex-wrap: wrap;
+    }
+    .segmented button{ padding: 7px 8px; font-size: 11px; }
+
+    #count-badge{
+      font-size: 11px;
+      padding: 7px 9px;
+    }
+
+    .leaflet-popup-content-wrapper{ max-width: 78vw; }
+    .leaflet-popup-content{ width: auto !important; max-width: 74vw; margin: 12px 12px; }
+    .popup-fixtures{ max-height: 40vh; }
+  }
+
+  @media (max-width: 420px){
+    #map-controls{ top: 60px; left: 14px; }
+    .segmented button span.seg-label{ display: none; }
   }
 </style>
 </head>
@@ -504,11 +531,11 @@
       <div class="segmented" id="basemap-toggle">
         <button data-basemap="streets">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20 4 18V6l5 2m0 12 6-2m-6 2V8m6 10 5 2V8l-5-2m0 14V6m0 0-6 2"/></svg>
-          Plan
+          <span class="seg-label">Plan</span>
         </button>
         <button data-basemap="satellite" class="active">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9Z"/></svg>
-          Satellite
+          <span class="seg-label">Satellite</span>
         </button>
       </div>
     </div>
@@ -933,6 +960,22 @@ document.addEventListener('click', (e) => {
 document.getElementById('toggle-sidebar').addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('collapsed');
   setTimeout(() => map.invalidateSize(), 260);
+});
+
+/* Sur mobile, on démarre panneau replié pour laisser la carte visible ;
+   on referme aussi automatiquement le panneau après un clic sur un club
+   en recherche, pour voir le marqueur sans avoir à replier soi-même. */
+if (window.matchMedia('(max-width: 720px)').matches) {
+  document.getElementById('sidebar').classList.add('collapsed');
+  setTimeout(() => map.invalidateSize(), 300);
+}
+searchResults.addEventListener('click', (e) => {
+  const row = e.target.closest('.search-result');
+  if (!row || !row.dataset.lat) return;
+  if (window.matchMedia('(max-width: 720px)').matches) {
+    document.getElementById('sidebar').classList.add('collapsed');
+    setTimeout(() => map.invalidateSize(), 260);
+  }
 });
 </script>
 </body>
