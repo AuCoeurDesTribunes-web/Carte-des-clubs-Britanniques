@@ -464,11 +464,11 @@
 
     <div id="map-controls">
       <div class="segmented" id="basemap-toggle">
-        <button data-basemap="streets" class="active">
+        <button data-basemap="streets">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20 4 18V6l5 2m0 12 6-2m-6 2V8m6 10 5 2V8l-5-2m0 14V6m0 0-6 2"/></svg>
           Plan
         </button>
-        <button data-basemap="satellite">
+        <button data-basemap="satellite" class="active">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9Z"/></svg>
           Satellite
         </button>
@@ -559,8 +559,8 @@ const basemaps = {
     maxZoom: 19
   })
 };
-basemaps.streets.addTo(map);
-let currentBasemap = 'streets';
+basemaps.satellite.addTo(map);
+let currentBasemap = 'satellite';
 
 document.querySelectorAll('#basemap-toggle button').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -667,6 +667,9 @@ function crestIcon(name, hex){
   });
 }
 
+/* Seule la Premier League est cochée par défaut à l'ouverture du site. */
+const activeLeagues = new Set(["Premier League"]);
+
 Object.keys(CLUBS_DATA).forEach(league => {
   const meta = LEAGUE_META[league];
   const group = L.markerClusterGroup({
@@ -720,7 +723,7 @@ Object.keys(CLUBS_DATA).forEach(league => {
   });
 
   clusterGroups[league] = group;
-  map.addLayer(group);
+  if (activeLeagues.has(league)) map.addLayer(group);
 });
 
 /* ---- marker style toggle ---- */
@@ -747,7 +750,6 @@ Object.keys(CLUBS_DATA).forEach(league => {
 });
 
 const leaguesEl = document.getElementById('leagues');
-const activeLeagues = new Set(Object.keys(CLUBS_DATA));
 
 Object.keys(leaguesByCountry).forEach(country => {
   const groupDiv = document.createElement('div');
@@ -767,12 +769,15 @@ Object.keys(leaguesByCountry).forEach(country => {
       <div class="lname">${LEAGUE_SHORT[league]}</div>
       <div class="lcount">${CLUBS_DATA[league].length}</div>
     `;
+    if (!activeLeagues.has(league)) row.classList.add('off');
     row.addEventListener('click', () => toggleLeague(league, row));
     groupDiv.appendChild(row);
   });
 
   leaguesEl.appendChild(groupDiv);
 });
+
+updateCount();
 
 function toggleLeague(league, row){
   if (activeLeagues.has(league)){
