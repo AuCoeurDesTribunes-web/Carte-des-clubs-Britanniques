@@ -591,7 +591,6 @@ function makeClusterIcon(cluster){
 
 /* ---- marker icon rendering: dot or crest ---- */
 let markerStyle = 'dot';
-const crestCache = {}; // club name -> url|null (null = confirmed not found)
 
 const STOPWORDS = new Set(['fc','afc','cf','the','and','united','town','city','county','athletic','albion','rovers','wanderers','rangers']);
 function initials(name){
@@ -600,6 +599,52 @@ function initials(name){
   const pool = significant.length ? significant : words;
   return pool.slice(0, 2).map(w => w[0].toUpperCase()).join('') || '?';
 }
+
+/* Must match the slugify used by fetch-crests.mjs / crests_manifest.csv:
+   lowercase, accents stripped, everything that isn't a-z0-9 becomes "-". */
+function slugify(name){
+  return name
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/* crests-index.json maps slug -> real filename (with the correct extension:
+   fetch-crests.mjs checks the actual downloaded bytes, so a club whose
+   crest is a .jpg on its source site stays a .jpg here rather than being
+   force-renamed to .png). Loaded once at startup; until it's ready (or for
+   any club it doesn't cover) we fall back to guessing "<slug>.png", which
+   the onerror handler below turns into the initials icon if wrong. */
+let CREST_INDEX = {};
+fetch('crests-index.json')
+  .then(r => r.ok ? r.json() : {})
+  .then(data => {
+    CREST_INDEX = data || {};
+    if (markerStyle === 'crest') {
+      allMarkers.forEach(entry => {
+        entry.marker.setIcon(crestIcon(entry.name, LEAGUE_META[entry.league].hex));
+      });
+    }
+  })
+  .catch(() => { /* crests-index.json pas encore généré — pas grave, fallback actif */ });
+
+function crestPath(name){
+  const slug = slugify(name);
+  return `crests/${CREST_INDEX[slug] || (slug + '.png')}`;
+}
+
+/* Global helper called from the onerror="" attribute embedded in the raw
+   divIcon HTML string below (Leaflet icons are just static markup, so this
+   is the simplest way to react to a missing image without wiring up an
+   event listener per-marker). When crests/xxx.png 404s (club not yet in the
+   manifest), we swap the icon to the initials fallback in place. */
+window.__crestFallback = function(imgEl, txt){
+  const box = imgEl.closest('.marker-crest-icon');
+  if (!box) return;
+  box.classList.add('is-fallback');
+  box.textContent = txt;
+};
 
 function dotIcon(hex){
   return L.divIcon({
@@ -611,141 +656,15 @@ function dotIcon(hex){
   });
 }
 
-function fallbackCrestIcon(name, hex){
+function crestIcon(name, hex){
+  const txt = initials(name);
   return L.divIcon({
     className: '',
-    html: `<div class="marker-crest-icon is-fallback" style="border-color:${hex}">${initials(name)}</div>`,
+    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt="" loading="lazy" onerror="window.__crestFallback(this,'${txt}')"></div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, -18]
   });
-}
-
-function loadedCrestIcon(url, hex){
-  return L.divIcon({
-    className: '',
-    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${url}" loading="lazy"></div>`,
-    iconSize: [34, 34],
-    iconAnchor: [17, 17],
-    popupAnchor: [0, -18]
-  });
-}
-
-/* ---- crest lookup: TheSportsDB (dedicated football badges) with Wikipedia fallback ---- */
-
-/* Maps our (French) LEAGUE_META country labels to the English country names
-   TheSportsDB uses, so we can filter out same-named teams from other nations
-   (e.g. there's more than one "Athletic" or "Rovers" in the UK/Ireland). */
-const COUNTRY_EN = {
-  "Angleterre": "England",
-  "Irlande": "Republic of Ireland",
-  "Irlande du Nord": "Northern Ireland",
-  "Écosse": "Scotland",
-  "Pays de Galles": "Wales"
-};
-
-/* A couple of name variants to try against TheSportsDB (its search wants a
-   fairly exact match). Kept short on purpose: the free/shared "123" key is
-   rate-limited, and firing 3-4 requests per club for 176 clubs gets throttled
-   fast, which was silently pushing almost everything onto the Wikipedia
-   fallback below. */
-function nameVariants(name){
-  const variants = new Set([name]);
-  const stripped = name.replace(/\s+\b(FC|AFC|CF)\b\.?$/i, '').trim();
-  if (stripped && stripped !== name) variants.add(stripped);
-  return [...variants];
-}
-
-function normalizeTeamName(name){
-  return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-}
-
-async function fetchFromSportsDB(name, countryEn){
-  for (const variant of nameVariants(name)){
-    const url = `https://www.thesportsdb.com/api/v1/json/123/searchteams.php?t=${encodeURIComponent(variant)}`;
-    try{
-      const res = await fetch(url);
-      if (!res.ok) continue; // e.g. 429 rate-limited — try next variant, then fall through to Wikipedia
-      const data = await res.json();
-      let teams = (data && data.teams) || [];
-      teams = teams.filter(t => t.strSport === 'Soccer');
-      if (!teams.length) continue;
-
-      // Prefer: exact normalized name match, then same-country match, then first result.
-      const norm = normalizeTeamName(name);
-      let best =
-        teams.find(t => normalizeTeamName(t.strTeam || '') === norm) ||
-        (countryEn && teams.find(t => (t.strCountry || '').toLowerCase() === countryEn.toLowerCase())) ||
-        teams[0];
-
-      if (best && best.strTeamBadge) return best.strTeamBadge;
-    } catch(e){ /* network/CORS error — try next variant / fall through to Wikipedia */ }
-  }
-  return null;
-}
-
-/* Wikipedia's search API (free, no key, CORS-enabled) as a fallback for clubs
-   TheSportsDB doesn't have. It grabs the infobox image of the best-matching
-   page — but a plain full-text search can land on a *player's* biography
-   page instead of the club's (players get "top" pageimages too, and their
-   pages often mention the club by name). To avoid showing a footballer's
-   face instead of a crest, we fetch the page's short intro alongside the
-   image and only accept the result if that intro actually describes a
-   football club. */
-async function fetchFromWikipedia(name){
-  const query = `${name} football club`;
-  const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages|extracts&pithumbsize=120&exintro=1&explaintext=1&exsentences=2&format=json&origin=*`;
-  try{
-    const res = await fetch(url);
-    if (res.ok){
-      const data = await res.json();
-      const pages = data && data.query && data.query.pages;
-      if (pages){
-        const page = Object.values(pages)[0];
-        const thumb = page && page.thumbnail && page.thumbnail.source;
-        const intro = ((page && page.extract) || '').toLowerCase();
-        const looksLikeClub = /football club|soccer club|association football/.test(intro);
-        if (thumb && looksLikeClub) return thumb;
-      }
-    }
-  } catch(e){ /* offline or blocked */ }
-  return null;
-}
-
-async function fetchCrestUrl(name, league){
-  if (crestCache.hasOwnProperty(name)) return crestCache[name];
-  const meta = league ? LEAGUE_META[league] : null;
-  const countryEn = meta ? COUNTRY_EN[meta.country] : null;
-
-  let url = await fetchFromSportsDB(name, countryEn);
-  if (!url) url = await fetchFromWikipedia(name);
-
-  crestCache[name] = url || null;
-  return crestCache[name];
-}
-
-/* small concurrency-limited queue so we don't fire 176 requests at once —
-   kept low since the free/shared TheSportsDB key gets rate-limited quickly */
-let activeFetches = 0;
-const MAX_CONCURRENT = 2;
-const fetchQueue = [];
-function queueCrestFetch(entry){
-  fetchQueue.push(entry);
-  pumpQueue();
-}
-function pumpQueue(){
-  while (activeFetches < MAX_CONCURRENT && fetchQueue.length){
-    const entry = fetchQueue.shift();
-    activeFetches++;
-    fetchCrestUrl(entry.name, entry.league).then(url => {
-      activeFetches--;
-      if (markerStyle === 'crest'){
-        const hex = LEAGUE_META[entry.league].hex;
-        entry.marker.setIcon(url ? loadedCrestIcon(url, hex) : fallbackCrestIcon(entry.name, hex));
-      }
-      pumpQueue();
-    });
-  }
 }
 
 Object.keys(CLUBS_DATA).forEach(league => {
@@ -781,7 +700,7 @@ Object.keys(CLUBS_DATA).forEach(league => {
           </a>`;
       }
       return `
-        <div class="popup-crest"><img alt=""></div>
+        <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
         <div class="popup-league" style="color:${meta.hex}">${meta.country} · ${LEAGUE_SHORT[league]}</div>
         <div class="popup-name">${club.name}</div>
         <div class="popup-subheading">Prochains matchs à domicile</div>
@@ -789,16 +708,11 @@ Object.keys(CLUBS_DATA).forEach(league => {
       `;
     });
 
-    marker.on('popupopen', async () => {
+    marker.on('popupopen', () => {
       const popupEl = marker.getPopup().getElement();
       if (!popupEl) return;
       const crestWrap = popupEl.querySelector('.popup-crest');
-      const img = crestWrap.querySelector('img');
-      const url = await fetchCrestUrl(club.name, league);
-      if (url && marker.getPopup().isOpen()){
-        img.src = url;
-        crestWrap.style.display = 'flex';
-      }
+      if (crestWrap) crestWrap.style.display = 'flex';
     });
 
     group.addLayer(marker);
@@ -819,17 +733,7 @@ document.querySelectorAll('#markerstyle-toggle button').forEach(btn => {
 
     allMarkers.forEach(entry => {
       const hex = LEAGUE_META[entry.league].hex;
-      if (markerStyle === 'dot'){
-        entry.marker.setIcon(dotIcon(hex));
-      } else {
-        if (crestCache.hasOwnProperty(entry.name)){
-          const url = crestCache[entry.name];
-          entry.marker.setIcon(url ? loadedCrestIcon(url, hex) : fallbackCrestIcon(entry.name, hex));
-        } else {
-          entry.marker.setIcon(fallbackCrestIcon(entry.name, hex));
-          queueCrestFetch(entry);
-        }
-      }
+      entry.marker.setIcon(markerStyle === 'dot' ? dotIcon(hex) : crestIcon(entry.name, hex));
     });
   });
 });
