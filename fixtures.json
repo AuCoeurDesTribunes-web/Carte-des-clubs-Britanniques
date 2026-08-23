@@ -1,4 +1,661 @@
 {
-  "generated_at": "2026-08-23T17:07:29.679Z",
-  "clubs": {}
+  "generated_at": "2026-08-23T17:25:40.515Z",
+  "clubs": {
+    "Manchester City": [
+      {
+        "date": "2026-08-23T13:00:00Z",
+        "opponent": "AFC Bournemouth",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Coventry City FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Sunderland AFC",
+        "competition": "Premier League"
+      }
+    ],
+    "Newcastle United FC": [
+      {
+        "date": "2026-08-23T15:30:00Z",
+        "opponent": "Liverpool FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-05T11:30:00Z",
+        "opponent": "AFC Bournemouth",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Hull City AFC",
+        "competition": "Premier League"
+      }
+    ],
+    "Fulham FC": [
+      {
+        "date": "2026-08-24T19:00:00Z",
+        "opponent": "Chelsea FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Crystal Palace FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-20T15:30:00Z",
+        "opponent": "Manchester United FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Crystal Palace FC": [
+      {
+        "date": "2026-08-28T19:00:00Z",
+        "opponent": "Manchester City FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Ipswich Town FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Liverpool FC": [
+      {
+        "date": "2026-08-29T11:30:00Z",
+        "opponent": "Nottingham Forest FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Fulham FC",
+        "competition": "Premier League"
+      }
+    ],
+    "AFC Bournemouth": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Everton FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Brentford FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-20T13:00:00Z",
+        "opponent": "Liverpool FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Coventry City FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Hull City AFC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-13T13:00:00Z",
+        "opponent": "Brighton & Hove Albion FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Tottenham Hotspur": [
+      {
+        "date": "2026-08-29T16:30:00Z",
+        "opponent": "Newcastle United FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T16:30:00Z",
+        "opponent": "Everton FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-19T11:30:00Z",
+        "opponent": "Aston Villa FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Sunderland AFC": [
+      {
+        "date": "2026-08-30T13:00:00Z",
+        "opponent": "Fulham FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T19:00:00Z",
+        "opponent": "Arsenal FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Chelsea FC": [
+      {
+        "date": "2026-08-30T13:00:00Z",
+        "opponent": "Brighton & Hove Albion FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Hull City AFC",
+        "competition": "Premier League"
+      }
+    ],
+    "Leeds United FC": [
+      {
+        "date": "2026-08-30T13:00:00Z",
+        "opponent": "Brentford FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-14T19:00:00Z",
+        "opponent": "Newcastle United FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Crystal Palace FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Manchester United": [
+      {
+        "date": "2026-08-30T15:30:00Z",
+        "opponent": "Ipswich Town FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-13T15:30:00Z",
+        "opponent": "Manchester City FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Aston Villa FC": [
+      {
+        "date": "2026-08-31T19:00:00Z",
+        "opponent": "Arsenal FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Nottingham Forest FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Ipswich Town FC": [
+      {
+        "date": "2026-09-04T19:00:00Z",
+        "opponent": "Liverpool FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Nottingham Forest": [
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Tottenham Hotspur FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-19T16:30:00Z",
+        "opponent": "Coventry City FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Brentford FC": [
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Sunderland AFC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-18T19:00:00Z",
+        "opponent": "Chelsea FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Hull City": [
+      {
+        "date": "2026-09-05T16:30:00Z",
+        "opponent": "Aston Villa FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Everton FC": [
+      {
+        "date": "2026-09-06T13:00:00Z",
+        "opponent": "Manchester United FC",
+        "competition": "Premier League"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Ipswich Town FC",
+        "competition": "Premier League"
+      }
+    ],
+    "Arsenal FC": [
+      {
+        "date": "2026-09-06T15:30:00Z",
+        "opponent": "Chelsea FC",
+        "competition": "Premier League"
+      }
+    ],
+    "West Bromwich Albion FC": [
+      {
+        "date": "2026-08-23T11:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-02T18:45:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Watford FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T11:30:00Z",
+        "opponent": "Queens Park Rangers FC",
+        "competition": "Championship"
+      }
+    ],
+    "Wrexham FC": [
+      {
+        "date": "2026-08-28T19:00:00Z",
+        "opponent": "Birmingham City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship"
+      }
+    ],
+    "Wolverhampton Wanderers": [
+      {
+        "date": "2026-08-29T11:30:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-09T18:45:00Z",
+        "opponent": "Portsmouth FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-20T11:00:00Z",
+        "opponent": "West Bromwich Albion FC",
+        "competition": "Championship"
+      }
+    ],
+    "Derby County FC": [
+      {
+        "date": "2026-08-29T11:30:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-09T18:45:00Z",
+        "opponent": "West Bromwich Albion FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T11:30:00Z",
+        "opponent": "Birmingham City FC",
+        "competition": "Championship"
+      }
+    ],
+    "Middlesbrough FC": [
+      {
+        "date": "2026-08-29T11:30:00Z",
+        "opponent": "West Bromwich Albion FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Millwall FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Norwich City FC",
+        "competition": "Championship"
+      }
+    ],
+    "Norwich City FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-09T18:45:00Z",
+        "opponent": "Birmingham City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Bolton Wanderers FC",
+        "competition": "Championship"
+      }
+    ],
+    "Bolton Wanderers FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T19:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T11:30:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship"
+      }
+    ],
+    "Bristol City FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Portsmouth FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-18T19:00:00Z",
+        "opponent": "Watford FC",
+        "competition": "Championship"
+      }
+    ],
+    "Southampton FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Millwall FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship"
+      }
+    ],
+    "Charlton Athletic FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-09T19:00:00Z",
+        "opponent": "Queens Park Rangers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Portsmouth FC",
+        "competition": "Championship"
+      }
+    ],
+    "Blackburn Rovers FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Queens Park Rangers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Sheffield United FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Millwall FC",
+        "competition": "Championship"
+      }
+    ],
+    "Cardiff City FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "Sheffield United FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T11:30:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship"
+      }
+    ],
+    "Watford FC": [
+      {
+        "date": "2026-08-29T14:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-08T18:45:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship"
+      }
+    ],
+    "Preston North End FC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T11:30:00Z",
+        "opponent": "Blackburn Rovers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship"
+      }
+    ],
+    "West Ham United FC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Wolverhampton Wanderers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-11T19:00:00Z",
+        "opponent": "Wrexham AFC",
+        "competition": "Championship"
+      }
+    ],
+    "Lincoln City FC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Blackburn Rovers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T11:30:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship"
+      }
+    ],
+    "Sheffield United FC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Bolton Wanderers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Norwich City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-13T11:00:00Z",
+        "opponent": "Wolverhampton Wanderers FC",
+        "competition": "Championship"
+      }
+    ],
+    "Portsmouth FC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Blackburn Rovers FC",
+        "competition": "Championship"
+      }
+    ],
+    "Birmingham City FC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-06T11:00:00Z",
+        "opponent": "Wolverhampton Wanderers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship"
+      }
+    ],
+    "Swansea City AFC": [
+      {
+        "date": "2026-09-01T18:45:00Z",
+        "opponent": "Watford FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T19:00:00Z",
+        "opponent": "Wrexham AFC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-12T14:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship"
+      }
+    ],
+    "Stoke City FC": [
+      {
+        "date": "2026-09-01T19:00:00Z",
+        "opponent": "Norwich City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T11:30:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T11:30:00Z",
+        "opponent": "Sheffield United FC",
+        "competition": "Championship"
+      }
+    ],
+    "Millwall FC": [
+      {
+        "date": "2026-09-02T18:45:00Z",
+        "opponent": "Wrexham AFC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Bolton Wanderers FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T11:30:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship"
+      }
+    ],
+    "Queens Park Rangers": [
+      {
+        "date": "2026-09-02T18:45:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship"
+      }
+    ],
+    "Burnley FC": [
+      {
+        "date": "2026-09-02T19:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-05T14:00:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship"
+      },
+      {
+        "date": "2026-09-19T14:00:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship"
+      }
+    ]
+  }
 }
