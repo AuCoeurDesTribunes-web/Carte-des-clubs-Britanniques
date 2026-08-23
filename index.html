@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
 <title>Au Cœur Des Tribunes — Carte des clubs UK & Irlande</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
@@ -32,7 +33,7 @@
   }
 
   * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
+  html, body { height: 100%; margin: 0; touch-action: manipulation; }
   body{
     font-family: 'Inter', sans-serif;
     background: var(--bg);
@@ -692,7 +693,19 @@ function crestPath(name){
 let COMPETITION_LOGO_INDEX = {};
 fetch('competition-logos-index.json')
   .then(r => r.ok ? r.json() : {})
-  .then(data => { COMPETITION_LOGO_INDEX = data || {}; })
+  .then(data => {
+    COMPETITION_LOGO_INDEX = data || {};
+    // La légende (sidebar) est construite en synchrone avant que ce fetch
+    // ne se termine : elle a donc deviné "<slug>.png" par défaut, ce qui
+    // 404 pour tout logo qui est en réalité un .svg. On corrige les <img>
+    // déjà dans le DOM avec le vrai chemin une fois le manifeste connu.
+    document.querySelectorAll('.league-row').forEach(row => {
+      const img = row.querySelector('.league-logo');
+      if (!img || !row.dataset.league) return;
+      img.style.display = '';
+      img.src = competitionLogoPath(slugify(row.dataset.league));
+    });
+  })
   .catch(() => { /* pas de manifeste : le fallback <slug>.png suffit */ });
 
 function competitionLogoPath(slug){
