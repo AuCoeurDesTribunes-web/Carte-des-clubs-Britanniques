@@ -1,0 +1,22 @@
+{
+  "Premier League": {
+    "id": 39,
+    "name": "Premier League"
+  },
+  "England - Championship": {
+    "id": 40,
+    "name": "Championship"
+  },
+  "England - League One": {
+    "id": 41,
+    "name": "League One"
+  },
+  "England - League Two": {
+    "id": 42,
+    "name": "League Two"
+  },
+  "England - National League": {
+    "id": 43,
+    "name": "National League"
+  }
+}
