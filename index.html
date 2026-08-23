@@ -207,8 +207,11 @@
     font-size: 11px;
     color: var(--text-dim);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 4px;
   }
+  .sidebar-footer-row{ display: flex; justify-content: space-between; }
+  .sidebar-footer-updated{ font-size: 10px; opacity: .75; }
 
   /* ---------- MAP ---------- */
   #map-wrap{ flex: 1; position: relative; }
@@ -242,6 +245,16 @@
   .leaflet-popup-content{ margin: 12px 14px; font-family: 'Inter', sans-serif; }
   .leaflet-popup-close-button{ color: var(--text-dim) !important; }
 
+  .popup-crest{
+    display: none;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .popup-crest img{
+    height: 46px;
+    max-width: 100%;
+    object-fit: contain;
+  }
   .popup-league{
     font-size: 10.5px;
     text-transform: uppercase;
@@ -256,6 +269,36 @@
     margin-bottom: 9px;
     line-height: 1.25;
   }
+  .popup-subheading{
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .popup-fixtures{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+  .fixture-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12.5px;
+    padding: 5px 8px;
+    background: var(--panel-2);
+    border-radius: 6px;
+  }
+  .fixture-row .fixture-date{ color: var(--text-dim); white-space: nowrap; }
+  .fixture-row .fixture-opp{ font-weight: 500; text-align: right; }
+  .popup-fixtures.empty{
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
   .popup-link{
     display: inline-flex;
     align-items: center;
@@ -348,22 +391,20 @@
   }
   .marker-crest-icon{
     width: 34px; height: 34px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2.5px solid;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,.55);
   }
   .marker-crest-icon img{
     width: 100%; height: 100%;
     object-fit: contain;
-    padding: 3px;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.85)) drop-shadow(0 0 3px rgba(0,0,0,.6));
   }
   .marker-crest-icon.is-fallback{
+    border-radius: 50%;
     background: var(--panel-2);
+    border: 2.5px solid;
+    box-shadow: 0 3px 10px rgba(0,0,0,.55);
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: 11px;
@@ -407,8 +448,11 @@
     <div id="leagues"></div>
 
     <div class="sidebar-footer">
-      <span id="visible-count">176 clubs</span>
-      <span>10 championnats</span>
+      <div class="sidebar-footer-row">
+        <span id="visible-count">176 clubs</span>
+        <span>10 championnats</span>
+      </div>
+      <div class="sidebar-footer-updated" id="fixtures-updated"></div>
     </div>
   </div>
 
@@ -476,6 +520,30 @@ const LEAGUE_SHORT = {
   "Scotland - Championship": "Championship",
   "Wales - Cymru Premier": "Cymru Premier",
 };
+
+/* ---------------- FIXTURES (calendrier des matchs à domicile) ---------------- */
+/* Généré automatiquement 2x/jour par une GitHub Action (voir scripts/update-fixtures.mjs).
+   fixtures.json n'existe qu'une fois cette Action exécutée au moins une fois. */
+let FIXTURES_DATA = {};
+fetch('fixtures.json')
+  .then(res => res.ok ? res.json() : null)
+  .then(data => {
+    if (!data) return;
+    FIXTURES_DATA = data.clubs || {};
+    const el = document.getElementById('fixtures-updated');
+    if (el && data.generated_at){
+      const d = new Date(data.generated_at);
+      el.textContent = 'Calendrier actualisé le ' + d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }) + ' à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    }
+  })
+  .catch(() => { /* pas encore généré, ou hors-ligne : les popups retombent sur le lien Flashscore */ });
+
+function formatFixtureDate(iso){
+  const d = new Date(iso);
+  const day = d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });
+  const time = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  return `${day} · ${time}`;
+}
 
 /* ---------------- MAP INIT ---------------- */
 const map = L.map('map', { zoomControl: false, minZoom: 4 }).setView([54.5, -4.5], 6);
@@ -623,14 +691,43 @@ Object.keys(CLUBS_DATA).forEach(league => {
     const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[league]);
     const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
 
-    marker.bindPopup(`
-      <div class="popup-league" style="color:${meta.hex}">${meta.country} · ${LEAGUE_SHORT[league]}</div>
-      <div class="popup-name">${club.name}</div>
-      <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">
-        Voir sur Flashscore
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
-      </a>
-    `);
+    marker.bindPopup(() => {
+      const fixtures = FIXTURES_DATA[club.name];
+      let fixturesHtml;
+      if (fixtures && fixtures.length){
+        fixturesHtml = '<div class="popup-fixtures">' + fixtures.map(f => `
+          <div class="fixture-row">
+            <span class="fixture-date">${formatFixtureDate(f.date)}</span>
+            <span class="fixture-opp">vs ${f.opponent}</span>
+          </div>`).join('') + '</div>';
+      } else {
+        fixturesHtml = `
+          <div class="popup-fixtures empty">Calendrier pas encore disponible pour ce club.</div>
+          <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">
+            Voir sur Flashscore
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>`;
+      }
+      return `
+        <div class="popup-crest"><img alt=""></div>
+        <div class="popup-league" style="color:${meta.hex}">${meta.country} · ${LEAGUE_SHORT[league]}</div>
+        <div class="popup-name">${club.name}</div>
+        <div class="popup-subheading">Prochains matchs à domicile</div>
+        ${fixturesHtml}
+      `;
+    });
+
+    marker.on('popupopen', async () => {
+      const popupEl = marker.getPopup().getElement();
+      if (!popupEl) return;
+      const crestWrap = popupEl.querySelector('.popup-crest');
+      const img = crestWrap.querySelector('img');
+      const url = await fetchCrestUrl(club.name);
+      if (url && marker.getPopup().isOpen()){
+        img.src = url;
+        crestWrap.style.display = 'flex';
+      }
+    });
 
     group.addLayer(marker);
     allMarkers.push({ marker, league, name: club.name, lat: club.lat, lon: club.lon });
