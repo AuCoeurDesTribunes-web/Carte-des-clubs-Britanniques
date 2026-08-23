@@ -45,6 +45,17 @@
 
   /* ---------- SIDEBAR ---------- */
   #sidebar{
+    /* Surcharge locale des variables de couleur : fond blanc pour la
+       légende, tout le reste du panneau (recherche, boutons, liste) en
+       hérite automatiquement puisqu'il s'appuie sur ces mêmes variables. */
+    --panel: #ffffff;
+    --panel-2: #f2f2f2;
+    --line: #e2e2e2;
+    --text: #111111;
+    --text-dim: #6b6b6b;
+    --accent: #111111;
+    --accent-text: #ffffff;
+
     width: 320px;
     min-width: 320px;
     background: var(--panel);
@@ -59,7 +70,7 @@
   .brand{
     padding: 20px 18px 14px 18px;
     border-bottom: 1px solid var(--line);
-    background: linear-gradient(160deg, rgba(255,255,255,.06), transparent 70%);
+    background: linear-gradient(160deg, rgba(0,0,0,.04), transparent 70%);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -184,17 +195,12 @@
     width: 12px; height: 12px;
     border-radius: 3px;
     flex-shrink: 0;
-    box-shadow: 0 0 0 1px rgba(255,255,255,.08);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
   }
   .league-row .league-logo{
     width: 20px; height: 20px;
     object-fit: contain;
     flex-shrink: 0;
-    /* léger halo blanc flouté pour détacher le logo du fond noir,
-       calé sur le canal alpha du logo (fonctionne pour SVG et PNG) */
-    filter:
-      drop-shadow(0 0 2px rgba(255,255,255,.85))
-      drop-shadow(0 0 4px rgba(255,255,255,.5));
   }
   .league-row .lname{
     flex: 1;
@@ -246,12 +252,23 @@
   }
   #toggle-sidebar svg{ width: 18px; height: 18px; stroke: var(--text); }
 
+  .leaflet-popup{
+    /* Même principe que #sidebar : l'encart calendrier de chaque club
+       passe en fond blanc, tout ce qui suit en hérite via ces variables. */
+    --panel: #ffffff;
+    --panel-2: #f2f2f2;
+    --line: #e2e2e2;
+    --text: #111111;
+    --text-dim: #6b6b6b;
+    --accent: #111111;
+    --accent-text: #ffffff;
+  }
   .leaflet-popup-content-wrapper{
     background: var(--panel);
     color: var(--text);
     border-radius: 10px;
     border: 1px solid var(--line);
-    box-shadow: 0 8px 24px rgba(0,0,0,.5);
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
   }
   .leaflet-popup-tip{ background: var(--panel); border: 1px solid var(--line); }
   .leaflet-popup-content{ margin: 12px 14px; font-family: 'Inter', sans-serif; }
@@ -337,7 +354,14 @@
     gap: 10px;
   }
   .fixture-row .fixture-date{ color: var(--text-dim); white-space: nowrap; }
-  .fixture-row .fixture-opp{ font-weight: 500; text-align: right; }
+  .fixture-row .fixture-opp{
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+  .fixture-opp-crest{ width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
   .popup-fixtures.empty{
     font-size: 12px;
     color: var(--text-dim);
@@ -724,6 +748,17 @@ window.__crestFallback = function(imgEl, txt){
   box.textContent = txt;
 };
 
+/* Même principe pour l'écusson de l'adversaire dans le calendrier : le nom
+   renvoyé par football-data.org (ex. "Manchester United FC") ne correspond
+   pas toujours exactement au nom utilisé dans crests-index.json (ex.
+   "Manchester United"), donc l'image peut 404 — dans ce cas on retombe
+   simplement sur le nom du club en texte. */
+window.__oppCrestFallback = function(imgEl){
+  imgEl.style.display = 'none';
+  const label = imgEl.nextElementSibling;
+  if (label) label.style.display = 'inline';
+};
+
 function crestIcon(name, hex){
   const txt = initials(name);
   return L.divIcon({
@@ -783,7 +818,10 @@ Object.keys(CLUBS_DATA).forEach(league => {
                 </div>
                 <div class="fixture-main">
                   <span class="fixture-date">${formatFixtureDate(f.date)}</span>
-                  <span class="fixture-opp">vs ${f.opponent}</span>
+                  <span class="fixture-opp">
+                    <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" title="${f.opponent}" loading="lazy" onerror="window.__oppCrestFallback(this)">
+                    <span class="fixture-opp-name" style="display:none">${f.opponent}</span>
+                  </span>
                 </div>
               </div>`).join('')}
           </div>`).join('');
