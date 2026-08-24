@@ -470,7 +470,11 @@
     min-width: 0;
     box-shadow: 0 0 30px rgba(0,0,0,.6);
   }
-    #sidebar.collapsed{ margin-left: min(-86vw, -340px); }
+        #sidebar.collapsed{ margin-left: min(-86vw, -340px); }
+
+    #sidebar:not(.collapsed) ~ #map-wrap #toggle-sidebar{
+      left: calc(min(86vw, 340px) + 10px);
+    }
 
     #map-controls{
       left: 58px;
