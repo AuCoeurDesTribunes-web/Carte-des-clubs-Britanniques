@@ -29,11 +29,14 @@ jobs:
       - name: Reconstruire crests-index.json depuis crests/
         run: node scripts/build-crests-index.mjs
 
+      - name: Reconstruire competition-logos-index.json depuis competition-logos/
+        run: node scripts/build-competition-logos-index.mjs
+
       - name: Publier si des changements
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add crests/ competition-logos/ crests-index.json missing-crests.csv
+          git add crests/ competition-logos/ crests-index.json competition-logos-index.json missing-crests.csv
           git diff --staged --quiet || git commit -m "Nettoyage des SVG et reconstruction de l'index des logos"
           git push
 
