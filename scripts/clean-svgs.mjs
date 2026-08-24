@@ -114,7 +114,13 @@ for (const dir of DIRS) {
     //    corrompu (pas juste un problème de BOM) et doit être re-téléchargé.
     const finalText = content.toString('utf8').trimStart();
     if (!finalText.startsWith('<') || !/<[a-z0-9]*:?svg[\s>]/i.test(finalText)) {
-      stillBroken.push(filePath);
+      const preview = content.subarray(0, 32);
+      stillBroken.push({
+        path: filePath,
+        hex: preview.toString('hex').match(/../g).join(' '),
+        ascii: preview.toString('latin1').replace(/[^\x20-\x7e]/g, '.'),
+        size: content.length
+      });
     }
   }
 }
@@ -125,7 +131,11 @@ console.log(`${alreadyOk} fichier(s) déjà propres.`);
 
 if (stillBroken.length) {
   console.log(`\n⚠️  ${stillBroken.length} fichier(s) toujours invalides après nettoyage (à re-télécharger, probablement corrompus au-delà d'un simple BOM) :`);
-  stillBroken.forEach(f => console.log(`  - ${f}`));
+  stillBroken.forEach(f => {
+    console.log(`  - ${f.path} (${f.size} octets)`);
+    console.log(`      hex   : ${f.hex}`);
+    console.log(`      ascii : ${f.ascii}`);
+  });
 } else {
   console.log('\nTous les fichiers SVG sont valides. 🎉');
 }
@@ -142,7 +152,11 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   ];
   if (stillBroken.length) {
     lines.push(`#### ⚠️ Fichiers toujours invalides (à re-télécharger)`, '');
-    stillBroken.forEach(f => lines.push(`- \`${f}\``));
+    stillBroken.forEach(f => {
+      lines.push(`- \`${f.path}\` (${f.size} octets)`);
+      lines.push(`  - hex : \`${f.hex}\``);
+      lines.push(`  - ascii : \`${f.ascii}\``);
+    });
   }
   fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
 }
