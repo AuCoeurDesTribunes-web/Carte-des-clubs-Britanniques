@@ -223,7 +223,7 @@
   #toggle-sidebar{
     position: absolute;
     top: 14px; left: 14px;
-    z-index: 999;
+    z-index: 1001;
     background: var(--panel);
     border: 1px solid var(--line);
     color: var(--text);
@@ -489,7 +489,7 @@
   }
 
   @media (max-width: 420px){
-    #map-controls{ top: 60px; left: 14px; }
+    #map-controls{ top: 62px; left: 14px; }
     .segmented button span.seg-label{ display: none; }
   }
 </style>
@@ -736,7 +736,7 @@ function crestIcon(name, hex){
   const txt = initials(name);
   return L.divIcon({
     className: '',
-    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt="" loading="lazy" onerror="window.__crestFallback(this,'${txt}')"></div>`,
+    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt="" onerror="window.__crestFallback(this,'${txt}')"></div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, -18]
@@ -786,14 +786,14 @@ Object.keys(CLUBS_DATA).forEach(league => {
             ${months[k].items.map(f => `
               <div class="fixture-row">
                 <div class="fixture-competition">
-                  <img src="${competitionLogoPath(f.competitionSlug || slugify(f.competition))}" alt="" loading="lazy" onerror="this.style.display='none'">
+                  <img src="${competitionLogoPath(f.competitionSlug || slugify(f.competition))}" alt="" onerror="this.style.display='none'">
                   <span>${f.competition}</span>
                 </div>
                 <div class="fixture-main">
                   <span class="fixture-date">${formatFixtureDate(f.date)}</span>
                   <div class="fixture-opp">
                     <span class="fixture-vs">vs</span>
-                    <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+                    <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
                     <span class="fixture-opp-name" style="display:none">${f.opponent}</span>
                   </div>
                 </div>
@@ -865,7 +865,7 @@ Object.keys(leaguesByCountry).forEach(country => {
     row.className = 'league-row';
     row.dataset.league = league;
     row.innerHTML = `
-      <img class="league-logo" src="${competitionLogoPath(slugify(league))}" alt="" loading="lazy" onerror="this.style.display='none'">
+      <img class="league-logo" src="${competitionLogoPath(slugify(league))}" alt="" onerror="this.style.display='none'">
       <div class="lname">${LEAGUE_SHORT[league]}</div>
       <div class="lcount">${CLUBS_DATA[league].length}</div>
     `;
