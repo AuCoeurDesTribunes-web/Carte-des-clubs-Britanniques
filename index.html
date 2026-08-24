@@ -585,11 +585,17 @@ const LEAGUE_SHORT = {
   "Wales - Cymru Premier": "Cymru Premier",
 };
 
+/* Petit utilitaire anti-cache : certains réseaux mobiles/CDN ont tendance à
+   garder une vieille copie en cache de ces fichiers JSON plus longtemps que
+   prévu (déjà observé sur la page principale). On force une requête fraîche
+   à chaque chargement en ajoutant un paramètre unique à l'URL. */
+function noCacheUrl(url){ return `${url}?_=${Date.now()}`; }
+
 /* ---------------- FIXTURES (calendrier des matchs à domicile) ---------------- */
 /* Généré automatiquement 2x/jour par une GitHub Action (voir scripts/update-fixtures.mjs).
    fixtures.json n'existe qu'une fois cette Action exécutée au moins une fois. */
 let FIXTURES_DATA = {};
-fetch('fixtures.json')
+fetch(noCacheUrl('fixtures.json'))
   .then(res => res.ok ? res.json() : null)
   .then(data => {
     if (!data) return;
@@ -679,7 +685,7 @@ function slugify(name){
    any club it doesn't cover) we fall back to guessing "<slug>.png", which
    the onerror handler below turns into the initials icon if wrong. */
 let CREST_INDEX = {};
-fetch('crests-index.json')
+fetch(noCacheUrl('crests-index.json'))
   .then(r => r.ok ? r.json() : {})
   .then(data => {
     CREST_INDEX = data || {};
@@ -699,7 +705,7 @@ function crestPath(name){
    toi-même dans le dossier competition-logos/. Le manifeste est optionnel :
    sans lui, on devine "<slug-de-la-compétition>.png". */
 let COMPETITION_LOGO_INDEX = {};
-fetch('competition-logos-index.json')
+fetch(noCacheUrl('competition-logos-index.json'))
   .then(r => r.ok ? r.json() : {})
   .then(data => {
     COMPETITION_LOGO_INDEX = data || {};
