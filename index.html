@@ -462,13 +462,14 @@
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 3px; }
 
   @media (max-width: 720px){
-    #sidebar{
-      position: absolute;
-      height: 100%;
-      width: min(86vw, 340px);
-      min-width: 0;
-      box-shadow: 0 0 30px rgba(0,0,0,.6);
-    }
+  #sidebar{
+    position: absolute;
+    z-index: 1002;
+    height: 100%;
+    width: min(86vw, 340px);
+    min-width: 0;
+    box-shadow: 0 0 30px rgba(0,0,0,.6);
+  }
     #sidebar.collapsed{ margin-left: min(-86vw, -340px); }
 
     #map-controls{
