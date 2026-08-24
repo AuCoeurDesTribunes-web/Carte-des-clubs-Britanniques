@@ -1,13 +1,13 @@
 {
-  "premier-league": "premier-league.svg",
-  "england-championship": "england-championship.svg",
-  "england-league-one": "england-league-one.svg",
-  "england-league-two": "england-league-two.svg",
-  "england-national-league": "england-national-league.svg",
+  "england-championship": "england-championship.webp",
+  "england-league-one": "england-league-one.webp",
+  "england-league-two": "england-league-two.webp",
+  "england-national-league": "england-national-league.webp",
   "ireland-premier-division": "ireland-premier-division.png",
+  "ligue-des-champions": "ligue-des-champions.webp",
   "northern-ireland-premiership": "northern-ireland-premiership.png",
-  "scotland-premiership": "scotland-premiership.png",
+  "premier-league": "premier-league.webp",
   "scotland-championship": "scotland-championship.svg",
-  "wales-cymru-premier": "wales-cymru-premier.png",
-  "ligue-des-champions": "ligue-des-champions.svg"
+  "scotland-premiership": "scotland-premiership.png",
+  "wales-cymru-premier": "wales-cymru-premier.webp"
 }
