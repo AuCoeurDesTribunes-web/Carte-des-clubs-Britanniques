@@ -16,6 +16,29 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+// Devine le vrai format d'un fichier à partir de sa signature binaire
+// (magic bytes), indépendamment de son extension. Utile pour repérer les
+// fichiers mal étiquetés : par exemple une vraie image WebP enregistrée
+// avec l'extension .svg (Chrome desktop l'affiche quand même grâce au
+// content-sniffing, mais Firefox et d'autres moteurs plus stricts sur
+// Android refusent et affichent une erreur XML).
+function detectRealFormat(buf, decodedText) {
+  if (buf.length >= 12 && buf.subarray(0, 4).toString('latin1') === 'RIFF' && buf.subarray(8, 12).toString('latin1') === 'WEBP') {
+    return 'webp';
+  }
+  if (buf.length >= 8 && buf.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]))) {
+    return 'png';
+  }
+  if (buf.length >= 3 && buf[0] === 0xFF && buf[1] === 0xD8 && buf[2] === 0xFF) {
+    return 'jpg';
+  }
+  if (buf.length >= 6 && (buf.subarray(0, 6).toString('latin1') === 'GIF87a' || buf.subarray(0, 6).toString('latin1') === 'GIF89a')) {
+    return 'gif';
+  }
+  if (decodedText.trimStart().startsWith('<')) return 'svg'; // vraisemblablement un SVG/XML valide
+  return null; // format inconnu, vraiment corrompu
+}
+
 const DIRS = ['crests', 'competition-logos'];
 const BOM_UTF8 = Buffer.from([0xEF, 0xBB, 0xBF]);
 const BOM_UTF16_LE = Buffer.from([0xFF, 0xFE]);
@@ -51,6 +74,7 @@ function looksLikeUtf16WithoutBom(buf) {
 let cleaned = 0;
 let alreadyOk = 0;
 let stillBroken = [];
+let renamed = [];
 let skipped = 0;
 
 for (const dir of DIRS) {
@@ -62,6 +86,19 @@ for (const dir of DIRS) {
   for (const file of files) {
     const filePath = path.join(dir, file);
     const raw = fs.readFileSync(filePath);
+
+    // 0) Vérifier d'abord si ce n'est pas carrément un autre format d'image
+    //    (WebP, PNG, JPEG, GIF) mal étiqueté avec l'extension .svg. Dans ce
+    //    cas on renomme le fichier avec la bonne extension plutôt que
+    //    d'essayer de le "réparer" comme du texte.
+    const rawFormat = detectRealFormat(raw, raw.toString('utf8'));
+    if (rawFormat && rawFormat !== 'svg') {
+      const newPath = filePath.replace(/\.svg$/i, `.${rawFormat}`);
+      fs.renameSync(filePath, newPath);
+      renamed.push({ from: filePath, to: newPath, format: rawFormat });
+      console.log(`  🔀 renommé (c'était en réalité un .${rawFormat}) : ${file} → ${path.basename(newPath)}`);
+      continue; // rien d'autre à faire sur ce fichier
+    }
 
     let content = raw;
     let wasModified = false;
@@ -126,8 +163,14 @@ for (const dir of DIRS) {
 }
 
 console.log('\n=== Résumé ===');
+console.log(`${renamed.length} fichier(s) renommé(s) (mauvais format sous extension .svg).`);
 console.log(`${cleaned} fichier(s) nettoyé(s) (BOM/caractère parasite retiré).`);
 console.log(`${alreadyOk} fichier(s) déjà propres.`);
+
+if (renamed.length) {
+  console.log(`\n🔀 Fichiers renommés :`);
+  renamed.forEach(f => console.log(`  - ${f.from} → ${f.to} (en réalité un .${f.format})`));
+}
 
 if (stillBroken.length) {
   console.log(`\n⚠️  ${stillBroken.length} fichier(s) toujours invalides après nettoyage (à re-télécharger, probablement corrompus au-delà d'un simple BOM) :`);
@@ -147,9 +190,14 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   const lines = [
     `### Nettoyage des SVG`,
     ``,
-    `**${cleaned}** fichier(s) nettoyé(s), **${alreadyOk}** déjà propres.`,
+    `**${renamed.length}** fichier(s) renommé(s), **${cleaned}** nettoyé(s), **${alreadyOk}** déjà propres.`,
     ``,
   ];
+  if (renamed.length) {
+    lines.push(`#### 🔀 Fichiers renommés (mauvais format sous .svg)`, '');
+    renamed.forEach(f => lines.push(`- \`${f.from}\` → \`${f.to}\` (en réalité un .${f.format})`));
+    lines.push('');
+  }
   if (stillBroken.length) {
     lines.push(`#### ⚠️ Fichiers toujours invalides (à re-télécharger)`, '');
     stillBroken.forEach(f => {
