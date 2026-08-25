@@ -656,6 +656,16 @@
           <span class="seg-label">Satellite</span>
         </button>
       </div>
+      <div class="segmented" id="mode-toggle">
+        <button data-mode="cluster" class="active" title="Regrouper les clubs proches en clusters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><text x="12" y="15.5" font-size="9" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none">5</text></svg>
+          <span class="seg-label">Clusters</span>
+        </button>
+        <button data-mode="points" title="Afficher chaque club individuellement, sans regroupement">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="7" r="2.4"/><circle cx="17" cy="6" r="2.4"/><circle cx="12" cy="13" r="2.4"/><circle cx="18" cy="17" r="2.4"/><circle cx="6" cy="17" r="2.4"/></svg>
+          <span class="seg-label">Points</span>
+        </button>
+      </div>
     </div>
 
     <div id="map"></div>
@@ -771,7 +781,14 @@ L.control.zoom({ position: 'bottomright' }).addTo(map);
 
 /* Cluster groups per league so toggling a league adds/removes its cluster group */
 const clusterGroups = {};
-const allMarkers = []; // {marker, league, name}
+/* Même principe, mais en mode "points" : un simple L.layerGroup sans
+   agrégation, pour que les clubs restent visibles individuellement même
+   dézoomé, quitte à se chevaucher. */
+const flatGroups = {};
+let mapMode = 'cluster'; // 'cluster' | 'points'
+function groupsForMode(){ return mapMode === 'cluster' ? clusterGroups : flatGroups; }
+const allMarkers = []; // {clusterMarker, flatMarker, league, name, lat, lon}
+function markerForMode(entry){ return mapMode === 'cluster' ? entry.clusterMarker : entry.flatMarker; }
 
 function makeClusterIcon(cluster){
   const count = cluster.getChildCount();
@@ -814,7 +831,9 @@ fetch(noCacheUrl('crests-index.json'))
   .then(data => {
     CREST_INDEX = data || {};
     allMarkers.forEach(entry => {
-      entry.marker.setIcon(crestIcon(entry.name, LEAGUE_META[entry.league].hex));
+      const icon = crestIcon(entry.name, LEAGUE_META[entry.league].hex);
+      entry.clusterMarker.setIcon(icon);
+      entry.flatMarker.setIcon(crestIcon(entry.name, LEAGUE_META[entry.league].hex));
     });
   })
   .catch(() => { /* crests-index.json pas encore généré — pas grave, fallback actif */ });
@@ -876,6 +895,103 @@ function crestIcon(name, hex){
 /* Seule la Premier League est cochée par défaut à l'ouverture du site. */
 const activeLeagues = new Set(["Premier League"]);
 
+function createClubMarker(club, league, meta){
+  const marker = L.marker([club.lat, club.lon], { icon: crestIcon(club.name, meta.hex) });
+
+  const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[league]);
+  const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
+
+  marker.bindPopup(() => {
+    const now = new Date();
+    // Filtre de sécurité côté client : même si fixtures.json contient
+    // un match déjà joué (fichier pas encore réactualisé), il disparaît
+    // ici dès que l'heure du coup d'envoi est passée.
+    const fixtures = (FIXTURES_DATA[club.name] || []).filter(f => new Date(f.date) >= now);
+    let fixturesHtml;
+    if (fixtures.length){
+      const months = {}; // "2026-09" -> { label: "Septembre 2026", items: [...] }
+      fixtures.forEach(f => {
+        const d = new Date(f.date);
+        const key = d.getFullYear() + '-' + String(d.getMonth()).padStart(2, '0');
+        if (!months[key]){
+          const label = d.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+          months[key] = { label: label.charAt(0).toUpperCase() + label.slice(1), items: [] };
+        }
+        months[key].items.push(f);
+      });
+      const monthKeys = Object.keys(months).sort();
+      const optionsHtml = monthKeys.map((k, i) => `<option value="${i}">${months[k].label}</option>`).join('');
+      const groupsHtml = monthKeys.map((k, i) => `
+        <div class="fixture-month-group" data-month-index="${i}"${i === 0 ? '' : ' style="display:none"'}>
+          ${months[k].items.map(f => `
+            <div class="fixture-row">
+              <div class="fixture-competition">
+                <img src="${competitionLogoPath(f.competitionSlug || slugify(f.competition))}" alt="" onerror="this.style.display='none'">
+                <span>${f.competition}</span>
+              </div>
+              <div class="fixture-main">
+                <span class="fixture-date">${formatFixtureDate(f.date)}</span>
+                <div class="fixture-opp">
+                  <span class="fixture-vs">vs</span>
+                  <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+                  <span class="fixture-opp-name" style="display:none">${f.opponent}</span>
+                </div>
+              </div>
+            </div>`).join('')}
+        </div>`).join('');
+      fixturesHtml = `
+        <select class="fixture-month-select">${optionsHtml}</select>
+        <div class="popup-fixtures">${groupsHtml}</div>`;
+    } else {
+      fixturesHtml = `
+        <div class="popup-fixtures empty">Calendrier pas encore disponible pour ce club.</div>
+        <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">
+          Voir sur Flashscore
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>`;
+    }
+    return `
+      <div class="popup-header">
+        <div class="popup-comp-badge"><img src="${competitionLogoPath(slugify(league))}" alt="" onerror="this.parentElement.style.display='none'"></div>
+        <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
+        <div class="popup-name">${club.name}</div>
+        ${club.stadium ? `<div class="popup-stadium" data-stadium="${club.stadium.replace(/"/g, '&quot;')}">
+          <svg class="stadium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
+            <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
+          </svg>
+          <span>${club.stadium}</span>
+        </div>` : ''}
+      </div>
+      <div class="popup-subheading">Matchs à domicile</div>
+      ${fixturesHtml}
+    `;
+  });
+
+  marker.on('popupopen', () => {
+    const popupEl = marker.getPopup().getElement();
+    if (!popupEl) return;
+    const headerWrap = popupEl.querySelector('.popup-header');
+    if (headerWrap) headerWrap.style.display = 'flex';
+    const select = popupEl.querySelector('.fixture-month-select');
+    if (select){
+      select.addEventListener('change', () => {
+        popupEl.querySelectorAll('.fixture-month-group').forEach(g => {
+          g.style.display = (g.dataset.monthIndex === select.value) ? '' : 'none';
+        });
+      });
+    }
+    const stadiumRow = popupEl.querySelector('.popup-stadium');
+    if (stadiumRow){
+      stadiumRow.addEventListener('click', () => {
+        showStadiumInfo(stadiumRow.dataset.stadium, club.name);
+      });
+    }
+  });
+
+  return marker;
+}
+
 Object.keys(CLUBS_DATA).forEach(league => {
   const meta = LEAGUE_META[league];
   const group = L.markerClusterGroup({
@@ -884,107 +1000,36 @@ Object.keys(CLUBS_DATA).forEach(league => {
     spiderfyOnMaxZoom: true,
     showCoverageOnHover: false
   });
+  /* Mode "points" : layer group sans agrégation, mêmes marqueurs visuellement
+     (mêmes écussons, mêmes popups) mais jamais regroupés, même dézoomé. */
+  const flatGroup = L.layerGroup();
 
   CLUBS_DATA[league].forEach(club => {
-    const marker = L.marker([club.lat, club.lon], { icon: crestIcon(club.name, meta.hex) });
+    const clusterMarker = createClubMarker(club, league, meta);
+    const flatMarker = createClubMarker(club, league, meta);
 
-    const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[league]);
-    const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
-
-    marker.bindPopup(() => {
-      const now = new Date();
-      // Filtre de sécurité côté client : même si fixtures.json contient
-      // un match déjà joué (fichier pas encore réactualisé), il disparaît
-      // ici dès que l'heure du coup d'envoi est passée.
-      const fixtures = (FIXTURES_DATA[club.name] || []).filter(f => new Date(f.date) >= now);
-      let fixturesHtml;
-      if (fixtures.length){
-        const months = {}; // "2026-09" -> { label: "Septembre 2026", items: [...] }
-        fixtures.forEach(f => {
-          const d = new Date(f.date);
-          const key = d.getFullYear() + '-' + String(d.getMonth()).padStart(2, '0');
-          if (!months[key]){
-            const label = d.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
-            months[key] = { label: label.charAt(0).toUpperCase() + label.slice(1), items: [] };
-          }
-          months[key].items.push(f);
-        });
-        const monthKeys = Object.keys(months).sort();
-        const optionsHtml = monthKeys.map((k, i) => `<option value="${i}">${months[k].label}</option>`).join('');
-        const groupsHtml = monthKeys.map((k, i) => `
-          <div class="fixture-month-group" data-month-index="${i}"${i === 0 ? '' : ' style="display:none"'}>
-            ${months[k].items.map(f => `
-              <div class="fixture-row">
-                <div class="fixture-competition">
-                  <img src="${competitionLogoPath(f.competitionSlug || slugify(f.competition))}" alt="" onerror="this.style.display='none'">
-                  <span>${f.competition}</span>
-                </div>
-                <div class="fixture-main">
-                  <span class="fixture-date">${formatFixtureDate(f.date)}</span>
-                  <div class="fixture-opp">
-                    <span class="fixture-vs">vs</span>
-                    <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
-                    <span class="fixture-opp-name" style="display:none">${f.opponent}</span>
-                  </div>
-                </div>
-              </div>`).join('')}
-          </div>`).join('');
-        fixturesHtml = `
-          <select class="fixture-month-select">${optionsHtml}</select>
-          <div class="popup-fixtures">${groupsHtml}</div>`;
-      } else {
-        fixturesHtml = `
-          <div class="popup-fixtures empty">Calendrier pas encore disponible pour ce club.</div>
-          <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">
-            Voir sur Flashscore
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
-          </a>`;
-      }
-      return `
-        <div class="popup-header">
-          <div class="popup-comp-badge"><img src="${competitionLogoPath(slugify(league))}" alt="" onerror="this.parentElement.style.display='none'"></div>
-          <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
-          <div class="popup-name">${club.name}</div>
-          ${club.stadium ? `<div class="popup-stadium" data-stadium="${club.stadium.replace(/"/g, '&quot;')}">
-            <svg class="stadium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
-              <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
-            </svg>
-            <span>${club.stadium}</span>
-          </div>` : ''}
-        </div>
-        <div class="popup-subheading">Matchs à domicile</div>
-        ${fixturesHtml}
-      `;
-    });
-
-    marker.on('popupopen', () => {
-      const popupEl = marker.getPopup().getElement();
-      if (!popupEl) return;
-      const headerWrap = popupEl.querySelector('.popup-header');
-      if (headerWrap) headerWrap.style.display = 'flex';
-      const select = popupEl.querySelector('.fixture-month-select');
-      if (select){
-        select.addEventListener('change', () => {
-          popupEl.querySelectorAll('.fixture-month-group').forEach(g => {
-            g.style.display = (g.dataset.monthIndex === select.value) ? '' : 'none';
-          });
-        });
-      }
-      const stadiumRow = popupEl.querySelector('.popup-stadium');
-      if (stadiumRow){
-        stadiumRow.addEventListener('click', () => {
-          showStadiumInfo(stadiumRow.dataset.stadium, club.name);
-        });
-      }
-    });
-
-    group.addLayer(marker);
-    allMarkers.push({ marker, league, name: club.name, lat: club.lat, lon: club.lon });
+    group.addLayer(clusterMarker);
+    flatGroup.addLayer(flatMarker);
+    allMarkers.push({ clusterMarker, flatMarker, league, name: club.name, lat: club.lat, lon: club.lon });
   });
 
   clusterGroups[league] = group;
-  if (activeLeagues.has(league)) map.addLayer(group);
+  flatGroups[league] = flatGroup;
+  if (activeLeagues.has(league)) map.addLayer(groupsForMode()[league]);
+});
+
+/* ---------------- MODE TOGGLE (clusters / points) ---------------- */
+document.querySelectorAll('#mode-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const choice = btn.dataset.mode;
+    if (choice === mapMode) return;
+    const oldGroups = groupsForMode();
+    activeLeagues.forEach(league => map.removeLayer(oldGroups[league]));
+    mapMode = choice;
+    const newGroups = groupsForMode();
+    activeLeagues.forEach(league => map.addLayer(newGroups[league]));
+    document.querySelectorAll('#mode-toggle button').forEach(b => b.classList.toggle('active', b === btn));
+  });
 });
 
 /* ---------------- SIDEBAR: LEAGUE LIST ---------------- */
@@ -1027,11 +1072,11 @@ updateCount();
 function toggleLeague(league, row){
   if (activeLeagues.has(league)){
     activeLeagues.delete(league);
-    map.removeLayer(clusterGroups[league]);
+    map.removeLayer(groupsForMode()[league]);
     row.classList.add('off');
   } else {
     activeLeagues.add(league);
-    map.addLayer(clusterGroups[league]);
+    map.addLayer(groupsForMode()[league]);
     row.classList.remove('off');
   }
   updateCount();
@@ -1042,7 +1087,7 @@ document.getElementById('btn-all').addEventListener('click', () => {
     const league = row.dataset.league;
     if (!activeLeagues.has(league)){
       activeLeagues.add(league);
-      map.addLayer(clusterGroups[league]);
+      map.addLayer(groupsForMode()[league]);
       row.classList.remove('off');
     }
   });
@@ -1054,7 +1099,7 @@ document.getElementById('btn-none').addEventListener('click', () => {
     const league = row.dataset.league;
     if (activeLeagues.has(league)){
       activeLeagues.delete(league);
-      map.removeLayer(clusterGroups[league]);
+      map.removeLayer(groupsForMode()[league]);
       row.classList.add('off');
     }
   });
@@ -1105,7 +1150,7 @@ searchResults.addEventListener('click', (e) => {
   // make sure the league is active
   if (!activeLeagues.has(league)){
     activeLeagues.add(league);
-    map.addLayer(clusterGroups[league]);
+    map.addLayer(groupsForMode()[league]);
     document.querySelector(`.league-row[data-league="${CSS.escape(league)}"]`).classList.remove('off');
     updateCount();
   }
@@ -1113,7 +1158,7 @@ searchResults.addEventListener('click', (e) => {
   map.setView([lat, lon], 12, { animate: true });
   setTimeout(() => {
     const found = allMarkers.find(m => m.name === row.dataset.name && m.league === league);
-    if (found) found.marker.openPopup();
+    if (found) markerForMode(found).openPopup();
   }, 400);
 
   searchResults.classList.remove('show');
