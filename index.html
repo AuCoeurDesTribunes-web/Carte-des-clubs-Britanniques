@@ -248,8 +248,16 @@
   .leaflet-popup-content{ margin: 12px 14px; font-family: 'Inter', sans-serif; }
   .leaflet-popup-close-button{ color: var(--text-dim) !important; }
 
-  .popup-crest{
+  .popup-header{
     display: none;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2px;
+    margin-bottom: 6px;
+  }
+  .popup-crest{
+    display: flex;
     justify-content: center;
     margin-bottom: 8px;
   }
@@ -258,12 +266,25 @@
     max-width: 100%;
     object-fit: contain;
   }
-  .popup-league{
-    font-size: 10.5px;
-    text-transform: uppercase;
-    letter-spacing: .6px;
-    font-weight: 600;
-    margin-bottom: 3px;
+  .popup-comp-badge{
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #ffffff;
+    border-radius: 7px;
+    padding: 3px 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+  .popup-comp-badge img{
+    height: 15px;
+    width: auto;
+    max-width: 32px;
+    object-fit: contain;
+    display: block;
   }
   .popup-name{
     font-family: 'Space Grotesk', sans-serif;
@@ -271,11 +292,30 @@
     font-weight: 700;
     margin-bottom: 3px;
     line-height: 1.25;
+    text-align: center;
   }
   .popup-stadium{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     font-size: 11.5px;
     color: #9aa4b2;
     margin-bottom: 9px;
+    cursor: pointer;
+    transition: color .15s;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .popup-stadium:hover{ color: var(--text); }
+  .popup-stadium:hover .stadium-icon{ stroke: var(--text); }
+  .popup-stadium .stadium-icon{
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    stroke: #9aa4b2;
+    transition: stroke .15s;
   }
   .popup-subheading{
     font-size: 10.5px;
@@ -463,6 +503,70 @@
     color: var(--text);
   }
 
+  /* ---------- STADIUM MODAL ---------- */
+  .stadium-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .stadium-modal.show{ display: flex; }
+  .stadium-modal-backdrop{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(2px);
+  }
+  .stadium-modal-content{
+    position: relative;
+    width: min(360px, 88vw);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 20px 20px 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.55);
+  }
+  .stadium-modal-close{
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text-dim);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stadium-modal-close:hover{ color: var(--text); border-color: var(--accent); }
+  .stadium-modal-icon{
+    width: 40px; height: 40px;
+    margin: 0 auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    stroke: var(--text-dim);
+  }
+  .stadium-modal-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-right: 4px;
+  }
+  .stadium-modal-body{
+    font-size: 13px;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.5;
+  }
+
   ::-webkit-scrollbar{ width: 6px; }
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 3px; }
 
@@ -555,6 +659,21 @@
     </div>
 
     <div id="map"></div>
+  </div>
+</div>
+
+<div id="stadium-modal" class="stadium-modal">
+  <div class="stadium-modal-backdrop"></div>
+  <div class="stadium-modal-content">
+    <button class="stadium-modal-close" type="button" aria-label="Fermer">&times;</button>
+    <div class="stadium-modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%">
+        <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
+        <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
+      </svg>
+    </div>
+    <div id="stadium-modal-title" class="stadium-modal-title"></div>
+    <div id="stadium-modal-body" class="stadium-modal-body">Caractéristiques du stade à venir.</div>
   </div>
 </div>
 
@@ -822,10 +941,18 @@ Object.keys(CLUBS_DATA).forEach(league => {
           </a>`;
       }
       return `
-        <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
-        <div class="popup-league" style="color:${meta.hex}">${meta.country} · ${LEAGUE_SHORT[league]}</div>
-        <div class="popup-name">${club.name}</div>
-        ${club.stadium ? `<div class="popup-stadium">${club.stadium}</div>` : ''}
+        <div class="popup-header">
+          <div class="popup-comp-badge"><img src="${competitionLogoPath(slugify(league))}" alt="" onerror="this.parentElement.style.display='none'"></div>
+          <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
+          <div class="popup-name">${club.name}</div>
+          ${club.stadium ? `<div class="popup-stadium" data-stadium="${club.stadium.replace(/"/g, '&quot;')}">
+            <svg class="stadium-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
+              <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
+            </svg>
+            <span>${club.stadium}</span>
+          </div>` : ''}
+        </div>
         <div class="popup-subheading">Matchs à domicile</div>
         ${fixturesHtml}
       `;
@@ -834,14 +961,20 @@ Object.keys(CLUBS_DATA).forEach(league => {
     marker.on('popupopen', () => {
       const popupEl = marker.getPopup().getElement();
       if (!popupEl) return;
-      const crestWrap = popupEl.querySelector('.popup-crest');
-      if (crestWrap) crestWrap.style.display = 'flex';
+      const headerWrap = popupEl.querySelector('.popup-header');
+      if (headerWrap) headerWrap.style.display = 'flex';
       const select = popupEl.querySelector('.fixture-month-select');
       if (select){
         select.addEventListener('change', () => {
           popupEl.querySelectorAll('.fixture-month-group').forEach(g => {
             g.style.display = (g.dataset.monthIndex === select.value) ? '' : 'none';
           });
+        });
+      }
+      const stadiumRow = popupEl.querySelector('.popup-stadium');
+      if (stadiumRow){
+        stadiumRow.addEventListener('click', () => {
+          showStadiumInfo(stadiumRow.dataset.stadium, club.name);
         });
       }
     });
@@ -1011,6 +1144,28 @@ searchResults.addEventListener('click', (e) => {
     document.getElementById('sidebar').classList.add('collapsed');
     setTimeout(() => map.invalidateSize(), 260);
   }
+});
+
+/* ---------------- STADIUM MODAL ---------------- */
+/* Ouverte au clic sur le nom d'un stade dans un popup. Pour l'instant on
+   affiche juste un message d'attente ; il suffira plus tard de remplir
+   #stadium-modal-body (capacité, année de construction, etc.) — par ex.
+   via un objet STADIUM_DATA[nomDuStade] rempli à la main ou généré. */
+const stadiumModal = document.getElementById('stadium-modal');
+const stadiumModalTitle = document.getElementById('stadium-modal-title');
+const stadiumModalBody = document.getElementById('stadium-modal-body');
+
+function showStadiumInfo(stadiumName /*, clubName */){
+  stadiumModalTitle.textContent = stadiumName;
+  stadiumModalBody.textContent = 'Caractéristiques du stade à venir.';
+  stadiumModal.classList.add('show');
+}
+function hideStadiumModal(){ stadiumModal.classList.remove('show'); }
+
+stadiumModal.querySelector('.stadium-modal-backdrop').addEventListener('click', hideStadiumModal);
+stadiumModal.querySelector('.stadium-modal-close').addEventListener('click', hideStadiumModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') hideStadiumModal();
 });
 </script>
 </body>
