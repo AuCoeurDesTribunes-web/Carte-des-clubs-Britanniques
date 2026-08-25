@@ -133,6 +133,7 @@
   .search-result:hover{ background: var(--panel-2); }
   .search-result .dot{ width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .search-result .league{ color: var(--text-dim); font-size: 11px; margin-left: auto; }
+  .search-result-sub{ color: var(--text-dim); font-size: 11.5px; font-weight: 400; }
 
   .toolbar{
     display: flex;
@@ -1010,7 +1011,7 @@ Object.keys(CLUBS_DATA).forEach(league => {
 
     group.addLayer(clusterMarker);
     flatGroup.addLayer(flatMarker);
-    allMarkers.push({ clusterMarker, flatMarker, league, name: club.name, lat: club.lat, lon: club.lon });
+    allMarkers.push({ clusterMarker, flatMarker, league, name: club.name, stadium: club.stadium || '', lat: club.lat, lon: club.lon });
   });
 
   clusterGroups[league] = group;
@@ -1124,15 +1125,20 @@ searchInput.addEventListener('input', () => {
     searchResults.innerHTML = '';
     return;
   }
-  const matches = allMarkers.filter(m => m.name.toLowerCase().includes(q)).slice(0, 12);
+  const matches = allMarkers.filter(m =>
+    m.name.toLowerCase().includes(q) || m.stadium.toLowerCase().includes(q)
+  ).slice(0, 12);
   if (matches.length === 0){
     searchResults.innerHTML = '<div class="search-result" style="opacity:.6;cursor:default">Aucun résultat</div>';
   } else {
     searchResults.innerHTML = matches.map(m => {
       const meta = LEAGUE_META[m.league];
+      // Si la recherche correspond au stade plutôt qu'au nom du club, on
+      // l'indique sous le nom du club pour que ce soit clair.
+      const matchedStadium = !m.name.toLowerCase().includes(q) && m.stadium.toLowerCase().includes(q);
       return `<div class="search-result" data-lat="${m.lat}" data-lon="${m.lon}" data-league="${m.league}" data-name="${m.name.replace(/"/g,'&quot;')}">
         <div class="dot" style="background:${meta.hex}"></div>
-        <span>${m.name}</span>
+        <span>${m.name}${matchedStadium ? `<span class="search-result-sub"> — ${m.stadium}</span>` : ''}</span>
         <span class="league">${LEAGUE_SHORT[m.league]}</span>
       </div>`;
     }).join('');
