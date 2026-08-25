@@ -602,6 +602,42 @@
     text-align: center;
     line-height: 1.5;
   }
+  .stadium-modal-stats{
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 16px;
+  }
+  .stadium-modal-stat-value{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .stadium-modal-stat-label{
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .stadium-modal-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border-radius: 9px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+  .stadium-modal-link:hover{ border-color: var(--accent); color: var(--accent); }
+  .stadium-modal-link svg{ width: 15px; height: 15px; flex-shrink: 0; }
 
   ::-webkit-scrollbar{ width: 6px; }
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 3px; }
@@ -1236,17 +1272,64 @@ searchResults.addEventListener('click', (e) => {
 });
 
 /* ---------------- STADIUM MODAL ---------------- */
-/* Ouverte au clic sur le nom d'un stade dans un popup. Pour l'instant on
-   affiche juste un message d'attente ; il suffira plus tard de remplir
-   #stadium-modal-body (capacité, année de construction, etc.) — par ex.
-   via un objet STADIUM_DATA[nomDuStade] rempli à la main ou généré. */
+/* Caractéristiques des stades de Premier League (capacité actuelle et année
+   d'ouverture/reconstruction). À compléter au fur et à mesure pour les
+   autres championnats — pour un stade absent de cet objet, la fenêtre
+   retombe simplement sur le message d'attente. */
+const STADIUM_DATA = {
+  "Dean Court (Vitality Stadium)":    { capacity: 11307, yearBuilt: 1910 },
+  "Emirates Stadium":                 { capacity: 60704, yearBuilt: 2006 },
+  "Villa Park":                       { capacity: 42682, yearBuilt: 1897 },
+  "Brentford Community Stadium":      { capacity: 17250, yearBuilt: 2020 },
+  "Falmer Stadium (Amex Stadium)":    { capacity: 31800, yearBuilt: 2011 },
+  "Stamford Bridge":                  { capacity: 40343, yearBuilt: 1877 },
+  "Coventry Building Society Arena":  { capacity: 32609, yearBuilt: 2005 },
+  "Selhurst Park":                    { capacity: 25486, yearBuilt: 1924 },
+  "Hill Dickinson Stadium":           { capacity: 52888, yearBuilt: 2025 },
+  "Craven Cottage":                   { capacity: 29600, yearBuilt: 1896 },
+  "MKM Stadium":                      { capacity: 25586, yearBuilt: 2002 },
+  "Portman Road":                     { capacity: 30014, yearBuilt: 1884 },
+  "Elland Road":                      { capacity: 37890, yearBuilt: 1897 },
+  "Anfield":                          { capacity: 61276, yearBuilt: 1884 },
+  "Etihad Stadium":                   { capacity: 53400, yearBuilt: 2002 },
+  "Old Trafford":                     { capacity: 74310, yearBuilt: 1910 },
+  "St James' Park":                   { capacity: 52305, yearBuilt: 1892 },
+  "City Ground":                      { capacity: 30445, yearBuilt: 1898 },
+  "Stadium of Light":                 { capacity: 49000, yearBuilt: 1997 },
+  "Tottenham Hotspur Stadium":        { capacity: 62850, yearBuilt: 2019 }
+};
+
 const stadiumModal = document.getElementById('stadium-modal');
 const stadiumModalTitle = document.getElementById('stadium-modal-title');
 const stadiumModalBody = document.getElementById('stadium-modal-body');
 
 function showStadiumInfo(stadiumName /*, clubName */){
   stadiumModalTitle.textContent = stadiumName;
-  stadiumModalBody.textContent = 'Caractéristiques du stade à venir.';
+  const info = STADIUM_DATA[stadiumName];
+  if (info){
+    const seatViewUrl = `https://www.google.com/search?q=${encodeURIComponent(stadiumName + ' vue de ma place 3D')}`;
+    stadiumModalBody.innerHTML = `
+      <div class="stadium-modal-stats">
+        <div class="stadium-modal-stat">
+          <div class="stadium-modal-stat-value">${info.capacity.toLocaleString('fr-FR')}</div>
+          <div class="stadium-modal-stat-label">Capacité</div>
+        </div>
+        <div class="stadium-modal-stat">
+          <div class="stadium-modal-stat-value">${info.yearBuilt}</div>
+          <div class="stadium-modal-stat-label">Année de construction</div>
+        </div>
+      </div>
+      <a class="stadium-modal-link" href="${seatViewUrl}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/>
+          <circle cx="12" cy="12" r="3.2"/>
+        </svg>
+        Vue de ma place
+      </a>
+    `;
+  } else {
+    stadiumModalBody.textContent = 'Caractéristiques du stade à venir.';
+  }
   stadiumModal.classList.add('show');
 }
 function hideStadiumModal(){ stadiumModal.classList.remove('show'); }
