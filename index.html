@@ -1277,26 +1277,26 @@ searchResults.addEventListener('click', (e) => {
    autres championnats — pour un stade absent de cet objet, la fenêtre
    retombe simplement sur le message d'attente. */
 const STADIUM_DATA = {
-  "Dean Court (Vitality Stadium)":    { capacity: 11307, yearBuilt: 1910 },
-  "Emirates Stadium":                 { capacity: 60704, yearBuilt: 2006 },
-  "Villa Park":                       { capacity: 42682, yearBuilt: 1897 },
-  "Brentford Community Stadium":      { capacity: 17250, yearBuilt: 2020 },
-  "Falmer Stadium (Amex Stadium)":    { capacity: 31800, yearBuilt: 2011 },
-  "Stamford Bridge":                  { capacity: 40343, yearBuilt: 1877 },
-  "Coventry Building Society Arena":  { capacity: 32609, yearBuilt: 2005 },
-  "Selhurst Park":                    { capacity: 25486, yearBuilt: 1924 },
-  "Hill Dickinson Stadium":           { capacity: 52888, yearBuilt: 2025 },
-  "Craven Cottage":                   { capacity: 29600, yearBuilt: 1896 },
-  "MKM Stadium":                      { capacity: 25586, yearBuilt: 2002 },
-  "Portman Road":                     { capacity: 30014, yearBuilt: 1884 },
-  "Elland Road":                      { capacity: 37890, yearBuilt: 1897 },
-  "Anfield":                          { capacity: 61276, yearBuilt: 1884 },
-  "Etihad Stadium":                   { capacity: 53400, yearBuilt: 2002 },
-  "Old Trafford":                     { capacity: 74310, yearBuilt: 1910 },
-  "St James' Park":                   { capacity: 52305, yearBuilt: 1892 },
-  "City Ground":                      { capacity: 30445, yearBuilt: 1898 },
-  "Stadium of Light":                 { capacity: 49000, yearBuilt: 1997 },
-  "Tottenham Hotspur Stadium":        { capacity: 62850, yearBuilt: 2019 }
+  "Dean Court (Vitality Stadium)":    { capacity: 11307, yearBuilt: 1910, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/Vitality+Stadium/blocks/" },
+  "Emirates Stadium":                 { capacity: 60704, yearBuilt: 2006, seatViewUrl: "https://arsenal.io-media.com/mobile/index.html#/" },
+  "Villa Park":                       { capacity: 42682, yearBuilt: 1897, seatViewUrl: "https://unevuedemaplace.fr/site/villa+park/blocs/" },
+  "Brentford Community Stadium":      { capacity: 17250, yearBuilt: 2020, seatViewUrl: "https://brentfordfc.io-media.com/mobile/index.html#/" },
+  "Falmer Stadium (Amex Stadium)":    { capacity: 31800, yearBuilt: 2011, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/American+Express+Stadium/blocks/" },
+  "Stamford Bridge":                  { capacity: 40343, yearBuilt: 1877, seatViewUrl: "https://chelseafc.io-media.com/mobile/index.html#/" },
+  "Coventry Building Society Arena":  { capacity: 32609, yearBuilt: 2005, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/Coventry+Building+Society+Arena/blocks/" },
+  "Selhurst Park":                    { capacity: 25486, yearBuilt: 1924, seatViewUrl: "https://cpfc.io-media.com/mobile/index.html#/" },
+  "Hill Dickinson Stadium":           { capacity: 52888, yearBuilt: 2025, seatViewUrl: "https://evertonstadium.io-media.com/mobile/index.html#/" },
+  "Craven Cottage":                   { capacity: 29600, yearBuilt: 1896, seatViewUrl: "https://fulhamfc.io-media.com/mobile/index.html#/" },
+  "MKM Stadium":                      { capacity: 25586, yearBuilt: 2002, seatViewUrl: "https://wearehullcity.io-media.com/mobile/index.html#/" },
+  "Portman Road":                     { capacity: 30014, yearBuilt: 1884, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/portman+road/blocks/" },
+  "Elland Road":                      { capacity: 37890, yearBuilt: 1897, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/Elland+Road/blocks/" },
+  "Anfield":                          { capacity: 61276, yearBuilt: 1884, seatViewUrl: "https://venues.3ddigitalvenue.com/liverpool" },
+  "Etihad Stadium":                   { capacity: 53400, yearBuilt: 2002, seatViewUrl: "https://preview.3ddigitalvenue.com/manchester-city" },
+  "Old Trafford":                     { capacity: 74310, yearBuilt: 1910, seatViewUrl: "https://3ddigitalvenue.com/3dmap/clients/manutd/" },
+  "St James' Park":                   { capacity: 52305, yearBuilt: 1892, seatViewUrl: "https://preview.3ddigitalvenue.com/newcastle-united" },
+  "City Ground":                      { capacity: 30445, yearBuilt: 1898, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/City+Ground/blocks/" },
+  "Stadium of Light":                 { capacity: 49000, yearBuilt: 1997, seatViewUrl: "https://aviewfrommyseat.co.uk/venue/Stadium+Of+Light/blocks/" },
+  "Tottenham Hotspur Stadium":        { capacity: 62850, yearBuilt: 2019, seatViewUrl: "https://tottenhamhotspur.io-media.com/mobile/index.html#/" }
 };
 
 const stadiumModal = document.getElementById('stadium-modal');
@@ -1307,7 +1307,7 @@ function showStadiumInfo(stadiumName /*, clubName */){
   stadiumModalTitle.textContent = stadiumName;
   const info = STADIUM_DATA[stadiumName];
   if (info){
-    const seatViewUrl = `https://www.google.com/search?q=${encodeURIComponent(stadiumName + ' vue de ma place 3D')}`;
+    const seatViewUrl = info.seatViewUrl || `https://www.google.com/search?q=${encodeURIComponent(stadiumName + ' vue de ma place 3D')}`;
     stadiumModalBody.innerHTML = `
       <div class="stadium-modal-stats">
         <div class="stadium-modal-stat">
