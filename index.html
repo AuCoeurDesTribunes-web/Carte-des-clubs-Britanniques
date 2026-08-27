@@ -900,16 +900,33 @@ document.querySelectorAll('#basemap-toggle button').forEach(btn => {
 
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-/* Cluster groups per league so toggling a league adds/removes its cluster group */
-const clusterGroups = {};
-/* Même principe, mais en mode "points" : un simple L.layerGroup sans
-   agrégation, pour que les clubs restent visibles individuellement même
-   dézoomé, quitte à se chevaucher. */
-const flatGroups = {};
+/* Un seul groupe de clusters (et un seul groupe "points"), partagés par
+   toutes les ligues, pour que les clubs de championnats différents puissent
+   se regrouper ensemble dans un même cluster. On bascule la visibilité
+   d'une ligue en ajoutant/retirant simplement ses marqueurs individuels du
+   groupe actif, plutôt qu'en ayant un groupe distinct par ligue. */
+const clusterGroup = L.markerClusterGroup({
+  iconCreateFunction: makeClusterIcon,
+  maxClusterRadius: 45,
+  spiderfyOnMaxZoom: true,
+  showCoverageOnHover: false
+});
+/* Mode "points" : simple L.layerGroup sans agrégation, pour que les clubs
+   restent visibles individuellement même dézoomé, quitte à se chevaucher. */
+const flatGroup = L.layerGroup();
 let mapMode = 'cluster'; // 'cluster' | 'points'
-function groupsForMode(){ return mapMode === 'cluster' ? clusterGroups : flatGroups; }
+function groupForMode(){ return mapMode === 'cluster' ? clusterGroup : flatGroup; }
 const allMarkers = []; // {clusterMarker, flatMarker, league, name, lat, lon}
+const markersByLeague = {}; // league -> [entry, ...] (sous-ensemble de allMarkers)
 function markerForMode(entry){ return mapMode === 'cluster' ? entry.clusterMarker : entry.flatMarker; }
+function addLeagueToMap(league){
+  const group = groupForMode();
+  (markersByLeague[league] || []).forEach(m => group.addLayer(markerForMode(m)));
+}
+function removeLeagueFromMap(league){
+  const group = groupForMode();
+  (markersByLeague[league] || []).forEach(m => group.removeLayer(markerForMode(m)));
+}
 
 function makeClusterIcon(cluster){
   const count = cluster.getChildCount();
@@ -1122,40 +1139,37 @@ function createClubMarker(club, league, meta){
 
 Object.keys(CLUBS_DATA).forEach(league => {
   const meta = LEAGUE_META[league];
-  const group = L.markerClusterGroup({
-    iconCreateFunction: makeClusterIcon,
-    maxClusterRadius: 45,
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false
-  });
-  /* Mode "points" : layer group sans agrégation, mêmes marqueurs visuellement
-     (mêmes écussons, mêmes popups) mais jamais regroupés, même dézoomé. */
-  const flatGroup = L.layerGroup();
+  markersByLeague[league] = [];
 
   CLUBS_DATA[league].forEach(club => {
     const clusterMarker = createClubMarker(club, league, meta);
     const flatMarker = createClubMarker(club, league, meta);
-
-    group.addLayer(clusterMarker);
-    flatGroup.addLayer(flatMarker);
-    allMarkers.push({ clusterMarker, flatMarker, league, name: club.name, stadium: club.stadium || '', lat: club.lat, lon: club.lon });
+    const entry = { clusterMarker, flatMarker, league, name: club.name, stadium: club.stadium || '', lat: club.lat, lon: club.lon };
+    allMarkers.push(entry);
+    markersByLeague[league].push(entry);
   });
-
-  clusterGroups[league] = group;
-  flatGroups[league] = flatGroup;
-  if (activeLeagues.has(league)) map.addLayer(groupsForMode()[league]);
 });
+
+// On ajoute au groupe partagé (mode courant = cluster) les marqueurs des
+// ligues actives par défaut, afin que le clustering se fasse d'emblée
+// toutes ligues confondues.
+Object.keys(CLUBS_DATA).forEach(league => {
+  if (activeLeagues.has(league)) addLeagueToMap(league);
+});
+map.addLayer(clusterGroup);
+map.addLayer(flatGroup);
 
 /* ---------------- MODE TOGGLE (clusters / points) ---------------- */
 document.querySelectorAll('#mode-toggle button').forEach(btn => {
   btn.addEventListener('click', () => {
     const choice = btn.dataset.mode;
     if (choice === mapMode) return;
-    const oldGroups = groupsForMode();
-    activeLeagues.forEach(league => map.removeLayer(oldGroups[league]));
+    // On retire du groupe courant les marqueurs des ligues actives, puis on
+    // les rajoute dans l'autre groupe (partagé par toutes les ligues), afin
+    // que le clustering continue de mélanger tous les championnats actifs.
+    activeLeagues.forEach(league => removeLeagueFromMap(league));
     mapMode = choice;
-    const newGroups = groupsForMode();
-    activeLeagues.forEach(league => map.addLayer(newGroups[league]));
+    activeLeagues.forEach(league => addLeagueToMap(league));
     document.querySelectorAll('#mode-toggle button').forEach(b => b.classList.toggle('active', b === btn));
   });
 });
@@ -1200,11 +1214,11 @@ updateCount();
 function toggleLeague(league, row){
   if (activeLeagues.has(league)){
     activeLeagues.delete(league);
-    map.removeLayer(groupsForMode()[league]);
+    removeLeagueFromMap(league);
     row.classList.add('off');
   } else {
     activeLeagues.add(league);
-    map.addLayer(groupsForMode()[league]);
+    addLeagueToMap(league);
     row.classList.remove('off');
   }
   updateCount();
@@ -1215,7 +1229,7 @@ document.getElementById('btn-all').addEventListener('click', () => {
     const league = row.dataset.league;
     if (!activeLeagues.has(league)){
       activeLeagues.add(league);
-      map.addLayer(groupsForMode()[league]);
+      addLeagueToMap(league);
       row.classList.remove('off');
     }
   });
@@ -1227,7 +1241,7 @@ document.getElementById('btn-none').addEventListener('click', () => {
     const league = row.dataset.league;
     if (activeLeagues.has(league)){
       activeLeagues.delete(league);
-      map.removeLayer(groupsForMode()[league]);
+      removeLeagueFromMap(league);
       row.classList.add('off');
     }
   });
@@ -1286,7 +1300,7 @@ searchResults.addEventListener('click', (e) => {
   // make sure the league is active
   if (!activeLeagues.has(league)){
     activeLeagues.add(league);
-    map.addLayer(groupsForMode()[league]);
+    addLeagueToMap(league);
     document.querySelector(`.league-row[data-league="${CSS.escape(league)}"]`).classList.remove('off');
     updateCount();
   }
