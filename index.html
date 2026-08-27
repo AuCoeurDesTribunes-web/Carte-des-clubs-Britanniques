@@ -366,7 +366,7 @@
     stroke: #9aa4b2;
     transition: stroke .15s;
   }
-  .popup-ticket-link{
+  a.popup-ticket-link{
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -375,17 +375,16 @@
     border-radius: 7px;
     background: var(--panel-2);
     border: 1px solid var(--line);
-    color: var(--text-dim);
+    color: #ffffff;
     font-size: 11.5px;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
     white-space: nowrap;
-    transition: border-color .15s, color .15s;
+    transition: border-color .15s;
   }
-  .popup-ticket-link:hover{ border-color: var(--accent); color: var(--accent); }
+  a.popup-ticket-link:hover{ border-color: var(--accent); color: #ffffff; }
   .popup-ticket-link svg{ width: 13px; height: 13px; flex-shrink: 0; }
-  .popup-ticket-link .ticket-link-short{ display: none; }
   .popup-subheading{
     font-size: 10.5px;
     text-transform: uppercase;
@@ -717,8 +716,6 @@
     .leaflet-popup-content-wrapper{ max-width: 78vw; }
     .leaflet-popup-content{ width: auto !important; max-width: 74vw; margin: 12px 12px; }
     .popup-fixtures{ max-height: 40vh; }
-    .popup-ticket-link .ticket-link-full{ display: none; }
-    .popup-ticket-link .ticket-link-short{ display: inline; }
   }
 
   @media (max-width: 420px){
@@ -1091,8 +1088,7 @@ function createClubMarker(club, league, meta){
             <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8Z"/>
             <path d="M13 5v1.5M13 17v1.5M13 9.75v1.5M13 13.25v1.5" stroke-dasharray="2 2"/>
           </svg>
-          <span class="ticket-link-full">Faire une demande de places</span>
-          <span class="ticket-link-short">Demande de billets</span>
+          Demande de billets
         </a>
       </div>
       <div class="popup-subheading">Matchs à domicile</div>
