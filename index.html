@@ -884,6 +884,13 @@
   }
   .trip-view-map-btn:hover{ border-color: var(--accent); color: var(--accent); }
   .trip-view-map-btn svg{ width: 15px; height: 15px; flex-shrink: 0; }
+  a.trip-ticket-link{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    margin: 12px 0 0 0;
+  }
   .trip-results-list{
     display: flex;
     flex-direction: column;
@@ -1107,6 +1114,13 @@
         Voir les clubs sur la carte
       </button>
       <div id="trip-results-list" class="trip-results-list"></div>
+      <a id="trip-ticket-link" class="popup-ticket-link trip-ticket-link" href="https://aucoeurdestribunes.github.io/Demande-billets/" target="_blank" rel="noopener" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8Z"/>
+          <path d="M13 5v1.5M13 17v1.5M13 9.75v1.5M13 13.25v1.5" stroke-dasharray="2 2"/>
+        </svg>
+        Demande de billets
+      </a>
     </div>
   </div>
 </div>
@@ -2007,6 +2021,7 @@ function buildTripFixtureRow(club, distanceKm, f){
 }
 
 const tripViewMapBtn = document.getElementById('trip-view-map-btn');
+const tripTicketLink = document.getElementById('trip-ticket-link');
 let lastTripMatchClubs = []; // clubs (uniques) ayant un match dans les résultats affichés
 
 function runTripSearch(){
@@ -2054,12 +2069,14 @@ function runTripSearch(){
 
   if (!matches.length){
     tripViewMapBtn.style.display = 'none';
+    tripTicketLink.style.display = 'none';
     tripResultsSummary.textContent = `Aucun match trouvé près de ${cityLabel} (${radiusKm} km) du ${startLabel} au ${endLabel}.`;
     tripResultsList.innerHTML = `<div class="trip-empty-state">Essaie d'élargir le rayon de recherche ou les dates du séjour.</div>`;
     return;
   }
 
   tripViewMapBtn.style.display = 'flex';
+  tripTicketLink.style.display = 'flex';
   tripResultsSummary.textContent = `${matches.length} match${matches.length > 1 ? 's' : ''} trouvé${matches.length > 1 ? 's' : ''} près de ${cityLabel} (${radiusKm} km) du ${startLabel} au ${endLabel} :`;
   tripResultsList.innerHTML = matches.map(m => buildTripFixtureRow(m.club, m.club.distance, m.fixture)).join('');
 }
