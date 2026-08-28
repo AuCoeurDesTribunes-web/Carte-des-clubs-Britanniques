@@ -864,6 +864,26 @@
     color: var(--text-dim);
     margin-bottom: 10px;
   }
+  .trip-view-map-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 9px 10px;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: border-color .15s, color .15s;
+  }
+  .trip-view-map-btn:hover{ border-color: var(--accent); color: var(--accent); }
+  .trip-view-map-btn svg{ width: 15px; height: 15px; flex-shrink: 0; }
   .trip-results-list{
     display: flex;
     flex-direction: column;
@@ -1082,6 +1102,10 @@
 
     <div id="trip-results" class="trip-results" style="display:none">
       <div id="trip-results-summary" class="trip-results-summary"></div>
+      <button id="trip-view-map-btn" class="trip-view-map-btn" type="button" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20 4 18V6l5 2m0 12 6-2m-6 2V8m6 10 5 2V8l-5-2m0 14V6m0 0-6 2"/></svg>
+        Voir les clubs sur la carte
+      </button>
       <div id="trip-results-list" class="trip-results-list"></div>
     </div>
   </div>
@@ -1982,6 +2006,9 @@ function buildTripFixtureRow(club, distanceKm, f){
     </div>`;
 }
 
+const tripViewMapBtn = document.getElementById('trip-view-map-btn');
+let lastTripMatchClubs = []; // clubs (uniques) ayant un match dans les résultats affichés
+
 function runTripSearch(){
   if (!selectedCity) return;
   const radiusKm = RADIUS_STEPS[tripRadiusInput.value];
@@ -1996,7 +2023,7 @@ function runTripSearch(){
     if (seen.has(entry.name)) return;
     seen.add(entry.name);
     const d = haversineKm(selectedCity.lat, selectedCity.lon, entry.lat, entry.lon);
-    if (d <= radiusKm) nearbyClubs.push({ name: entry.name, lat: entry.lat, lon: entry.lon, distance: d });
+    if (d <= radiusKm) nearbyClubs.push({ name: entry.name, lat: entry.lat, lon: entry.lon, league: entry.league, distance: d });
   });
 
   const matches = [];
@@ -2009,22 +2036,64 @@ function runTripSearch(){
   });
   matches.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
 
+  // Liste dédupliquée des clubs ayant au moins un match dans le résultat,
+  // pour le bouton "Voir les clubs sur la carte".
+  const uniqueClubs = [];
+  const uniqueSeen = new Set();
+  matches.forEach(m => {
+    if (uniqueSeen.has(m.club.name)) return;
+    uniqueSeen.add(m.club.name);
+    uniqueClubs.push(m.club);
+  });
+  lastTripMatchClubs = uniqueClubs;
+
   tripResults.style.display = 'block';
   const cityLabel = selectedCity.name;
   const startLabel = start.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
   const endLabel = end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 
   if (!matches.length){
+    tripViewMapBtn.style.display = 'none';
     tripResultsSummary.textContent = `Aucun match trouvé près de ${cityLabel} (${radiusKm} km) du ${startLabel} au ${endLabel}.`;
     tripResultsList.innerHTML = `<div class="trip-empty-state">Essaie d'élargir le rayon de recherche ou les dates du séjour.</div>`;
     return;
   }
 
+  tripViewMapBtn.style.display = 'flex';
   tripResultsSummary.textContent = `${matches.length} match${matches.length > 1 ? 's' : ''} trouvé${matches.length > 1 ? 's' : ''} près de ${cityLabel} (${radiusKm} km) du ${startLabel} au ${endLabel} :`;
   tripResultsList.innerHTML = matches.map(m => buildTripFixtureRow(m.club, m.club.distance, m.fixture)).join('');
 }
 
 tripSearchBtn.addEventListener('click', runTripSearch);
+
+// "Voir les clubs sur la carte" : active si besoin les championnats
+// concernés, cadre la carte sur les clubs trouvés, puis referme la modale.
+tripViewMapBtn.addEventListener('click', () => {
+  if (!lastTripMatchClubs.length) return;
+
+  const leaguesToActivate = new Set(lastTripMatchClubs.map(c => c.league));
+  leaguesToActivate.forEach(league => {
+    if (!activeLeagues.has(league)){
+      activeLeagues.add(league);
+      addLeagueToMap(league);
+      const row = document.querySelector(`.league-row[data-league="${CSS.escape(league)}"]`);
+      if (row) row.classList.remove('off');
+    }
+  });
+  if (typeof updateCount === 'function') updateCount();
+
+  const bounds = L.latLngBounds(lastTripMatchClubs.map(c => [c.lat, c.lon]));
+  hideTripModal();
+  map.fitBounds(bounds, { padding: [60, 60], maxZoom: 12 });
+
+  // Ouvre directement la fiche du club si un seul résultat, pour un retour
+  // visuel immédiat.
+  if (lastTripMatchClubs.length === 1){
+    const club = lastTripMatchClubs[0];
+    const entry = allMarkers.find(m => m.name === club.name);
+    if (entry) setTimeout(() => markerForMode(entry).openPopup(), 450);
+  }
+});
 
 </script>
 </body>
