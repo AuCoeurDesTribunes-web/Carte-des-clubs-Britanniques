@@ -203,6 +203,27 @@
   }
   .toolbar button:hover{ border-color: var(--accent); color: var(--text); }
 
+  #trip-planner-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: calc(100% - 36px);
+    margin: 0 18px 14px 18px;
+    background: var(--panel-2);
+    border: 1px dashed var(--line);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 10px 10px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  #trip-planner-btn:hover{ border-color: var(--accent); background: var(--panel); }
+  #trip-planner-btn svg{ width: 16px; height: 16px; flex-shrink: 0; }
+
   #leagues{
     flex: 1;
     overflow-y: auto;
@@ -678,6 +699,214 @@
   }
   .stadium-modal-empty{ margin-bottom: 14px; }
 
+  /* ---------- TRIP PLANNER MODAL ---------- */
+  .trip-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .trip-modal.show{ display: flex; }
+  .trip-modal-backdrop{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(2px);
+  }
+  .trip-modal-content{
+    position: relative;
+    width: min(480px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 20px 20px 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.55);
+  }
+  .trip-modal-close{
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text-dim);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .trip-modal-close:hover{ color: var(--text); border-color: var(--accent); }
+  .trip-modal-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    padding-right: 24px;
+  }
+  .trip-modal-subtitle{
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+  }
+  .trip-field{ margin-bottom: 14px; }
+  .trip-field label{
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .trip-field-row{
+    display: flex;
+    gap: 10px;
+  }
+  .trip-field-row .trip-field{ flex: 1; margin-bottom: 0; }
+  .trip-city-box{ position: relative; }
+  .trip-input,
+  .trip-date-input{
+    width: 100%;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 9px 12px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .15s;
+    box-sizing: border-box;
+  }
+  .trip-date-input{ color-scheme: dark; }
+  .trip-input:focus,
+  .trip-date-input:focus{ border-color: var(--accent); }
+  #trip-city-results{
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 5;
+    display: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,.4);
+  }
+  #trip-city-results.show{ display: block; }
+  .trip-city-result{
+    padding: 8px 11px;
+    font-size: 12.5px;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .trip-city-result:hover{ background: var(--panel-2); }
+  .trip-city-result .trip-city-sub{ display: block; font-size: 10.5px; color: var(--text-dim); }
+  .trip-city-selected{
+    display: none;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 11.5px;
+    color: var(--accent);
+  }
+  .trip-city-selected.show{ display: flex; }
+  .trip-city-selected svg{ width: 13px; height: 13px; flex-shrink: 0; }
+  .trip-radius-value{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .trip-radius-input{
+    width: 100%;
+    accent-color: var(--accent);
+    margin-top: 8px;
+  }
+  .trip-radius-ticks{
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .trip-search-btn{
+    width: 100%;
+    background: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 9px;
+    padding: 11px 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity .15s;
+    margin-top: 4px;
+  }
+  .trip-search-btn:hover{ opacity: .85; }
+  .trip-search-btn:disabled{ opacity: .4; cursor: not-allowed; }
+  .trip-results{
+    margin-top: 18px;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+  .trip-results-summary{
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+  .trip-results-list{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-height: 340px;
+    overflow-y: auto;
+  }
+  .trip-fixture-club{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .trip-fixture-club img{
+    width: 18px; height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .trip-fixture-club-name{
+    font-weight: 700;
+    color: #111111;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .trip-fixture-distance{
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #666666;
+    background: #eeeeee;
+    padding: 2px 7px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .trip-empty-state{
+    font-size: 12.5px;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 10px 4px;
+  }
+
   ::-webkit-scrollbar{ width: 6px; }
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 3px; }
 
@@ -744,6 +973,11 @@
       <div id="search-results"></div>
     </div>
 
+    <button id="trip-planner-btn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M8 14l2.2 2.2L16 10.5"/></svg>
+      Trouver des matchs pour un séjour
+    </button>
+
     <div class="toolbar">
       <button id="btn-all">Tout afficher</button>
       <button id="btn-none">Tout masquer</button>
@@ -805,6 +1039,51 @@
     </div>
     <div id="stadium-modal-title" class="stadium-modal-title"></div>
     <div id="stadium-modal-body" class="stadium-modal-body">Caractéristiques du stade à venir.</div>
+  </div>
+</div>
+
+<div id="trip-modal" class="trip-modal">
+  <div class="trip-modal-backdrop"></div>
+  <div class="trip-modal-content">
+    <button class="trip-modal-close" type="button" aria-label="Fermer">&times;</button>
+    <div class="trip-modal-title">Trouver des matchs pour un séjour</div>
+    <div class="trip-modal-subtitle">Ville, dates de séjour et rayon de déplacement</div>
+
+    <div class="trip-field">
+      <label for="trip-city-input">Ville</label>
+      <div class="trip-city-box">
+        <input type="text" id="trip-city-input" class="trip-input" placeholder="Ex : Manchester, Dublin, Cardiff..." autocomplete="off">
+        <div id="trip-city-results"></div>
+      </div>
+      <div id="trip-city-selected" class="trip-city-selected">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+        <span id="trip-city-selected-label"></span>
+      </div>
+    </div>
+
+    <div class="trip-field-row">
+      <div class="trip-field">
+        <label for="trip-date-start">Arrivée</label>
+        <input type="date" id="trip-date-start" class="trip-date-input">
+      </div>
+      <div class="trip-field">
+        <label for="trip-date-end">Départ</label>
+        <input type="date" id="trip-date-end" class="trip-date-input">
+      </div>
+    </div>
+
+    <div class="trip-field">
+      <label>Rayon de déplacement : <span class="trip-radius-value" id="trip-radius-value">50 km</span></label>
+      <input type="range" id="trip-radius-input" class="trip-radius-input" min="0" max="5" step="1" value="3">
+      <div class="trip-radius-ticks"><span>5</span><span>10</span><span>30</span><span>50</span><span>100</span><span>300 km</span></div>
+    </div>
+
+    <button id="trip-search-btn" class="trip-search-btn" type="button" disabled>Choisir une ville pour rechercher</button>
+
+    <div id="trip-results" class="trip-results" style="display:none">
+      <div id="trip-results-summary" class="trip-results-summary"></div>
+      <div id="trip-results-list" class="trip-results-list"></div>
+    </div>
   </div>
 </div>
 
@@ -1545,6 +1824,208 @@ stadiumModal.querySelector('.stadium-modal-close').addEventListener('click', hid
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') hideStadiumModal();
 });
+
+/* ---------------- TRIP PLANNER (matchs pendant un séjour) ---------------- */
+/* Principe : l'utilisateur choisit une ville (géocodée via Nominatim/OSM,
+   gratuit et sans clé API), une plage de dates, et un rayon de recherche.
+   On calcule ensuite, pour chaque club, sa distance à vol d'oiseau jusqu'à
+   cette ville (formule de Haversine à partir des coordonnées du club déjà
+   présentes dans allMarkers), on ne garde que les clubs dans le rayon, puis
+   on filtre leurs matchs à domicile (FIXTURES_DATA) sur la plage de dates,
+   et on affiche le tout trié chronologiquement avec le même habillage visuel
+   que les calendriers de match dans les fiches club (fixture-row). */
+
+const RADIUS_STEPS = [5, 10, 30, 50, 100, 300]; // km
+
+function haversineKm(lat1, lon1, lat2, lon2){
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+const tripModal = document.getElementById('trip-modal');
+const tripPlannerBtn = document.getElementById('trip-planner-btn');
+const tripCityInput = document.getElementById('trip-city-input');
+const tripCityResults = document.getElementById('trip-city-results');
+const tripCitySelected = document.getElementById('trip-city-selected');
+const tripCitySelectedLabel = document.getElementById('trip-city-selected-label');
+const tripDateStart = document.getElementById('trip-date-start');
+const tripDateEnd = document.getElementById('trip-date-end');
+const tripRadiusInput = document.getElementById('trip-radius-input');
+const tripRadiusValue = document.getElementById('trip-radius-value');
+const tripSearchBtn = document.getElementById('trip-search-btn');
+const tripResults = document.getElementById('trip-results');
+const tripResultsSummary = document.getElementById('trip-results-summary');
+const tripResultsList = document.getElementById('trip-results-list');
+
+let selectedCity = null; // { name, lat, lon }
+
+function showTripModal(){ tripModal.classList.add('show'); }
+function hideTripModal(){ tripModal.classList.remove('show'); }
+tripPlannerBtn.addEventListener('click', showTripModal);
+tripModal.querySelector('.trip-modal-backdrop').addEventListener('click', hideTripModal);
+tripModal.querySelector('.trip-modal-close').addEventListener('click', hideTripModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') hideTripModal();
+});
+
+// Dates par défaut : aujourd'hui -> +3 jours
+(() => {
+  const today = new Date();
+  const in3days = new Date(today.getTime() + 3 * 86400000);
+  const toInput = d => d.toISOString().slice(0, 10);
+  tripDateStart.value = toInput(today);
+  tripDateEnd.value = toInput(in3days);
+  tripDateStart.min = toInput(today);
+})();
+
+function updateSearchBtnState(){
+  const ready = !!selectedCity && tripDateStart.value && tripDateEnd.value;
+  tripSearchBtn.disabled = !ready;
+  tripSearchBtn.textContent = selectedCity ? 'Rechercher les matchs' : 'Choisir une ville pour rechercher';
+}
+
+// Rayon : slider à crans discrets mappés sur RADIUS_STEPS
+tripRadiusInput.addEventListener('input', () => {
+  tripRadiusValue.textContent = `${RADIUS_STEPS[tripRadiusInput.value]} km`;
+});
+tripRadiusValue.textContent = `${RADIUS_STEPS[tripRadiusInput.value]} km`;
+
+tripDateStart.addEventListener('change', () => {
+  tripDateEnd.min = tripDateStart.value;
+  if (tripDateEnd.value && tripDateEnd.value < tripDateStart.value) tripDateEnd.value = tripDateStart.value;
+  updateSearchBtnState();
+});
+tripDateEnd.addEventListener('change', updateSearchBtnState);
+
+// Géocodage de la ville (Nominatim/OpenStreetMap, gratuit, sans clé API).
+// Nécessite que la page soit servie en ligne (http/https) avec accès
+// réseau ; ne fonctionnera pas en ouvrant le fichier en local (file://).
+let tripGeocodeTimer = null;
+tripCityInput.addEventListener('input', () => {
+  selectedCity = null;
+  tripCitySelected.classList.remove('show');
+  updateSearchBtnState();
+
+  const q = tripCityInput.value.trim();
+  clearTimeout(tripGeocodeTimer);
+  if (q.length < 3){
+    tripCityResults.classList.remove('show');
+    return;
+  }
+  tripGeocodeTimer = setTimeout(() => geocodeCity(q), 350);
+});
+
+async function geocodeCity(query){
+  tripCityResults.innerHTML = '<div class="trip-city-result" style="opacity:.6;cursor:default">Recherche...</div>';
+  tripCityResults.classList.add('show');
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&countrycodes=gb,ie&q=${encodeURIComponent(query)}`;
+    const res = await fetch(url, { headers: { 'Accept-Language': 'fr' } });
+    const data = await res.json();
+    if (!data.length){
+      tripCityResults.innerHTML = '<div class="trip-city-result" style="opacity:.6;cursor:default">Aucune ville trouvée</div>';
+      return;
+    }
+    tripCityResults.innerHTML = data.map((place, i) => {
+      const main = place.address?.city || place.address?.town || place.address?.village || place.address?.county || place.name || place.display_name.split(',')[0];
+      const sub = place.display_name;
+      return `<div class="trip-city-result" data-index="${i}"><b>${main}</b><span class="trip-city-sub">${sub}</span></div>`;
+    }).join('');
+    tripCityResults.querySelectorAll('.trip-city-result').forEach((el, i) => {
+      el.addEventListener('click', () => {
+        const place = data[i];
+        const main = place.address?.city || place.address?.town || place.address?.village || place.address?.county || place.name || place.display_name.split(',')[0];
+        selectedCity = { name: main, lat: parseFloat(place.lat), lon: parseFloat(place.lon) };
+        tripCityInput.value = main;
+        tripCitySelectedLabel.textContent = place.display_name;
+        tripCitySelected.classList.add('show');
+        tripCityResults.classList.remove('show');
+        updateSearchBtnState();
+      });
+    });
+  } catch (err) {
+    tripCityResults.innerHTML = '<div class="trip-city-result" style="opacity:.6;cursor:default">Recherche indisponible (connexion requise)</div>';
+  }
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.trip-city-box')) tripCityResults.classList.remove('show');
+});
+
+// Construit une fiche de match au même format visuel que les calendriers
+// de match des fiches club (fixture-row), avec en plus le club hôte et la
+// distance depuis la ville choisie.
+function buildTripFixtureRow(club, distanceKm, f){
+  return `
+    <div class="fixture-row">
+      <div class="trip-fixture-club">
+        <img src="${crestPath(club.name)}" alt="" onerror="this.style.display='none'">
+        <span class="trip-fixture-club-name">${club.name}</span>
+        <span class="trip-fixture-distance">${Math.round(distanceKm)} km</span>
+      </div>
+      <div class="fixture-competition">
+        <img src="${competitionLogoPath(f.competitionSlug || slugify(f.competition))}" alt="" onerror="this.style.display='none'">
+        <span>${f.competition}</span>
+      </div>
+      <div class="fixture-main">
+        <span class="fixture-date">${formatFixtureDate(f.date)}</span>
+        <div class="fixture-opp">
+          <span class="fixture-vs">vs</span>
+          <img class="fixture-opp-crest" src="${crestPath(f.opponent)}" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+          <span class="fixture-opp-name" style="display:none">${f.opponent}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function runTripSearch(){
+  if (!selectedCity) return;
+  const radiusKm = RADIUS_STEPS[tripRadiusInput.value];
+  const start = new Date(tripDateStart.value + 'T00:00:00');
+  const end = new Date(tripDateEnd.value + 'T23:59:59');
+
+  // Un seul passage par club (allMarkers contient 2 entrées par club, une
+  // par mode d'affichage ; on déduplique par nom de club).
+  const seen = new Set();
+  const nearbyClubs = [];
+  allMarkers.forEach(entry => {
+    if (seen.has(entry.name)) return;
+    seen.add(entry.name);
+    const d = haversineKm(selectedCity.lat, selectedCity.lon, entry.lat, entry.lon);
+    if (d <= radiusKm) nearbyClubs.push({ name: entry.name, lat: entry.lat, lon: entry.lon, distance: d });
+  });
+
+  const matches = [];
+  nearbyClubs.forEach(club => {
+    const fixtures = FIXTURES_DATA[club.name] || [];
+    fixtures.forEach(f => {
+      const d = new Date(f.date);
+      if (d >= start && d <= end) matches.push({ club, fixture: f });
+    });
+  });
+  matches.sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date));
+
+  tripResults.style.display = 'block';
+  const cityLabel = selectedCity.name;
+  const startLabel = start.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+  const endLabel = end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+
+  if (!matches.length){
+    tripResultsSummary.textContent = `Aucun match trouvé près de ${cityLabel} (${radiusKm} km) du ${startLabel} au ${endLabel}.`;
+    tripResultsList.innerHTML = `<div class="trip-empty-state">Essaie d'élargir le rayon de recherche ou les dates du séjour.</div>`;
+    return;
+  }
+
+  tripResultsSummary.textContent = `${matches.length} match${matches.length > 1 ? 's' : ''} trouvé${matches.length > 1 ? 's' : ''} près de ${cityLabel} (${radiusKm} km) du ${startLabel} au ${endLabel} :`;
+  tripResultsList.innerHTML = matches.map(m => buildTripFixtureRow(m.club, m.club.distance, m.fixture)).join('');
+}
+
+tripSearchBtn.addEventListener('click', runTripSearch);
+
 </script>
 </body>
 </html>
