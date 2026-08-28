@@ -528,6 +528,26 @@
   }
   #count-badge b{ color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
 
+  #trip-return-btn{
+    position: absolute;
+    top: 62px; right: 14px;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    border: none;
+    color: var(--accent-text);
+    padding: 9px 14px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  }
+  #trip-return-btn svg{ width: 14px; height: 14px; flex-shrink: 0; }
+
   /* ---------- MAP TOP CONTROLS ---------- */
   #map-controls{
     position: absolute;
@@ -830,14 +850,63 @@
     width: 100%;
     accent-color: var(--accent);
     margin-top: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--line);
+    outline: none;
+  }
+  /* Poignée à taille fixe (16px) : on connaît ainsi exactement son rayon
+     pour caler les repères numériques juste en dessous (voir
+     .trip-radius-ticks), un slider natif ne positionnant pas son curseur
+     sur toute la largeur de la piste mais entre [rayon, largeur-rayon]. */
+  .trip-radius-input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
+  .trip-radius-input::-moz-range-thumb{
+    width: 16px; height: 16px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
+  .trip-radius-input::-moz-range-track{
+    height: 4px;
+    border-radius: 2px;
+    background: var(--line);
   }
   .trip-radius-ticks{
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    height: 13px;
     font-size: 10px;
     color: var(--text-dim);
-    margin-top: 2px;
+    margin-top: 4px;
   }
+  /* Positionnement absolu (plutôt que flex/space-between) : chaque repère
+     est centré exactement sur la position réelle du curseur pour cette
+     valeur, indépendamment de la largeur de son propre texte (le dernier,
+     "300 km", est bien plus large que "5"). La formule
+     8px + (100% - 16px) * i/5 reproduit le déplacement du curseur, dont le
+     centre va de [rayon] à [largeur - rayon] (rayon de la poignée = 8px). */
+  .trip-radius-ticks span{
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .trip-radius-ticks span:nth-child(1){ left: 8px; transform: translateX(0); }
+  .trip-radius-ticks span:nth-child(2){ left: calc(8px + (100% - 16px) * 0.2); }
+  .trip-radius-ticks span:nth-child(3){ left: calc(8px + (100% - 16px) * 0.4); }
+  .trip-radius-ticks span:nth-child(4){ left: calc(8px + (100% - 16px) * 0.6); }
+  .trip-radius-ticks span:nth-child(5){ left: calc(8px + (100% - 16px) * 0.8); }
+  .trip-radius-ticks span:nth-child(6){ left: calc(100% - 8px); transform: translateX(-100%); }
   .trip-search-btn{
     width: 100%;
     background: var(--accent);
@@ -933,6 +1002,15 @@
     text-align: center;
     padding: 10px 4px;
   }
+  .trip-fixture-clickable{
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .trip-fixture-clickable:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,.35);
+  }
+  .trip-fixture-clickable:active{ transform: translateY(0); }
 
   ::-webkit-scrollbar{ width: 6px; }
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 3px; }
@@ -967,6 +1045,12 @@
     #count-badge{
       font-size: 11px;
       padding: 7px 9px;
+    }
+
+    #trip-return-btn{
+      top: 54px;
+      font-size: 11px;
+      padding: 7px 10px;
     }
 
     .leaflet-popup-content-wrapper{ max-width: 78vw; }
@@ -1026,6 +1110,11 @@
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <div id="count-badge"><b id="badge-count">176</b> clubs affichés</div>
+
+    <button id="trip-return-btn" title="Revenir aux résultats de recherche" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Retour aux résultats
+    </button>
 
     <div id="map-controls">
       <div class="segmented" id="basemap-toggle">
@@ -1902,7 +1991,7 @@ const tripResultsList = document.getElementById('trip-results-list');
 
 let selectedCity = null; // { name, lat, lon }
 
-function showTripModal(){ tripModal.classList.add('show'); }
+function showTripModal(){ tripModal.classList.add('show'); tripReturnBtn.style.display = 'none'; }
 function hideTripModal(){ tripModal.classList.remove('show'); }
 tripPlannerBtn.addEventListener('click', showTripModal);
 tripModal.querySelector('.trip-modal-backdrop').addEventListener('click', hideTripModal);
@@ -1999,7 +2088,7 @@ document.addEventListener('click', (e) => {
 // distance depuis la ville choisie.
 function buildTripFixtureRow(club, distanceKm, f){
   return `
-    <div class="fixture-row">
+    <div class="fixture-row trip-fixture-clickable" data-club="${club.name.replace(/"/g, '&quot;')}" role="button" tabindex="0">
       <div class="trip-fixture-club">
         <img src="${crestPath(club.name)}" alt="" onerror="this.style.display='none'">
         <span class="trip-fixture-club-name">${club.name}</span>
@@ -2022,6 +2111,7 @@ function buildTripFixtureRow(club, distanceKm, f){
 
 const tripViewMapBtn = document.getElementById('trip-view-map-btn');
 const tripTicketLink = document.getElementById('trip-ticket-link');
+const tripReturnBtn = document.getElementById('trip-return-btn');
 let lastTripMatchClubs = []; // clubs (uniques) ayant un match dans les résultats affichés
 
 function runTripSearch(){
@@ -2110,6 +2200,48 @@ tripViewMapBtn.addEventListener('click', () => {
     const entry = allMarkers.find(m => m.name === club.name);
     if (entry) setTimeout(() => markerForMode(entry).openPopup(), 450);
   }
+});
+
+// Active une ligue si besoin et centre la carte sur ce club précis.
+function focusClubOnMap(clubName){
+  const entry = allMarkers.find(m => m.name === clubName);
+  if (!entry) return;
+
+  if (!activeLeagues.has(entry.league)){
+    activeLeagues.add(entry.league);
+    addLeagueToMap(entry.league);
+    const row = document.querySelector(`.league-row[data-league="${CSS.escape(entry.league)}"]`);
+    if (row) row.classList.remove('off');
+    if (typeof updateCount === 'function') updateCount();
+  }
+
+  hideTripModal();
+  tripReturnBtn.style.display = 'flex';
+
+  map.setView([entry.lat, entry.lon], 12, { animate: true });
+  setTimeout(() => markerForMode(entry).openPopup(), 400);
+}
+
+// Clic (ou clavier) sur une ligne de résultat -> fiche du club concerné.
+// Délégation d'événement car la liste est régénérée à chaque recherche.
+tripResultsList.addEventListener('click', (e) => {
+  const row = e.target.closest('.trip-fixture-clickable');
+  if (!row) return;
+  focusClubOnMap(row.dataset.club);
+});
+tripResultsList.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const row = e.target.closest('.trip-fixture-clickable');
+  if (!row) return;
+  e.preventDefault();
+  focusClubOnMap(row.dataset.club);
+});
+
+// Bouton flottant "Retour aux résultats" : rouvre simplement la modale, qui
+// a conservé ville/dates/rayon/liste de matchs de la dernière recherche.
+tripReturnBtn.addEventListener('click', () => {
+  tripReturnBtn.style.display = 'none';
+  showTripModal();
 });
 
 </script>
