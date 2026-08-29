@@ -1210,6 +1210,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="7" r="2.4"/><circle cx="17" cy="6" r="2.4"/><circle cx="12" cy="13" r="2.4"/><circle cx="18" cy="17" r="2.4"/><circle cx="6" cy="17" r="2.4"/></svg>
           <span class="seg-label">Points</span>
         </button>
+      </div>
+      <div class="segmented" id="mystadiums-toggle">
         <button data-mode="mine" title="Afficher uniquement les stades déjà visités">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="6.5"/><ellipse cx="12" cy="12" rx="4.2" ry="2.7"/><path d="M8.5 9.5l1.8 1.8L14 7.6" stroke-width="1.6"/></svg>
           <span class="seg-label">Mes stades</span>
@@ -1460,7 +1462,7 @@ function setMapMode(newMode){
     activeLeagues.forEach(league => addLeagueToMap(league));
   }
 
-  document.querySelectorAll('#mode-toggle button').forEach(b => b.classList.toggle('active', b.dataset.mode === mapMode));
+  document.querySelectorAll('#mode-toggle button, #mystadiums-toggle button').forEach(b => b.classList.toggle('active', b.dataset.mode === mapMode));
 }
 
 function makeClusterIcon(cluster){
@@ -1754,7 +1756,7 @@ map.addLayer(clusterGroup);
 map.addLayer(flatGroup);
 
 /* ---------------- MODE TOGGLE (clusters / points / mes stades) ---------------- */
-document.querySelectorAll('#mode-toggle button').forEach(btn => {
+document.querySelectorAll('#mode-toggle button, #mystadiums-toggle button').forEach(btn => {
   btn.addEventListener('click', () => setMapMode(btn.dataset.mode));
 });
 
