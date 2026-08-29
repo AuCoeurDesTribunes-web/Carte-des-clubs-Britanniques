@@ -356,6 +356,31 @@
     object-fit: contain;
     display: block;
   }
+  button.popup-visited-badge{
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    color: #c7c7c7;
+    transition: color .15s, background .15s;
+  }
+  button.popup-visited-badge:hover{ color: #8a8a8a; }
+  button.popup-visited-badge svg{ width: 14px; height: 14px; }
+  button.popup-visited-badge.is-visited{
+    background: #22c55e;
+    color: #ffffff;
+  }
+  button.popup-visited-badge.is-visited:hover{ background: #16a34a; color: #ffffff; }
   .popup-name{
     font-family: 'Space Grotesk', sans-serif;
     font-size: 15px;
@@ -611,6 +636,18 @@
     font-size: 11px;
     color: var(--text);
   }
+  .marker-stadium-icon{
+    width: 34px; height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--panel-2);
+    border: 2.5px solid;
+    box-shadow: 0 3px 10px rgba(0,0,0,.55);
+    color: var(--text);
+  }
+  .marker-stadium-icon svg{ width: 18px; height: 18px; }
 
   /* ---------- STADIUM MODAL ---------- */
   .stadium-modal{
@@ -1136,6 +1173,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="7" r="2.4"/><circle cx="17" cy="6" r="2.4"/><circle cx="12" cy="13" r="2.4"/><circle cx="18" cy="17" r="2.4"/><circle cx="6" cy="17" r="2.4"/></svg>
           <span class="seg-label">Points</span>
         </button>
+        <button data-mode="mine" title="Afficher uniquement les stades déjà visités">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="6.5"/><ellipse cx="12" cy="12" rx="4.2" ry="2.7"/><path d="M8.5 9.5l1.8 1.8L14 7.6" stroke-width="1.6"/></svg>
+          <span class="seg-label">Mes stades</span>
+        </button>
       </div>
     </div>
 
@@ -1320,11 +1361,16 @@ const clusterGroup = L.markerClusterGroup({
 /* Mode "points" : simple L.layerGroup sans agrégation, pour que les clubs
    restent visibles individuellement même dézoomé, quitte à se chevaucher. */
 const flatGroup = L.layerGroup();
-let mapMode = 'cluster'; // 'cluster' | 'points'
-function groupForMode(){ return mapMode === 'cluster' ? clusterGroup : flatGroup; }
+/* Mode "Mes stades" : layer group indépendant, peuplé uniquement des clubs
+   marqués comme visités (voir toggleVisited), avec l'icône stade épurée
+   plutôt que l'écusson du club. Ignore volontairement les championnats
+   actifs : c'est une vue "collection personnelle", pas un filtre de ligue. */
+const visitedGroup = L.layerGroup();
+let mapMode = 'cluster'; // 'cluster' | 'points' | 'mine'
+function groupForMode(){ return mapMode === 'points' ? flatGroup : clusterGroup; }
 const allMarkers = []; // {clusterMarker, flatMarker, league, name, lat, lon}
 const markersByLeague = {}; // league -> [entry, ...] (sous-ensemble de allMarkers)
-function markerForMode(entry){ return mapMode === 'cluster' ? entry.clusterMarker : entry.flatMarker; }
+function markerForMode(entry){ return mapMode === 'points' ? entry.flatMarker : entry.clusterMarker; }
 function addLeagueToMap(league){
   const group = groupForMode();
   (markersByLeague[league] || []).forEach(m => group.addLayer(markerForMode(m)));
@@ -1332,6 +1378,48 @@ function addLeagueToMap(league){
 function removeLeagueFromMap(league){
   const group = groupForMode();
   (markersByLeague[league] || []).forEach(m => group.removeLayer(markerForMode(m)));
+}
+
+/* (Re)construit le contenu du groupe "Mes stades" à partir de l'ensemble
+   visitedStadiums. Un seul marqueur par club (peu importe le mode
+   cluster/points d'origine), avec l'icône stade épurée, et un clic qui
+   ouvre directement les caractéristiques du stade plutôt qu'une fiche club. */
+function buildVisitedMarkers(){
+  visitedGroup.clearLayers();
+  const seen = new Set();
+  allMarkers.forEach(entry => {
+    if (seen.has(entry.name) || !visitedStadiums.has(entry.name) || !entry.stadium) return;
+    seen.add(entry.name);
+    const meta = LEAGUE_META[entry.league];
+    const marker = L.marker([entry.lat, entry.lon], { icon: stadiumIcon(meta.hex) });
+    marker.on('click', () => showStadiumInfo(entry.stadium, entry.name));
+    visitedGroup.addLayer(marker);
+  });
+}
+
+/* Bascule entre les 3 modes d'affichage de la carte. "mine" est à part :
+   il ignore les championnats actifs et n'affiche que la collection
+   personnelle de stades visités, avec l'icône stade plutôt que l'écusson. */
+function setMapMode(newMode){
+  if (newMode === mapMode) return;
+
+  if (mapMode === 'mine') map.removeLayer(visitedGroup);
+  else activeLeagues.forEach(league => removeLeagueFromMap(league));
+
+  mapMode = newMode;
+
+  if (mapMode === 'mine'){
+    buildVisitedMarkers();
+    map.addLayer(visitedGroup);
+    if (visitedGroup.getLayers().length){
+      const bounds = L.latLngBounds(visitedGroup.getLayers().map(m => m.getLatLng()));
+      map.fitBounds(bounds, { padding: [60, 60], maxZoom: 12 });
+    }
+  } else {
+    activeLeagues.forEach(league => addLeagueToMap(league));
+  }
+
+  document.querySelectorAll('#mode-toggle button').forEach(b => b.classList.toggle('active', b.dataset.mode === mapMode));
 }
 
 function makeClusterIcon(cluster){
@@ -1439,6 +1527,49 @@ function crestIcon(name, hex){
 /* Seule la Premier League est cochée par défaut à l'ouverture du site. */
 const activeLeagues = new Set(["Premier League"]);
 
+/* ---------------- COLLECTION DE STADES ---------------- */
+/* Un club est "visité" si son nom figure dans cet ensemble, persisté dans
+   localStorage (propre au navigateur, pas de backend). On garde le club
+   comme clé plutôt que le nom du stade : c'est déjà l'identifiant unique
+   utilisé partout ailleurs dans le code (fixtures, crests, etc.). */
+const VISITED_STORAGE_KEY = 'visitedStadiumClubs';
+let visitedStadiums = new Set();
+try {
+  const raw = localStorage.getItem(VISITED_STORAGE_KEY);
+  if (raw) visitedStadiums = new Set(JSON.parse(raw));
+} catch (err) { /* localStorage indisponible : la collection ne persiste pas */ }
+
+function saveVisitedStadiums(){
+  try { localStorage.setItem(VISITED_STORAGE_KEY, JSON.stringify(Array.from(visitedStadiums))); }
+  catch (err) { /* ignore */ }
+}
+
+function toggleVisited(clubName){
+  if (visitedStadiums.has(clubName)) visitedStadiums.delete(clubName);
+  else visitedStadiums.add(clubName);
+  saveVisitedStadiums();
+  if (mapMode === 'mine') buildVisitedMarkers();
+}
+
+/* Icône "stade" épurée utilisée en mode Mes stades, à la place de l'écusson
+   du club : mêmes proportions que les icônes club (34px, bordure colorée
+   selon le championnat) mais avec le pictogramme de stade plutôt qu'un
+   logo, pour bien distinguer visuellement ce mode. */
+function stadiumIcon(hex){
+  return L.divIcon({
+    className: '',
+    html: `<div class="marker-stadium-icon" style="border-color:${hex}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
+        <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
+      </svg>
+    </div>`,
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -18]
+  });
+}
+
 function createClubMarker(club, league, meta){
   const marker = L.marker([club.lat, club.lon], { icon: crestIcon(club.name, meta.hex) });
 
@@ -1496,6 +1627,9 @@ function createClubMarker(club, league, meta){
     }
     return `
       <div class="popup-header">
+        <button type="button" class="popup-visited-badge${visitedStadiums.has(club.name) ? ' is-visited' : ''}" data-club="${club.name.replace(/"/g, '&quot;')}" title="${visitedStadiums.has(club.name) ? 'Stade visité — cliquer pour retirer' : 'Marquer ce stade comme visité'}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </button>
         <div class="popup-comp-badge"><img src="${competitionLogoPath(slugify(league))}" alt="" onerror="this.parentElement.style.display='none'"></div>
         <div class="popup-crest"><img src="${crestPath(club.name)}" alt="" onerror="this.parentElement.style.display='none'"></div>
         <div class="popup-name">${club.name}</div>
@@ -1538,6 +1672,15 @@ function createClubMarker(club, league, meta){
         showStadiumInfo(stadiumRow.dataset.stadium, club.name);
       });
     }
+    const visitedBadge = popupEl.querySelector('.popup-visited-badge');
+    if (visitedBadge){
+      visitedBadge.addEventListener('click', () => {
+        toggleVisited(club.name);
+        const nowVisited = visitedStadiums.has(club.name);
+        visitedBadge.classList.toggle('is-visited', nowVisited);
+        visitedBadge.title = nowVisited ? 'Stade visité — cliquer pour retirer' : 'Marquer ce stade comme visité';
+      });
+    }
   });
 
   return marker;
@@ -1565,19 +1708,9 @@ Object.keys(CLUBS_DATA).forEach(league => {
 map.addLayer(clusterGroup);
 map.addLayer(flatGroup);
 
-/* ---------------- MODE TOGGLE (clusters / points) ---------------- */
+/* ---------------- MODE TOGGLE (clusters / points / mes stades) ---------------- */
 document.querySelectorAll('#mode-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const choice = btn.dataset.mode;
-    if (choice === mapMode) return;
-    // On retire du groupe courant les marqueurs des ligues actives, puis on
-    // les rajoute dans l'autre groupe (partagé par toutes les ligues), afin
-    // que le clustering continue de mélanger tous les championnats actifs.
-    activeLeagues.forEach(league => removeLeagueFromMap(league));
-    mapMode = choice;
-    activeLeagues.forEach(league => addLeagueToMap(league));
-    document.querySelectorAll('#mode-toggle button').forEach(b => b.classList.toggle('active', b === btn));
-  });
+  btn.addEventListener('click', () => setMapMode(btn.dataset.mode));
 });
 
 /* ---------------- SIDEBAR: LEAGUE LIST ---------------- */
@@ -1702,6 +1835,8 @@ searchResults.addEventListener('click', (e) => {
   const lat = parseFloat(row.dataset.lat);
   const lon = parseFloat(row.dataset.lon);
   const league = row.dataset.league;
+
+  if (mapMode === 'mine') setMapMode('cluster');
 
   // make sure the league is active
   if (!activeLeagues.has(league)){
@@ -2178,6 +2313,8 @@ tripSearchBtn.addEventListener('click', runTripSearch);
 tripViewMapBtn.addEventListener('click', () => {
   if (!lastTripMatchClubs.length) return;
 
+  if (mapMode === 'mine') setMapMode('cluster');
+
   const leaguesToActivate = new Set(lastTripMatchClubs.map(c => c.league));
   leaguesToActivate.forEach(league => {
     if (!activeLeagues.has(league)){
@@ -2206,6 +2343,8 @@ tripViewMapBtn.addEventListener('click', () => {
 function focusClubOnMap(clubName){
   const entry = allMarkers.find(m => m.name === clubName);
   if (!entry) return;
+
+  if (mapMode === 'mine') setMapMode('cluster');
 
   if (!activeLeagues.has(entry.league)){
     activeLeagues.add(entry.league);
