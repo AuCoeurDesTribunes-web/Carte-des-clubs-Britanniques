@@ -636,18 +636,55 @@
     font-size: 11px;
     color: var(--text);
   }
+  /* Mode "Mes stades" : le pictogramme stade en blanc, sans cercle ni
+     bordure colorée, avec un badge coche verte dans le coin supérieur
+     droit. Le badge est un élément frère (pas un enfant) du pictogramme
+     filtré, pour ne pas hériter de son ombre portée. */
+  .marker-stadium-wrap{
+    position: relative;
+    width: 30px; height: 30px;
+  }
   .marker-stadium-icon{
-    width: 34px; height: 34px;
+    width: 100%; height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.85)) drop-shadow(0 0 3px rgba(0,0,0,.6));
+  }
+  .marker-stadium-icon svg{ width: 100%; height: 100%; stroke: #ffffff; }
+  .marker-stadium-check{
+    position: absolute;
+    top: -3px; right: -3px;
+    width: 15px; height: 15px;
     border-radius: 50%;
-    background: var(--panel-2);
-    border: 2.5px solid;
-    box-shadow: 0 3px 10px rgba(0,0,0,.55);
+    background: #22c55e;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.6);
+  }
+  .marker-stadium-check svg{ width: 9px; height: 9px; }
+
+  .mini-stadium-popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px;
+    text-align: center;
+  }
+  .mini-stadium-popup img{
+    height: 38px;
+    max-width: 60px;
+    object-fit: contain;
+  }
+  .mini-stadium-popup-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
     color: var(--text);
   }
-  .marker-stadium-icon svg{ width: 18px; height: 18px; }
 
   /* ---------- STADIUM MODAL ---------- */
   .stadium-modal{
@@ -1382,17 +1419,21 @@ function removeLeagueFromMap(league){
 
 /* (Re)construit le contenu du groupe "Mes stades" à partir de l'ensemble
    visitedStadiums. Un seul marqueur par club (peu importe le mode
-   cluster/points d'origine), avec l'icône stade épurée, et un clic qui
-   ouvre directement les caractéristiques du stade plutôt qu'une fiche club. */
+   cluster/points d'origine), avec l'icône stade épurée ; un clic affiche
+   une mini fiche (nom du stade + logo du club qui l'occupe). */
 function buildVisitedMarkers(){
   visitedGroup.clearLayers();
   const seen = new Set();
   allMarkers.forEach(entry => {
     if (seen.has(entry.name) || !visitedStadiums.has(entry.name) || !entry.stadium) return;
     seen.add(entry.name);
-    const meta = LEAGUE_META[entry.league];
-    const marker = L.marker([entry.lat, entry.lon], { icon: stadiumIcon(meta.hex) });
-    marker.on('click', () => showStadiumInfo(entry.stadium, entry.name));
+    const marker = L.marker([entry.lat, entry.lon], { icon: stadiumIcon() });
+    marker.bindPopup(`
+      <div class="mini-stadium-popup">
+        <img src="${crestPath(entry.name)}" alt="" onerror="this.style.display='none'">
+        <div class="mini-stadium-popup-name">${entry.stadium}</div>
+      </div>
+    `);
     visitedGroup.addLayer(marker);
   });
 }
@@ -1552,21 +1593,25 @@ function toggleVisited(clubName){
 }
 
 /* Icône "stade" épurée utilisée en mode Mes stades, à la place de l'écusson
-   du club : mêmes proportions que les icônes club (34px, bordure colorée
-   selon le championnat) mais avec le pictogramme de stade plutôt qu'un
-   logo, pour bien distinguer visuellement ce mode. */
-function stadiumIcon(hex){
+   du club : le pictogramme en blanc, sans cercle ni bordure, avec un badge
+   coche verte dans le coin pour rappeler que ce stade est fait. */
+function stadiumIcon(){
   return L.divIcon({
     className: '',
-    html: `<div class="marker-stadium-icon" style="border-color:${hex}">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
-        <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
-      </svg>
+    html: `<div class="marker-stadium-wrap">
+      <div class="marker-stadium-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="12" cy="12" rx="10" ry="6.5"/>
+          <ellipse cx="12" cy="12" rx="4.2" ry="2.7"/>
+        </svg>
+      </div>
+      <span class="marker-stadium-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+      </span>
     </div>`,
-    iconSize: [34, 34],
-    iconAnchor: [17, 17],
-    popupAnchor: [0, -18]
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    popupAnchor: [0, -16]
   });
 }
 
