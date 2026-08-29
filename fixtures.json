@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T21:59:31.526Z",
+  "generated_at": "2026-08-29T06:08:25.433Z",
   "clubs": {
     "Liverpool FC": [
       {
@@ -1383,7 +1383,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-09-19T14:00:00Z",
+        "date": "2026-09-20T13:00:00Z",
         "opponent": "Sunderland AFC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -2671,7 +2671,7 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2026-09-19T14:00:00Z",
+        "date": "2026-09-20T12:30:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
