@@ -539,6 +539,12 @@
     font-size: 12px;
     color: var(--text-dim);
     margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .popup-flashscore-wrap{
+    display: flex;
+    justify-content: center;
   }
 
   .popup-link{
@@ -555,6 +561,12 @@
     transition: background .15s;
   }
   .popup-link:hover{ background: var(--accent); }
+  .popup-link .flashscore-logo{
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
 
   .cluster-icon{
     background: var(--panel);
@@ -1871,10 +1883,13 @@ function createClubMarker(club, league, meta){
     } else {
       fixturesHtml = `
         <div class="popup-fixtures empty">Calendrier pas encore disponible pour ce club.</div>
-        <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">
-          Voir sur Flashscore
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>`;
+        <div class="popup-flashscore-wrap">
+          <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">
+            <img class="flashscore-logo" src="brand-logos/flashscore-logo.png" alt="" onerror="this.style.display='none'">
+            Voir sur Flashscore
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>`;
     }
     return `
       <div class="popup-header">
@@ -2521,7 +2536,7 @@ function buildTripNoCalendarRow(club){
       <span class="trip-no-calendar-name">${club.name}</span>
       <span class="trip-no-calendar-league">${LEAGUE_SHORT[club.league]}</span>
       <span class="trip-no-calendar-distance">${Math.round(club.distance)} km</span>
-      <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">Flashscore</a>
+      <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener"><img class="flashscore-logo" src="brand-logos/flashscore-logo.png" alt="" onerror="this.style.display='none'">Flashscore</a>
     </div>`;
 }
 
