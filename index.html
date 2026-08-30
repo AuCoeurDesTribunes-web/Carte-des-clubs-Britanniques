@@ -1071,6 +1071,57 @@
     max-height: 340px;
     overflow-y: auto;
   }
+  .trip-no-calendar{
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+  }
+  .trip-no-calendar-title{
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .trip-no-calendar-list{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .trip-no-calendar-row{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 9px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  .trip-no-calendar-row img{
+    width: 20px; height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .trip-no-calendar-name{
+    flex: 1;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .trip-no-calendar-distance{
+    font-size: 11px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+  .trip-no-calendar-row a.popup-link{
+    flex-shrink: 0;
+    font-size: 11px;
+    padding: 5px 8px;
+  }
   .trip-fixture-club{
     display: flex;
     align-items: center;
@@ -1318,6 +1369,10 @@
         Voir les clubs sur la carte
       </button>
       <div id="trip-results-list" class="trip-results-list"></div>
+      <div id="trip-no-calendar" class="trip-no-calendar" style="display:none">
+        <div class="trip-no-calendar-title">Clubs à proximité sans calendrier disponible</div>
+        <div id="trip-no-calendar-list" class="trip-no-calendar-list"></div>
+      </div>
       <a id="trip-ticket-link" class="popup-ticket-link trip-ticket-link" href="https://aucoeurdestribunes.github.io/Demande-billets/" target="_blank" rel="noopener" style="display:none">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8Z"/>
@@ -2372,7 +2427,25 @@ function buildTripFixtureRow(club, distanceKm, f){
 const tripViewMapBtn = document.getElementById('trip-view-map-btn');
 const tripTicketLink = document.getElementById('trip-ticket-link');
 const tripReturnBtn = document.getElementById('trip-return-btn');
+const tripNoCalendar = document.getElementById('trip-no-calendar');
+const tripNoCalendarList = document.getElementById('trip-no-calendar-list');
 let lastTripMatchClubs = []; // clubs (uniques) ayant un match dans les résultats affichés
+
+// Même fiche club "sans calendrier" que dans les popups (voir
+// createClubMarker) : logo, distance, lien Flashscore de secours — pour que
+// l'utilisateur sache que ce club est à proximité même si son calendrier
+// n'est pas (encore) suivi par fixtures.json.
+function buildTripNoCalendarRow(club){
+  const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[club.league]);
+  const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
+  return `
+    <div class="trip-no-calendar-row">
+      <img src="${crestPath(club.name)}" alt="" onerror="this.style.display='none'">
+      <span class="trip-no-calendar-name">${club.name}</span>
+      <span class="trip-no-calendar-distance">${Math.round(club.distance)} km</span>
+      <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">Flashscore</a>
+    </div>`;
+}
 
 function runTripSearch(){
   if (!selectedCity) return;
@@ -2412,10 +2485,25 @@ function runTripSearch(){
   });
   lastTripMatchClubs = uniqueClubs;
 
+  // Clubs dans le rayon mais absents de FIXTURES_DATA : leur championnat
+  // n'est pas (encore) couvert par update-fixtures.mjs, ou l'API n'a
+  // renvoyé aucun match les concernant. Triés par distance croissante.
+  const clubsWithoutCalendar = nearbyClubs
+    .filter(club => !FIXTURES_DATA[club.name] || !FIXTURES_DATA[club.name].length)
+    .sort((a, b) => a.distance - b.distance);
+
   tripResults.style.display = 'block';
   const cityLabel = selectedCity.name;
   const startLabel = start.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
   const endLabel = end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+
+  if (clubsWithoutCalendar.length){
+    tripNoCalendar.style.display = 'block';
+    tripNoCalendarList.innerHTML = clubsWithoutCalendar.map(buildTripNoCalendarRow).join('');
+  } else {
+    tripNoCalendar.style.display = 'none';
+    tripNoCalendarList.innerHTML = '';
+  }
 
   if (!matches.length){
     tripViewMapBtn.style.display = 'none';
