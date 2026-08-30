@@ -1155,15 +1155,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .trip-no-calendar-league{
-    font-size: 10.5px;
-    color: var(--text-dim);
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 2px 6px;
+  .trip-no-calendar-league-logo{
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
     flex-shrink: 0;
-    white-space: nowrap;
   }
   .trip-no-calendar-distance{
     font-size: 11px;
@@ -1283,10 +1279,8 @@
     #basemap-toggle button span.seg-label{ display: none; }
     #satellite-labels-toggle span.seg-label{ display: none; }
     /* Priorité au nom du club sur très petit écran : on retire d'abord la
-       flèche du bouton Flashscore (le logo seul suffit), puis le badge de
-       championnat si ça ne suffit toujours pas. */
+       flèche du bouton Flashscore (le logo seul suffit). */
     .trip-no-calendar-row .trip-flashscore-arrow{ display: none; }
-    .trip-no-calendar-league{ display: none; }
   }
 </style>
 </head>
@@ -2607,7 +2601,7 @@ function buildTripNoCalendarRow(club){
     <div class="trip-no-calendar-row">
       <img src="${crestPath(club.name)}" alt="" onerror="this.style.display='none'">
       <span class="trip-no-calendar-name">${club.name}</span>
-      <span class="trip-no-calendar-league">${LEAGUE_SHORT[club.league]}</span>
+      <img class="trip-no-calendar-league-logo" src="${competitionLogoPath(slugify(club.league))}" alt="${LEAGUE_SHORT[club.league]}" title="${LEAGUE_SHORT[club.league]}" onerror="this.style.display='none'">
       <span class="trip-no-calendar-distance">${Math.round(club.distance)} km</span>
       <a class="popup-link trip-flashscore-btn" href="${flashscoreUrl}" target="_blank" rel="noopener" title="Voir sur Flashscore">
         <img class="flashscore-logo" src="brand-logos/flashscore-logo.png" alt="Flashscore" onerror="this.style.display='none'">
