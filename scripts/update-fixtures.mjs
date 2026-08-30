@@ -69,7 +69,13 @@ function normalize(name) {
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/&/g, ' and ')
     .replace(/\b(fc|afc|cf|the)\b/g, '')
-    .replace(/[^a-z0-9]/g, '');
+    // Beaucoup de clubs allemands ont un nom officiel avec un numéro (année
+    // de fondation) que l'API renvoie mais que la carte n'affiche pas
+    // ("Bayer 04 Leverkusen" vs "Bayer Leverkusen", "TSG 1899 Hoffenheim" vs
+    // "TSG Hoffenheim", "SV 07 Elversberg" vs "SV Elversberg") : on retire
+    // les chiffres avant de comparer, sinon ces clubs ne matchent jamais.
+    .replace(/[0-9]/g, '')
+    .replace(/[^a-z]/g, '');
 }
 
 // Index de TOUS les clubs de la carte (utilisé pour reconnaître les
