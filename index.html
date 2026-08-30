@@ -1616,11 +1616,22 @@ window.__crestFallback = function(imgEl, txt){
   box.textContent = txt;
 };
 
+/* Certains écussons sont fournis sans marge interne (contrairement à la
+   plupart des autres clubs) et paraissent donc trop imposants dans le
+   cercle de 34px par défaut. Plutôt que de retoucher les fichiers images,
+   on les réduit légèrement ici (1 = taille normale). */
+const CREST_SCALE_OVERRIDES = {
+  "Hamburger SV": 0.75,
+  "Union Berlin": 0.75,
+};
+
 function crestIcon(name, hex){
   const txt = initials(name);
+  const scale = CREST_SCALE_OVERRIDES[name] || 1;
+  const imgStyle = scale !== 1 ? ` style="transform:scale(${scale})"` : '';
   return L.divIcon({
     className: '',
-    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt="" onerror="window.__crestFallback(this,'${txt}')"></div>`,
+    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt=""${imgStyle} onerror="window.__crestFallback(this,'${txt}')"></div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, -18]
