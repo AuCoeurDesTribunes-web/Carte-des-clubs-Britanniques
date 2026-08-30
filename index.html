@@ -1112,6 +1112,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .trip-no-calendar-league{
+    font-size: 10.5px;
+    color: var(--text-dim);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 2px 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
   .trip-no-calendar-distance{
     font-size: 11px;
     color: var(--text-dim);
@@ -1411,6 +1421,34 @@ const LEAGUE_META = {
   "Germany - Regionalliga West": { color: "var(--c-de6)", hex: "#6e4713", country: "Allemagne" },
   "Switzerland - Super League": { color: "var(--c-ch1)", hex: "#ff3b3b", country: "Suisse" },
   "Switzerland - Challenge League": { color: "var(--c-ch2)", hex: "#ff8080", country: "Suisse" },
+};
+
+/* Niveau hiérarchique de chaque championnat au sein de la pyramide de son
+   pays (1 = plus haut niveau national, 2 = deuxième niveau, etc.). Sert à
+   classer les clubs à proximité par "rang" de championnat plutôt que par
+   pays : deux clubs de tier 1 (ex. Premier League et Bundesliga) sont
+   considérés du même niveau, avant tout club de tier 2. */
+const LEAGUE_TIER = {
+  "Premier League": 1,
+  "England - Championship": 2,
+  "England - League One": 3,
+  "England - League Two": 4,
+  "England - National League": 5,
+  "Ireland - Premier division": 1,
+  "Northern Ireland - Premiership": 1,
+  "Scotland - Premiership": 1,
+  "Scotland - Championship": 2,
+  "Wales - Cymru Premier": 1,
+  "Austria - Bundesliga": 1,
+  "Austria - 2. Liga": 2,
+  "Germany - Bundesliga": 1,
+  "Germany - 2. Bundesliga": 2,
+  "Germany - 3. Liga": 3,
+  "Germany - Regionalliga Bayern - Südwest": 4,
+  "Germany - Regionalliga Nord - Nordost": 4,
+  "Germany - Regionalliga West": 4,
+  "Switzerland - Super League": 1,
+  "Switzerland - Challenge League": 2,
 };
 
 const LEAGUE_SHORT = {
@@ -2442,6 +2480,7 @@ function buildTripNoCalendarRow(club){
     <div class="trip-no-calendar-row">
       <img src="${crestPath(club.name)}" alt="" onerror="this.style.display='none'">
       <span class="trip-no-calendar-name">${club.name}</span>
+      <span class="trip-no-calendar-league">${LEAGUE_SHORT[club.league]}</span>
       <span class="trip-no-calendar-distance">${Math.round(club.distance)} km</span>
       <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener">Flashscore</a>
     </div>`;
@@ -2487,10 +2526,15 @@ function runTripSearch(){
 
   // Clubs dans le rayon mais absents de FIXTURES_DATA : leur championnat
   // n'est pas (encore) couvert par update-fixtures.mjs, ou l'API n'a
-  // renvoyé aucun match les concernant. Triés par distance croissante.
+  // renvoyé aucun match les concernant. Triés d'abord par niveau de
+  // championnat (1 = plus haut niveau national, du plus haut vers le plus
+  // bas), puis par distance croissante au sein d'un même niveau.
   const clubsWithoutCalendar = nearbyClubs
     .filter(club => !FIXTURES_DATA[club.name] || !FIXTURES_DATA[club.name].length)
-    .sort((a, b) => a.distance - b.distance);
+    .sort((a, b) => {
+      const tierDiff = (LEAGUE_TIER[a.league] || 99) - (LEAGUE_TIER[b.league] || 99);
+      return tierDiff !== 0 ? tierDiff : a.distance - b.distance;
+    });
 
   tripResults.style.display = 'block';
   const cityLabel = selectedCity.name;
