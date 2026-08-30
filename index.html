@@ -1451,6 +1451,47 @@ const LEAGUE_TIER = {
   "Switzerland - Challenge League": 2,
 };
 
+/* URL fixe de la page de championnat sur Flashscore.fr (vérifiées
+   manuellement une par une). Contrairement aux clubs (identifiant aléatoire
+   impossible à deviner), les pages de championnat ont une URL stable du
+   type /football/<pays>/<championnat>/. Absente de cette table = pas de
+   correspondance fiable trouvée (notamment les 3 Regionalliga, qui
+   regroupent chacune deux groupes distincts sur Flashscore) : on retombe
+   alors sur la recherche Google (voir flashscoreLinkFor ci-dessous).
+   ⚠️ Suisse : Flashscore inclut le nom du sponsor du championnat dans
+   l'URL ("raiffeisen-super-league", "brack-ch-challenge-league") — cela
+   changera quand le sponsor changera, il faudra alors mettre à jour ces
+   deux lignes. */
+const FLASHSCORE_LEAGUE_URL = {
+  "Premier League": "angleterre/premier-league",
+  "England - Championship": "angleterre/championship",
+  "England - League One": "angleterre/league-one",
+  "England - League Two": "angleterre/league-two",
+  "England - National League": "angleterre/national-league",
+  "Ireland - Premier division": "irlande/premier-division",
+  "Northern Ireland - Premiership": "irlande-du-nord/nifl-premiership",
+  "Scotland - Premiership": "ecosse/premiership",
+  "Scotland - Championship": "ecosse/championship",
+  "Wales - Cymru Premier": "pays-de-galles/cymru-premier",
+  "Austria - Bundesliga": "autriche/bundesliga",
+  "Austria - 2. Liga": "autriche/2-liga",
+  "Germany - Bundesliga": "allemagne/bundesliga",
+  "Germany - 2. Bundesliga": "allemagne/2-bundesliga",
+  "Germany - 3. Liga": "allemagne/3-liga",
+  "Switzerland - Super League": "suisse/raiffeisen-super-league",
+  "Switzerland - Challenge League": "suisse/brack-ch-challenge-league",
+};
+
+// Lien Flashscore pour un club : direct vers la page du championnat quand
+// on a une URL fiable, sinon recherche Google restreinte à flashscore.fr
+// (repli utilisé uniquement pour les 3 Regionalliga non mappées).
+function flashscoreLinkFor(name, league){
+  const path = FLASHSCORE_LEAGUE_URL[league];
+  if (path) return `https://www.flashscore.fr/football/${path}/`;
+  const query = encodeURIComponent(name + " " + LEAGUE_SHORT[league]);
+  return `https://www.google.com/search?q=${query}+site:flashscore.fr`;
+}
+
 const LEAGUE_SHORT = {
   "Premier League": "Premier League",
   "England - Championship": "Championship",
@@ -1784,8 +1825,7 @@ function stadiumIcon(){
 function createClubMarker(club, league, meta){
   const marker = L.marker([club.lat, club.lon], { icon: crestIcon(club.name, meta.hex) });
 
-  const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[league]);
-  const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
+  const flashscoreUrl = flashscoreLinkFor(club.name, league);
 
   marker.bindPopup(() => {
     const now = new Date();
@@ -2474,8 +2514,7 @@ let lastTripMatchClubs = []; // clubs (uniques) ayant un match dans les résulta
 // l'utilisateur sache que ce club est à proximité même si son calendrier
 // n'est pas (encore) suivi par fixtures.json.
 function buildTripNoCalendarRow(club){
-  const query = encodeURIComponent(club.name + " " + LEAGUE_SHORT[club.league]);
-  const flashscoreUrl = `https://www.google.com/search?q=${query}+site:flashscore.fr`;
+  const flashscoreUrl = flashscoreLinkFor(club.name, club.league);
   return `
     <div class="trip-no-calendar-row">
       <img src="${crestPath(club.name)}" alt="" onerror="this.style.display='none'">
