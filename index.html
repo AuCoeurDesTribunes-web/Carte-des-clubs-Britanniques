@@ -1175,6 +1175,14 @@
     font-size: 11px;
     padding: 5px 8px;
   }
+  .trip-no-calendar-row .trip-flashscore-btn{
+    padding: 5px 7px;
+    gap: 4px;
+  }
+  .trip-no-calendar-row .flashscore-logo{
+    width: 15px;
+    height: 15px;
+  }
   .trip-fixture-club{
     display: flex;
     align-items: center;
@@ -1274,6 +1282,11 @@
        seule. Le conteneur passe déjà à la ligne (flex-wrap) si besoin. */
     #basemap-toggle button span.seg-label{ display: none; }
     #satellite-labels-toggle span.seg-label{ display: none; }
+    /* Priorité au nom du club sur très petit écran : on retire d'abord la
+       flèche du bouton Flashscore (le logo seul suffit), puis le badge de
+       championnat si ça ne suffit toujours pas. */
+    .trip-no-calendar-row .trip-flashscore-arrow{ display: none; }
+    .trip-no-calendar-league{ display: none; }
   }
 </style>
 </head>
@@ -2596,7 +2609,10 @@ function buildTripNoCalendarRow(club){
       <span class="trip-no-calendar-name">${club.name}</span>
       <span class="trip-no-calendar-league">${LEAGUE_SHORT[club.league]}</span>
       <span class="trip-no-calendar-distance">${Math.round(club.distance)} km</span>
-      <a class="popup-link" href="${flashscoreUrl}" target="_blank" rel="noopener"><img class="flashscore-logo" src="brand-logos/flashscore-logo.png" alt="" onerror="this.style.display='none'">Flashscore</a>
+      <a class="popup-link trip-flashscore-btn" href="${flashscoreUrl}" target="_blank" rel="noopener" title="Voir sur Flashscore">
+        <img class="flashscore-logo" src="brand-logos/flashscore-logo.png" alt="Flashscore" onerror="this.style.display='none'">
+        <svg class="trip-flashscore-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
     </div>`;
 }
 
