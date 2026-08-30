@@ -1487,7 +1487,7 @@ const FLASHSCORE_LEAGUE_URL = {
 // (repli utilisé uniquement pour les 3 Regionalliga non mappées).
 function flashscoreLinkFor(name, league){
   const path = FLASHSCORE_LEAGUE_URL[league];
-  if (path) return `https://www.flashscore.fr/football/${path}/`;
+  if (path) return `https://www.flashscore.fr/football/${path}/calendrier/`;
   const query = encodeURIComponent(name + " " + LEAGUE_SHORT[league]);
   return `https://www.google.com/search?q=${query}+site:flashscore.fr`;
 }
