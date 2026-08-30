@@ -2304,7 +2304,14 @@ async function geocodeCity(query){
   tripCityResults.innerHTML = '<div class="trip-city-result" style="opacity:.6;cursor:default">Recherche...</div>';
   tripCityResults.classList.add('show');
   try {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&countrycodes=gb,ie&q=${encodeURIComponent(query)}`;
+    // Biais (non-exclusif) vers l'Europe via une zone de recherche
+    // prioritaire (viewbox), sans restreindre les résultats à des pays
+    // précis : la carte couvre désormais UK, Irlande, Autriche, Allemagne
+    // et Suisse, et pourra encore s'étendre. bounded=0 signifie que la
+    // viewbox ne fait que prioriser les résultats européens, sans exclure
+    // les autres (contrairement à l'ancien countrycodes=gb,ie qui, lui,
+    // filtrait strictement et bloquait toute ville hors UK/Irlande).
+    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&viewbox=-25,71,45,34&bounded=0&q=${encodeURIComponent(query)}`;
     const res = await fetch(url, { headers: { 'Accept-Language': 'fr' } });
     const data = await res.json();
     if (!data.length){
