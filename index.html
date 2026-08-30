@@ -659,6 +659,34 @@
     font-weight: 600;
   }
 
+  #satellite-labels-toggle{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 11px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  }
+  #satellite-labels-toggle svg{ width: 13px; height: 13px; }
+  #satellite-labels-toggle:hover{ color: var(--text); }
+  #satellite-labels-toggle.active{
+    background: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+  }
+  /* N'a de sens qu'en vue satellite (le plan "Streets" affiche déjà les
+     noms de villes nativement) : caché dès qu'on bascule sur "Plan". */
+  #satellite-labels-toggle.hidden-on-streets{ display: none; }
+
   /* ---------- MARKER ICONS ---------- */
   .marker-crest-icon{
     width: 34px; height: 34px;
@@ -1245,6 +1273,7 @@
        libellé car ce sont des choix moins évidents à deviner par icône
        seule. Le conteneur passe déjà à la ligne (flex-wrap) si besoin. */
     #basemap-toggle button span.seg-label{ display: none; }
+    #satellite-labels-toggle span.seg-label{ display: none; }
   }
 </style>
 </head>
@@ -1312,6 +1341,10 @@
           <span class="seg-label">Satellite</span>
         </button>
       </div>
+      <button id="satellite-labels-toggle" class="active" title="Afficher/masquer les noms des villes sur la vue satellite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg>
+        <span class="seg-label">Noms des villes</span>
+      </button>
       <div class="segmented" id="mode-toggle">
         <button data-mode="cluster" class="active" title="Regrouper les clubs proches en clusters">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><text x="12" y="15.5" font-size="9" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none">5</text></svg>
@@ -1577,6 +1610,24 @@ const basemaps = {
 basemaps.satellite.addTo(map);
 let currentBasemap = 'satellite';
 
+// Couche de labels (noms de villes, frontières, routes) en surimpression de
+// la vue satellite, qui elle-même est une simple image aérienne sans texte.
+// Non utilisée en vue "Plan" (le fond CARTO affiche déjà les noms nativement).
+const satelliteLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Esri',
+  maxZoom: 19
+});
+satelliteLabels.addTo(map);
+let satelliteLabelsOn = true;
+
+const satelliteLabelsBtn = document.getElementById('satellite-labels-toggle');
+satelliteLabelsBtn.addEventListener('click', () => {
+  satelliteLabelsOn = !satelliteLabelsOn;
+  satelliteLabelsBtn.classList.toggle('active', satelliteLabelsOn);
+  if (satelliteLabelsOn) satelliteLabels.addTo(map);
+  else map.removeLayer(satelliteLabels);
+});
+
 document.querySelectorAll('#basemap-toggle button').forEach(btn => {
   btn.addEventListener('click', () => {
     const choice = btn.dataset.basemap;
@@ -1585,6 +1636,12 @@ document.querySelectorAll('#basemap-toggle button').forEach(btn => {
     basemaps[choice].addTo(map);
     currentBasemap = choice;
     document.querySelectorAll('#basemap-toggle button').forEach(b => b.classList.toggle('active', b === btn));
+    // Le bouton "Noms des villes" ne sert qu'en satellite ; en "Plan" les
+    // noms sont déjà natifs, donc on masque le bouton (sans changer l'état
+    // mémorisé, pour qu'il réapparaisse tel quel si on revient au satellite).
+    satelliteLabelsBtn.classList.toggle('hidden-on-streets', choice === 'streets');
+    if (choice === 'streets') map.removeLayer(satelliteLabels);
+    else if (satelliteLabelsOn) satelliteLabels.addTo(map);
   });
 });
 
