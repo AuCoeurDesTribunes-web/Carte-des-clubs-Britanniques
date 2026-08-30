@@ -1154,7 +1154,11 @@
 
   @media (max-width: 420px){
     #map-controls{ top: 62px; left: 14px; }
-    .segmented button span.seg-label{ display: none; }
+    /* Sur très petit écran, on masque uniquement le texte "Plan"/"Satellite"
+       (l'icône suffit) ; "Clusters", "Points" et "Mes stades" gardent leur
+       libellé car ce sont des choix moins évidents à deviner par icône
+       seule. Le conteneur passe déjà à la ligne (flex-wrap) si besoin. */
+    #basemap-toggle button span.seg-label{ display: none; }
   }
 </style>
 </head>
