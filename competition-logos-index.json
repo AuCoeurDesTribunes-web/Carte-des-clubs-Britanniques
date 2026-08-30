@@ -1,13 +1,23 @@
 {
+  "austria-2-liga": "austria-2-liga.svg",
+  "austria-bundesliga": "austria-bundesliga.png",
   "england-championship": "england-championship.webp",
   "england-league-one": "england-league-one.webp",
   "england-league-two": "england-league-two.webp",
   "england-national-league": "england-national-league.webp",
+  "germany-2-bundesliga": "germany-2-bundesliga.webp",
+  "germany-3-liga": "germany-3-liga.webp",
+  "germany-bundesliga": "germany-bundesliga.svg",
+  "germany-regionalliga-bayern-sudwest": "germany-regionalliga-bayern-sudwest.svg",
+  "germany-regionalliga-nord-nordost": "germany-regionalliga-nord-nordost.webp",
+  "germany-regionalliga-west": "germany-regionalliga-west.png",
   "ireland-premier-division": "ireland-premier-division.png",
   "ligue-des-champions": "ligue-des-champions.webp",
   "northern-ireland-premiership": "northern-ireland-premiership.png",
   "premier-league": "premier-league.webp",
   "scotland-championship": "scotland-championship.svg",
   "scotland-premiership": "scotland-premiership.png",
+  "switzerland-challenge-league": "switzerland-challenge-league.png",
+  "switzerland-super-league": "switzerland-super-league.webp",
   "wales-cymru-premier": "wales-cymru-premier.webp"
 }
