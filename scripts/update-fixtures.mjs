@@ -5,7 +5,7 @@
 // Premier League, Championship, Ligue des Champions, Bundesliga, Eredivisie,
 // Brasileirão, La Liga, Ligue 1, Primeira Liga, Championnat d'Europe,
 // Serie A, Coupe du Monde. Ici, seules Premier League (PL), Championship
-// (ELC) et Ligue des Champions (CL) nous concernent. L'Europa League et les
+// (ELC), Bundesliga (BL1) et Ligue des Champions (CL) nous concernent. L'Europa League et les
 // coupes nationales (FA Cup, Carabao Cup...) ne sont PAS disponibles via
 // cette API, à aucun tarif — pour les 7 autres compétitions de la carte
 // (sans lien avec la CL), le popup retombe automatiquement sur le lien
@@ -51,7 +51,8 @@ function slugify(name) {
 //    clubs que dans LEUR propre liste (CLUBS_DATA[leagueKey]).
 const DOMESTIC_COMPETITIONS = {
   'Premier League': { code: 'PL', label: 'Premier League' },
-  'England - Championship': { code: 'ELC', label: 'Championship' }
+  'England - Championship': { code: 'ELC', label: 'Championship' },
+  'Germany - Bundesliga': { code: 'BL1', label: 'Bundesliga' }
 };
 
 // 3) Compétitions européennes/internationales couvertes gratuitement : leurs
@@ -177,4 +178,4 @@ if (unmatchedTeams.length) {
   console.warn(JSON.stringify(unmatchedTeams, null, 2));
 }
 
-console.log(`Terminé : calendrier généré pour ${Object.keys(fixturesByClub).length} club(s) (Premier League + Championship + Ligue des Champions).`);
+console.log(`Terminé : calendrier généré pour ${Object.keys(fixturesByClub).length} club(s) (Premier League + Championship + Bundesliga + Ligue des Champions).`);
