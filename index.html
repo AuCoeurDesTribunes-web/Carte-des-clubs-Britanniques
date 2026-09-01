@@ -693,11 +693,33 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
   .marker-crest-icon img{
     width: 100%; height: 100%;
     object-fit: contain;
     filter: drop-shadow(0 1px 2px rgba(0,0,0,.85)) drop-shadow(0 0 3px rgba(0,0,0,.6));
+  }
+  /* Badge "équipe réserve" (noms se terminant par "II" ou "B") : petit rond
+     avec un "2" en haut à droite du logo, pour la distinguer de l'équipe
+     première du même club sur la carte. */
+  .marker-reserve-badge{
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--panel-2);
+    border: 1.5px solid #ffffff;
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.7);
   }
   .marker-crest-icon.is-fallback{
     border-radius: 50%;
@@ -1842,9 +1864,14 @@ function crestIcon(name, hex){
   const txt = initials(name);
   const scale = CREST_SCALE_OVERRIDES[name] || 1;
   const imgStyle = scale !== 1 ? ` style="transform:scale(${scale})"` : '';
+  // Équipes réserve ("... II", parfois "... B") : petit badge "2" en haut à
+  // droite du logo, pour les distinguer visuellement de l'équipe première
+  // du même club sur la carte.
+  const isReserveTeam = /\s(II|B)$/.test(name);
+  const badgeHtml = isReserveTeam ? '<span class="marker-reserve-badge">2</span>' : '';
   return L.divIcon({
     className: '',
-    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt=""${imgStyle} onerror="window.__crestFallback(this,'${txt}')"></div>`,
+    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt=""${imgStyle} onerror="window.__crestFallback(this,'${txt}')">${badgeHtml}</div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, -18]
@@ -1902,7 +1929,16 @@ function stadiumIcon(){
 }
 
 function createClubMarker(club, league, meta){
-  const marker = L.marker([club.lat, club.lon], { icon: crestIcon(club.name, meta.hex) });
+  // Un club de championnat mieux classé (tier bas = championnat plus haut)
+  // doit toujours s'afficher au-dessus d'un club de championnat inférieur
+  // en cas de chevauchement des logos, peu importe leur position
+  // géographique. zIndexOffset l'emporte sur le calcul par défaut de
+  // Leaflet (basé sur la position Y du marqueur à l'écran).
+  const tier = LEAGUE_TIER[league] || 5;
+  const marker = L.marker([club.lat, club.lon], {
+    icon: crestIcon(club.name, meta.hex),
+    zIndexOffset: (6 - tier) * 100000
+  });
 
   const flashscoreUrl = flashscoreLinkFor(club.name, league);
 
