@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T06:23:43.505Z",
+  "generated_at": "2026-09-02T18:09:35.986Z",
   "clubs": {
     "Ipswich Town FC": [
       {
@@ -1285,7 +1285,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-10-24T14:00:00Z",
+        "date": "2026-10-25T14:00:00Z",
         "opponent": "Brighton and Hove Albion FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1425,7 +1425,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-11-01T14:00:00Z",
+        "date": "2026-10-31T20:00:00Z",
         "opponent": "Fulham FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
