@@ -1888,6 +1888,19 @@ const CREST_SCALE_OVERRIDES = {
   "SSV Jeddeloh": 0.75,
 };
 
+/* Décalage fixe en PIXELS écran (pas en degrés GPS) pour des clubs dont les
+   logos se chevauchent même à très faible zoom : un décalage en degrés
+   devient invisible en dézoomant (quelques centaines de mètres tiennent
+   dans un seul pixel à l'échelle de l'Europe), alors qu'un décalage en
+   pixels reste constant quel que soit le niveau de zoom. Milan et Inter
+   partagent le même stade (San Siro) et sont donc quasiment superposés à
+   toute échelle. Le marqueur (zone cliquable, popup) reste positionné sur
+   les vraies coordonnées GPS ; seul le rendu visuel du logo est décalé. */
+const MARKER_PIXEL_OFFSET = {
+  "AC Milan": [-8, -8],
+  "Inter Milan": [8, 8],
+};
+
 function crestIcon(name, hex){
   const txt = initials(name);
   const scale = CREST_SCALE_OVERRIDES[name] || 1;
@@ -1897,9 +1910,13 @@ function crestIcon(name, hex){
   // du même club sur la carte.
   const isReserveTeam = /\s(II|B)$/.test(name);
   const badgeHtml = isReserveTeam ? '<span class="marker-reserve-badge">2</span>' : '';
+  const pixelOffset = MARKER_PIXEL_OFFSET[name];
+  const wrapStyle = pixelOffset
+    ? `border-color:${hex};transform:translate(${pixelOffset[0]}px,${pixelOffset[1]}px)`
+    : `border-color:${hex}`;
   return L.divIcon({
     className: '',
-    html: `<div class="marker-crest-icon" style="border-color:${hex}"><img src="${crestPath(name)}" alt=""${imgStyle} onerror="window.__crestFallback(this,'${txt}')">${badgeHtml}</div>`,
+    html: `<div class="marker-crest-icon" style="${wrapStyle}"><img src="${crestPath(name)}" alt=""${imgStyle} onerror="window.__crestFallback(this,'${txt}')">${badgeHtml}</div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, -18]
