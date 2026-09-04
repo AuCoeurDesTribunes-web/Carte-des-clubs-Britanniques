@@ -5,7 +5,7 @@
 // Premier League, Championship, Ligue des Champions, Bundesliga, Eredivisie,
 // Brasileirão, La Liga, Ligue 1, Primeira Liga, Championnat d'Europe,
 // Serie A, Coupe du Monde. Ici, seules Premier League (PL), Championship
-// (ELC), Bundesliga (BL1) et Ligue des Champions (CL) nous concernent. L'Europa League et les
+// (ELC), Bundesliga (BL1), Serie A (SA) et Ligue des Champions (CL) nous concernent. L'Europa League et les
 // coupes nationales (FA Cup, Carabao Cup...) ne sont PAS disponibles via
 // cette API, à aucun tarif — pour les 7 autres compétitions de la carte
 // (sans lien avec la CL), le popup retombe automatiquement sur le lien
@@ -52,7 +52,8 @@ function slugify(name) {
 const DOMESTIC_COMPETITIONS = {
   'Premier League': { code: 'PL', label: 'Premier League' },
   'England - Championship': { code: 'ELC', label: 'Championship' },
-  'Germany - Bundesliga': { code: 'BL1', label: 'Bundesliga' }
+  'Germany - Bundesliga': { code: 'BL1', label: 'Bundesliga' },
+  'Italy - Serie A': { code: 'SA', label: 'Serie A' }
 };
 
 // 3) Compétitions européennes/internationales couvertes gratuitement : leurs
@@ -68,7 +69,7 @@ function normalize(name) {
     .toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/&/g, ' and ')
-    .replace(/\b(fc|afc|cf|the)\b/g, '')
+    .replace(/\b(fc|afc|cf|cfc|the)\b/g, '')
     // Beaucoup de clubs allemands ont un nom officiel avec un numéro (année
     // de fondation) que l'API renvoie mais que la carte n'affiche pas
     // ("Bayer 04 Leverkusen" vs "Bayer Leverkusen", "TSG 1899 Hoffenheim" vs
@@ -78,12 +79,33 @@ function normalize(name) {
     .replace(/[^a-z]/g, '');
 }
 
+// Certains clubs ont un nom officiel (renvoyé par l'API) trop différent du
+// nom affiché sur la carte pour qu'une comparaison de sous-chaînes suffise
+// ("Inter Milan" vs "FC Internazionale Milano" : aucun des deux mots n'est
+// inclus dans l'autre). On ajoute ici des noms alternatifs, indexés en plus
+// du nom réel, uniquement pour la reconnaissance côté API — le nom affiché
+// sur la carte (club.name) ne change jamais.
+const ALIAS_NAMES = {
+  'Inter Milan': ['Internazionale', 'Inter'],
+};
+
+function buildClubIndex(clubs) {
+  const index = [];
+  clubs.forEach(c => {
+    index.push({ club: c, norm: normalize(c.name) });
+    (ALIAS_NAMES[c.name] || []).forEach(alias => {
+      index.push({ club: c, norm: normalize(alias) });
+    });
+  });
+  return index;
+}
+
 // Index de TOUS les clubs de la carte (utilisé pour reconnaître les
 // adversaires, pas seulement les clubs à domicile des compétitions
 // européennes) : construit une seule fois, avant les boucles.
 const ALL_CLUBS_INDEX = [];
 Object.values(CLUBS_DATA).forEach(clubs => {
-  clubs.forEach(c => ALL_CLUBS_INDEX.push({ club: c, norm: normalize(c.name) }));
+  buildClubIndex(clubs).forEach(entry => ALL_CLUBS_INDEX.push(entry));
 });
 
 const today = new Date();
@@ -125,7 +147,7 @@ function findMatch(clubIndex, homeName) {
 // ---- Compétitions domestiques : un club = une ligue précise ----
 for (const [leagueKey, { code, label }] of Object.entries(DOMESTIC_COMPETITIONS)) {
   const clubs = CLUBS_DATA[leagueKey] || [];
-  const clubIndex = clubs.map(c => ({ club: c, norm: normalize(c.name) }));
+  const clubIndex = buildClubIndex(clubs);
   // Le slug est basé sur la clé de ligue complète (ex. "England -
   // Championship"), exactement comme dans la légende de index.html, afin
   // qu'un seul fichier logo serve à la fois à la légende et aux popups.
@@ -184,4 +206,4 @@ if (unmatchedTeams.length) {
   console.warn(JSON.stringify(unmatchedTeams, null, 2));
 }
 
-console.log(`Terminé : calendrier généré pour ${Object.keys(fixturesByClub).length} club(s) (Premier League + Championship + Bundesliga + Ligue des Champions).`);
+console.log(`Terminé : calendrier généré pour ${Object.keys(fixturesByClub).length} club(s) (Premier League + Championship + Bundesliga + Serie A + Ligue des Champions).`);
