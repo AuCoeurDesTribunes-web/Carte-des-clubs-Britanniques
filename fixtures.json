@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T06:19:31.158Z",
+  "generated_at": "2026-09-09T18:10:02.623Z",
   "clubs": {
     "Crystal Palace FC": [
       {
@@ -6664,12 +6664,6 @@
       }
     ],
     "VfB Stuttgart": [
-      {
-        "date": "2026-09-09T16:45:00Z",
-        "opponent": "Viking FK",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
       {
         "date": "2026-09-19T16:30:00Z",
         "opponent": "Borussia Dortmund",
