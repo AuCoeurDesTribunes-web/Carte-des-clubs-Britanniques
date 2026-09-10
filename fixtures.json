@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T06:19:48.023Z",
+  "generated_at": "2026-09-10T18:09:30.439Z",
   "clubs": {
     "Crystal Palace FC": [
       {
@@ -5209,25 +5209,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-10T13:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-17T13:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-11-01T14:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-21T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5307,25 +5307,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-10T13:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-25T14:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-08T18:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-29T16:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5405,13 +5405,13 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-09T18:30:00Z",
         "opponent": "Werder Bremen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-24T16:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5423,13 +5423,13 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-07T14:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-29T18:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5521,25 +5521,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-10T13:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-24T13:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-31T14:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-22T14:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5619,25 +5619,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-10T13:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-24T13:30:00Z",
         "opponent": "Werder Bremen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-07T14:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-28T14:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5717,25 +5717,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-11T15:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-25T16:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-08T16:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-29T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5815,25 +5815,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-11T13:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-24T13:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-08T14:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-28T14:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5913,7 +5913,7 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-10T16:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5925,7 +5925,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-24T13:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5937,7 +5937,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-07T14:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6035,19 +6035,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-17T13:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-30T19:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-21T14:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6139,7 +6139,7 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-17T16:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6151,13 +6151,13 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-31T17:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-20T19:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6255,19 +6255,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-17T13:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-06T19:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-28T14:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6353,19 +6353,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-18T15:30:00Z",
         "opponent": "TSG Hoffenheim",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-31T14:30:00Z",
         "opponent": "SC Paderborn 07",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-21T14:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6451,25 +6451,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-17T13:30:00Z",
         "opponent": "SC Paderborn 07",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-31T14:30:00Z",
         "opponent": "TSG Hoffenheim",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-22T16:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-27T19:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6549,19 +6549,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-16T18:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-11-01T16:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-21T14:30:00Z",
         "opponent": "TSG Hoffenheim",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6653,19 +6653,19 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-23T18:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-07T17:30:00Z",
         "opponent": "Werder Bremen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-28T17:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6763,19 +6763,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-18T13:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-31T14:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-21T14:30:00Z",
         "opponent": "SC Paderborn 07",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6861,19 +6861,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-17T00:00:00Z",
+        "date": "2026-10-17T13:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-31T00:00:00Z",
+        "date": "2026-10-31T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-21T00:00:00Z",
+        "date": "2026-11-21T17:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -6959,25 +6959,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-10T00:00:00Z",
+        "date": "2026-10-10T13:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-10-24T00:00:00Z",
+        "date": "2026-10-24T13:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-07T00:00:00Z",
+        "date": "2026-11-07T14:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-11-28T00:00:00Z",
+        "date": "2026-11-28T14:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
