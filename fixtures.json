@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T18:09:30.439Z",
+  "generated_at": "2026-09-11T06:18:27.498Z",
   "clubs": {
     "Crystal Palace FC": [
       {
@@ -924,12 +924,6 @@
       }
     ],
     "Manchester United": [
-      {
-        "date": "2026-09-10T19:00:00Z",
-        "opponent": "Sabah FK",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
       {
         "date": "2026-09-13T15:30:00Z",
         "opponent": "Manchester City",
@@ -6127,12 +6121,6 @@
     ],
     "FC Bayern München": [
       {
-        "date": "2026-09-10T19:00:00Z",
-        "opponent": "FK Bodø/Glimt",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
-      {
         "date": "2026-09-18T18:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
@@ -7826,12 +7814,6 @@
       }
     ],
     "Como 1907": [
-      {
-        "date": "2026-09-10T19:00:00Z",
-        "opponent": "RB Leipzig",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
       {
         "date": "2026-09-14T16:30:00Z",
         "opponent": "Parma Calcio",
