@@ -1,116 +1,6 @@
 {
-  "generated_at": "2026-09-12T18:08:43.502Z",
+  "generated_at": "2026-09-13T06:22:26.473Z",
   "clubs": {
-    "Sunderland AFC": [
-      {
-        "date": "2026-09-12T19:00:00Z",
-        "opponent": "Arsenal FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-10-10T14:00:00Z",
-        "opponent": "Brighton and Hove Albion FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-10-25T16:30:00Z",
-        "opponent": "Leeds United FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-11-07T15:00:00Z",
-        "opponent": "Chelsea FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-11-28T15:00:00Z",
-        "opponent": "Tottenham Hotspur",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-12-12T15:00:00Z",
-        "opponent": "Nottingham Forest",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-12-19T15:00:00Z",
-        "opponent": "Crystal Palace FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-01-02T15:00:00Z",
-        "opponent": "Hull City",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-01-05T20:15:00Z",
-        "opponent": "Liverpool FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-01-23T15:00:00Z",
-        "opponent": "Coventry City FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-02-06T15:00:00Z",
-        "opponent": "Aston Villa FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-02-20T15:00:00Z",
-        "opponent": "Everton FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-03-03T20:00:00Z",
-        "opponent": "Manchester United",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-03-13T15:00:00Z",
-        "opponent": "Brentford FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-04-10T14:00:00Z",
-        "opponent": "Ipswich Town FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-05-01T14:00:00Z",
-        "opponent": "Newcastle United FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-05-15T14:00:00Z",
-        "opponent": "AFC Bournemouth",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-05-30T15:00:00Z",
-        "opponent": "Manchester City",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      }
-    ],
     "Coventry City FC": [
       {
         "date": "2026-09-13T13:00:00Z",
@@ -1543,6 +1433,110 @@
       {
         "date": "2027-05-30T15:00:00Z",
         "opponent": "Brighton and Hove Albion FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      }
+    ],
+    "Sunderland AFC": [
+      {
+        "date": "2026-10-10T14:00:00Z",
+        "opponent": "Brighton and Hove Albion FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-10-25T16:30:00Z",
+        "opponent": "Leeds United FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-11-07T15:00:00Z",
+        "opponent": "Chelsea FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-11-28T15:00:00Z",
+        "opponent": "Tottenham Hotspur",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-12-12T15:00:00Z",
+        "opponent": "Nottingham Forest",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-12-19T15:00:00Z",
+        "opponent": "Crystal Palace FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-01-02T15:00:00Z",
+        "opponent": "Hull City",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-01-05T20:15:00Z",
+        "opponent": "Liverpool FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-01-23T15:00:00Z",
+        "opponent": "Coventry City FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-02-06T15:00:00Z",
+        "opponent": "Aston Villa FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-02-20T15:00:00Z",
+        "opponent": "Everton FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-03-03T20:00:00Z",
+        "opponent": "Manchester United",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-03-13T15:00:00Z",
+        "opponent": "Brentford FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-04-10T14:00:00Z",
+        "opponent": "Ipswich Town FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-05-01T14:00:00Z",
+        "opponent": "Newcastle United FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-05-15T14:00:00Z",
+        "opponent": "AFC Bournemouth",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-05-30T15:00:00Z",
+        "opponent": "Manchester City",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       }
@@ -6893,110 +6887,6 @@
         "competitionSlug": "germany-bundesliga"
       }
     ],
-    "Atalanta BC": [
-      {
-        "date": "2026-09-12T18:45:00Z",
-        "opponent": "Cagliari Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-10-12T16:30:00Z",
-        "opponent": "Venezia FC",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-10-25T14:00:00Z",
-        "opponent": "Frosinone Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-11-02T19:45:00Z",
-        "opponent": "Parma Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-11-22T19:45:00Z",
-        "opponent": "Inter Milan",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-12-13T00:00:00Z",
-        "opponent": "Genoa",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-12-20T00:00:00Z",
-        "opponent": "SSC Napoli",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-01-06T00:00:00Z",
-        "opponent": "Como 1907",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-01-17T00:00:00Z",
-        "opponent": "AS Roma",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-01-31T00:00:00Z",
-        "opponent": "ACF Fiorentina",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-02-07T00:00:00Z",
-        "opponent": "SS Lazio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-02-21T00:00:00Z",
-        "opponent": "AC Monza",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-03-07T00:00:00Z",
-        "opponent": "Torino FC",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-03-21T00:00:00Z",
-        "opponent": "AC Milan",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-04-18T00:00:00Z",
-        "opponent": "Udinese Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-05-02T00:00:00Z",
-        "opponent": "Juventus",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-05-23T00:00:00Z",
-        "opponent": "US Lecce",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      }
-    ],
     "US Lecce": [
       {
         "date": "2026-09-13T13:00:00Z",
@@ -9095,6 +8985,104 @@
       {
         "date": "2027-05-30T00:00:00Z",
         "opponent": "AS Roma",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      }
+    ],
+    "Atalanta BC": [
+      {
+        "date": "2026-10-12T16:30:00Z",
+        "opponent": "Venezia FC",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-10-25T14:00:00Z",
+        "opponent": "Frosinone Calcio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-11-02T19:45:00Z",
+        "opponent": "Parma Calcio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-11-22T19:45:00Z",
+        "opponent": "Inter Milan",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-12-13T00:00:00Z",
+        "opponent": "Genoa",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-12-20T00:00:00Z",
+        "opponent": "SSC Napoli",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-01-06T00:00:00Z",
+        "opponent": "Como 1907",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-01-17T00:00:00Z",
+        "opponent": "AS Roma",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-01-31T00:00:00Z",
+        "opponent": "ACF Fiorentina",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-02-07T00:00:00Z",
+        "opponent": "SS Lazio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-02-21T00:00:00Z",
+        "opponent": "AC Monza",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-03-07T00:00:00Z",
+        "opponent": "Torino FC",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-03-21T00:00:00Z",
+        "opponent": "AC Milan",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-04-18T00:00:00Z",
+        "opponent": "Udinese Calcio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-05-02T00:00:00Z",
+        "opponent": "Juventus",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-05-23T00:00:00Z",
+        "opponent": "US Lecce",
         "competition": "Serie A",
         "competitionSlug": "italy-serie-a"
       }
