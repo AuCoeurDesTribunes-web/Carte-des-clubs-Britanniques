@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T18:08:56.446Z",
+  "generated_at": "2026-09-21T06:21:10.671Z",
   "clubs": {
     "Arsenal FC": [
       {
@@ -6653,116 +6653,6 @@
         "competitionSlug": "germany-bundesliga"
       }
     ],
-    "AC Milan": [
-      {
-        "date": "2026-09-20T18:45:00Z",
-        "opponent": "US Lecce",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-10-18T16:00:00Z",
-        "opponent": "Atalanta BC",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-10-28T17:30:00Z",
-        "opponent": "Bologna FC",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-10-31T19:45:00Z",
-        "opponent": "Inter Milan",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-11-22T14:00:00Z",
-        "opponent": "Frosinone Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-12-06T00:00:00Z",
-        "opponent": "Parma Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2026-12-20T00:00:00Z",
-        "opponent": "Como 1907",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-01-06T00:00:00Z",
-        "opponent": "ACF Fiorentina",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-01-17T00:00:00Z",
-        "opponent": "Torino FC",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-01-31T00:00:00Z",
-        "opponent": "Juventus",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-02-21T00:00:00Z",
-        "opponent": "Genoa",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-03-07T00:00:00Z",
-        "opponent": "Cagliari Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-03-14T00:00:00Z",
-        "opponent": "US Sassuolo",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-04-04T00:00:00Z",
-        "opponent": "AC Monza",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-04-18T00:00:00Z",
-        "opponent": "SSC Napoli",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-05-02T00:00:00Z",
-        "opponent": "SS Lazio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-05-16T00:00:00Z",
-        "opponent": "AS Roma",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      },
-      {
-        "date": "2027-05-30T00:00:00Z",
-        "opponent": "Udinese Calcio",
-        "competition": "Serie A",
-        "competitionSlug": "italy-serie-a"
-      }
-    ],
     "Genoa": [
       {
         "date": "2026-10-10T13:00:00Z",
@@ -8459,6 +8349,110 @@
       {
         "date": "2027-05-23T00:00:00Z",
         "opponent": "AC Monza",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      }
+    ],
+    "AC Milan": [
+      {
+        "date": "2026-10-18T16:00:00Z",
+        "opponent": "Atalanta BC",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-10-28T17:30:00Z",
+        "opponent": "Bologna FC",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-10-31T19:45:00Z",
+        "opponent": "Inter Milan",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-11-22T14:00:00Z",
+        "opponent": "Frosinone Calcio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-12-06T00:00:00Z",
+        "opponent": "Parma Calcio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2026-12-20T00:00:00Z",
+        "opponent": "Como 1907",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-01-06T00:00:00Z",
+        "opponent": "ACF Fiorentina",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-01-17T00:00:00Z",
+        "opponent": "Torino FC",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-01-31T00:00:00Z",
+        "opponent": "Juventus",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-02-21T00:00:00Z",
+        "opponent": "Genoa",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-03-07T00:00:00Z",
+        "opponent": "Cagliari Calcio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-03-14T00:00:00Z",
+        "opponent": "US Sassuolo",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-04-04T00:00:00Z",
+        "opponent": "AC Monza",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-04-18T00:00:00Z",
+        "opponent": "SSC Napoli",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-05-02T00:00:00Z",
+        "opponent": "SS Lazio",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-05-16T00:00:00Z",
+        "opponent": "AS Roma",
+        "competition": "Serie A",
+        "competitionSlug": "italy-serie-a"
+      },
+      {
+        "date": "2027-05-30T00:00:00Z",
+        "opponent": "Udinese Calcio",
         "competition": "Serie A",
         "competitionSlug": "italy-serie-a"
       }
