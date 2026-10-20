@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T11:11:38.896Z",
+  "generated_at": "2026-10-20T21:11:08.063Z",
   "clubs": {
     "Ipswich Town FC": [
       {
@@ -125,7 +125,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T20:15:00Z",
         "opponent": "Everton FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -247,13 +247,13 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-13T14:00:00Z",
         "opponent": "AFC Bournemouth",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-19T15:00:00Z",
+        "date": "2026-12-20T16:30:00Z",
         "opponent": "Manchester United",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -351,13 +351,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-01T20:00:00Z",
         "opponent": "Ipswich Town FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-13T16:30:00Z",
         "opponent": "Aston Villa FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -449,19 +449,19 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T19:30:00Z",
         "opponent": "Crystal Palace FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-05T12:30:00Z",
         "opponent": "Liverpool FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-19T15:00:00Z",
+        "date": "2026-12-21T20:00:00Z",
         "opponent": "Aston Villa FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -529,12 +529,6 @@
     ],
     "Liverpool FC": [
       {
-        "date": "2026-10-20T19:00:00Z",
-        "opponent": "Villarreal CF",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
-      {
         "date": "2026-10-25T14:00:00Z",
         "opponent": "Brighton and Hove Albion FC",
         "competition": "Premier League",
@@ -553,7 +547,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T19:30:00Z",
         "opponent": "Sunderland AFC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -571,7 +565,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-19T15:00:00Z",
+        "date": "2026-12-19T17:30:00Z",
         "opponent": "Tottenham Hotspur",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -663,7 +657,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-13T19:00:00Z",
         "opponent": "Manchester United",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -877,13 +871,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T19:30:00Z",
         "opponent": "Nottingham Forest",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-14T20:00:00Z",
         "opponent": "Tottenham Hotspur",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -975,13 +969,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-13T14:00:00Z",
         "opponent": "Nottingham Forest",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-19T15:00:00Z",
+        "date": "2026-12-20T14:00:00Z",
         "opponent": "Crystal Palace FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1055,12 +1049,6 @@
     ],
     "Manchester City": [
       {
-        "date": "2026-10-20T19:00:00Z",
-        "opponent": "PAE AEK",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
-      {
         "date": "2026-10-31T15:00:00Z",
         "opponent": "Brighton and Hove Albion FC",
         "competition": "Premier League",
@@ -1079,13 +1067,13 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T19:30:00Z",
         "opponent": "Leeds United FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-12T17:30:00Z",
         "opponent": "Chelsea FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1177,7 +1165,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T20:15:00Z",
         "opponent": "Brighton and Hove Albion FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1269,19 +1257,19 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T20:15:00Z",
         "opponent": "Arsenal FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-05T20:00:00Z",
         "opponent": "Manchester City",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-19T15:00:00Z",
+        "date": "2026-12-19T12:30:00Z",
         "opponent": "Newcastle United FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1361,13 +1349,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-03T20:00:00Z",
         "opponent": "Fulham FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-06T16:30:00Z",
         "opponent": "Arsenal FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1453,13 +1441,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-02T20:00:00Z",
+        "date": "2026-12-02T20:15:00Z",
         "opponent": "Manchester United",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-06T14:00:00Z",
         "opponent": "Sunderland AFC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1545,7 +1533,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-06T14:00:00Z",
         "opponent": "Fulham FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1821,7 +1809,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-05T17:30:00Z",
         "opponent": "Brighton and Hove Albion FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1913,13 +1901,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-13T14:00:00Z",
         "opponent": "Everton FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2026-12-19T15:00:00Z",
+        "date": "2026-12-20T14:00:00Z",
         "opponent": "Ipswich Town FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1989,122 +1977,6 @@
         "opponent": "Liverpool FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
-      }
-    ],
-    "Wolverhampton Wanderers": [
-      {
-        "date": "2026-10-20T18:45:00Z",
-        "opponent": "Portsmouth FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-10-24T14:00:00Z",
-        "opponent": "Watford FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-10-31T15:00:00Z",
-        "opponent": "Cardiff City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-21T15:00:00Z",
-        "opponent": "Charlton Athletic FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-24T20:00:00Z",
-        "opponent": "Derby County FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-05T15:00:00Z",
-        "opponent": "Southampton FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-12T15:00:00Z",
-        "opponent": "Millwall FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-26T15:00:00Z",
-        "opponent": "Swansea City AFC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-16T00:00:00Z",
-        "opponent": "Burnley FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-27T00:00:00Z",
-        "opponent": "Bristol City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-30T00:00:00Z",
-        "opponent": "Wrexham FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-13T00:00:00Z",
-        "opponent": "Sheffield United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-27T00:00:00Z",
-        "opponent": "Middlesbrough FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-03T00:00:00Z",
-        "opponent": "Preston North End FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-13T00:00:00Z",
-        "opponent": "Lincoln City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-03T00:00:00Z",
-        "opponent": "Norwich City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-10T00:00:00Z",
-        "opponent": "Birmingham City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-20T00:00:00Z",
-        "opponent": "West Ham United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-24T00:00:00Z",
-        "opponent": "Queens Park Rangers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
       }
     ],
     "Bolton Wanderers FC": [
@@ -3313,6 +3185,116 @@
       {
         "date": "2027-05-01T00:00:00Z",
         "opponent": "Watford FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      }
+    ],
+    "Wolverhampton Wanderers": [
+      {
+        "date": "2026-10-24T14:00:00Z",
+        "opponent": "Watford FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-10-31T15:00:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-11-21T15:00:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-11-24T20:00:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-05T15:00:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-12T15:00:00Z",
+        "opponent": "Millwall FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-26T15:00:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-16T00:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-27T00:00:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-30T00:00:00Z",
+        "opponent": "Wrexham FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-13T00:00:00Z",
+        "opponent": "Sheffield United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-27T00:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-03T00:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-13T00:00:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-03T00:00:00Z",
+        "opponent": "Norwich City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-10T00:00:00Z",
+        "opponent": "Birmingham City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-20T00:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-24T00:00:00Z",
+        "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       }
@@ -4566,12 +4548,6 @@
       }
     ],
     "VfB Stuttgart": [
-      {
-        "date": "2026-10-20T19:00:00Z",
-        "opponent": "Club Atlético de Madrid",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
       {
         "date": "2026-10-23T18:30:00Z",
         "opponent": "Borussia Mönchengladbach",
@@ -6505,12 +6481,6 @@
     ],
     "SSC Napoli": [
       {
-        "date": "2026-10-20T19:00:00Z",
-        "opponent": "FK Bodø/Glimt",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
-      {
         "date": "2026-10-24T16:00:00Z",
         "opponent": "AS Roma",
         "competition": "Serie A",
@@ -7300,12 +7270,6 @@
       }
     ],
     "AS Roma": [
-      {
-        "date": "2026-10-20T19:00:00Z",
-        "opponent": "ŠK Slovan Bratislava",
-        "competition": "Ligue des Champions",
-        "competitionSlug": "ligue-des-champions"
-      },
       {
         "date": "2026-10-27T19:45:00Z",
         "opponent": "Cagliari Calcio",
