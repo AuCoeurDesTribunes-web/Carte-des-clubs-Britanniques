@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T14:23:12.184Z",
+  "generated_at": "2026-11-05T23:12:38.138Z",
   "clubs": {
     "Everton FC": [
       {
@@ -4213,25 +4213,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-11T19:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-10T16:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T14:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T17:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4299,19 +4299,19 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-05T14:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-19T17:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-12T17:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4397,19 +4397,19 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-12T14:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-08T19:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T14:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4483,19 +4483,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-13T14:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-19T14:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-12T19:30:00Z",
         "opponent": "TSG Hoffenheim",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4563,25 +4563,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-12T14:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-09T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T14:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T14:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4649,19 +4649,19 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-12T14:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-09T14:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-15T19:30:00Z",
         "opponent": "FSV Mainz 05",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4673,7 +4673,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T14:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4741,19 +4741,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-12T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-09T14:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-12T19:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4821,19 +4821,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-05T14:30:00Z",
         "opponent": "TSG Hoffenheim",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-20T14:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-13T19:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4901,25 +4901,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-13T16:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-09T14:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-24T18:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4975,7 +4975,7 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-04T19:30:00Z",
         "opponent": "SC Paderborn 07",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -4987,13 +4987,13 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-18T19:30:00Z",
         "opponent": "Werder Bremen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-13T19:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5067,25 +5067,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-05T14:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-19T14:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-17T16:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-24T16:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5147,19 +5147,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-05T14:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-20T16:30:00Z",
         "opponent": "TSG Hoffenheim",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-13T19:30:00Z",
         "opponent": "SC Paderborn 07",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5221,19 +5221,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-06T16:30:00Z",
         "opponent": "VfB Stuttgart",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-19T14:30:00Z",
         "opponent": "Hamburger SV",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-13T17:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5301,25 +5301,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-12T17:30:00Z",
         "opponent": "Eintracht Frankfurt",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-09T17:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T14:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T14:30:00Z",
         "opponent": "RB Leipzig",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5381,25 +5381,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-05T17:30:00Z",
         "opponent": "Werder Bremen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-09T14:30:00Z",
         "opponent": "FC Schalke 04",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T17:30:00Z",
         "opponent": "FC Bayern München",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-24T14:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5461,25 +5461,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-06T14:30:00Z",
         "opponent": "Borussia Dortmund",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-20T18:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-14T19:30:00Z",
         "opponent": "Werder Bremen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T14:30:00Z",
         "opponent": "FC Augsburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5541,19 +5541,19 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-05T00:00:00Z",
+        "date": "2026-12-05T14:30:00Z",
         "opponent": "1. FC Köln",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-19T00:00:00Z",
+        "date": "2026-12-19T14:30:00Z",
         "opponent": "SC Paderborn 07",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-13T00:00:00Z",
+        "date": "2027-01-12T19:30:00Z",
         "opponent": "Borussia Mönchengladbach",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
@@ -5621,25 +5621,25 @@
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2026-12-12T00:00:00Z",
+        "date": "2026-12-13T18:30:00Z",
         "opponent": "Bayer Leverkusen",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-09T00:00:00Z",
+        "date": "2027-01-10T14:30:00Z",
         "opponent": "Union Berlin",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-17T14:30:00Z",
         "opponent": "SV Elversberg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-22T19:30:00Z",
         "opponent": "SC Freiburg",
         "competition": "Bundesliga",
         "competitionSlug": "germany-bundesliga"
