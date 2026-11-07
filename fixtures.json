@@ -1,98 +1,6 @@
 {
-  "generated_at": "2026-11-06T22:39:43.769Z",
+  "generated_at": "2026-11-07T12:43:01.185Z",
   "clubs": {
-    "Leeds United FC": [
-      {
-        "date": "2026-11-07T12:30:00Z",
-        "opponent": "Tottenham Hotspur",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-11-28T15:00:00Z",
-        "opponent": "Coventry City FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-12-05T15:00:00Z",
-        "opponent": "Ipswich Town FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2026-12-19T15:00:00Z",
-        "opponent": "Fulham FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-01-01T20:00:00Z",
-        "opponent": "Everton FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-01-06T20:15:00Z",
-        "opponent": "Manchester City",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-01-23T15:00:00Z",
-        "opponent": "Chelsea FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-02-06T15:00:00Z",
-        "opponent": "AFC Bournemouth",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-02-20T15:00:00Z",
-        "opponent": "Aston Villa FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-03-03T20:00:00Z",
-        "opponent": "Hull City",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-03-13T15:00:00Z",
-        "opponent": "Brighton and Hove Albion FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-04-10T14:00:00Z",
-        "opponent": "Nottingham Forest",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-04-24T14:00:00Z",
-        "opponent": "Liverpool FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-05-08T14:00:00Z",
-        "opponent": "Arsenal FC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      },
-      {
-        "date": "2027-05-23T14:00:00Z",
-        "opponent": "Sunderland AFC",
-        "competition": "Premier League",
-        "competitionSlug": "premier-league"
-      }
-    ],
     "Arsenal FC": [
       {
         "date": "2026-11-07T15:00:00Z",
@@ -1755,6 +1663,92 @@
         "competitionSlug": "premier-league"
       }
     ],
+    "Leeds United FC": [
+      {
+        "date": "2026-11-28T15:00:00Z",
+        "opponent": "Coventry City FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-12-05T15:00:00Z",
+        "opponent": "Ipswich Town FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2026-12-19T15:00:00Z",
+        "opponent": "Fulham FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-01-01T20:00:00Z",
+        "opponent": "Everton FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-01-06T20:15:00Z",
+        "opponent": "Manchester City",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-01-23T15:00:00Z",
+        "opponent": "Chelsea FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-02-06T15:00:00Z",
+        "opponent": "AFC Bournemouth",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-02-20T15:00:00Z",
+        "opponent": "Aston Villa FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-03-03T20:00:00Z",
+        "opponent": "Hull City",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-03-13T15:00:00Z",
+        "opponent": "Brighton and Hove Albion FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-04-10T14:00:00Z",
+        "opponent": "Nottingham Forest",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-04-24T14:00:00Z",
+        "opponent": "Liverpool FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-05-08T14:00:00Z",
+        "opponent": "Arsenal FC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      },
+      {
+        "date": "2027-05-23T14:00:00Z",
+        "opponent": "Sunderland AFC",
+        "competition": "Premier League",
+        "competitionSlug": "premier-league"
+      }
+    ],
     "Everton FC": [
       {
         "date": "2026-11-29T12:00:00Z",
@@ -1841,300 +1835,6 @@
         "competitionSlug": "premier-league"
       }
     ],
-    "Wrexham FC": [
-      {
-        "date": "2026-11-07T12:30:00Z",
-        "opponent": "Wolverhampton Wanderers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-28T15:00:00Z",
-        "opponent": "Portsmouth FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-08T19:45:00Z",
-        "opponent": "Charlton Athletic FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-19T15:00:00Z",
-        "opponent": "Queens Park Rangers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-29T18:00:00Z",
-        "opponent": "Blackburn Rovers FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-01T00:00:00Z",
-        "opponent": "Bolton Wanderers FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-23T00:00:00Z",
-        "opponent": "Sheffield United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-06T00:00:00Z",
-        "opponent": "Lincoln City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-13T00:00:00Z",
-        "opponent": "West Ham United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-27T00:00:00Z",
-        "opponent": "Derby County FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-06T00:00:00Z",
-        "opponent": "Cardiff City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-16T00:00:00Z",
-        "opponent": "Norwich City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-20T00:00:00Z",
-        "opponent": "Stoke City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-10T00:00:00Z",
-        "opponent": "Swansea City AFC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-20T00:00:00Z",
-        "opponent": "Millwall FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-05-01T00:00:00Z",
-        "opponent": "Bristol City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      }
-    ],
-    "Portsmouth FC": [
-      {
-        "date": "2026-11-07T12:30:00Z",
-        "opponent": "Stoke City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-24T19:45:00Z",
-        "opponent": "West Ham United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-05T15:00:00Z",
-        "opponent": "West Bromwich Albion FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-12T15:00:00Z",
-        "opponent": "Birmingham City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-26T15:00:00Z",
-        "opponent": "Watford FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-16T00:00:00Z",
-        "opponent": "Norwich City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-23T00:00:00Z",
-        "opponent": "Burnley FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-06T00:00:00Z",
-        "opponent": "Bolton Wanderers FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-13T00:00:00Z",
-        "opponent": "Charlton Athletic FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-27T00:00:00Z",
-        "opponent": "Southampton FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-03T00:00:00Z",
-        "opponent": "Lincoln City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-13T00:00:00Z",
-        "opponent": "Wrexham FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-03T00:00:00Z",
-        "opponent": "Middlesbrough FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-06T00:00:00Z",
-        "opponent": "Wolverhampton Wanderers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-17T00:00:00Z",
-        "opponent": "Bristol City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-24T00:00:00Z",
-        "opponent": "Preston North End FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      }
-    ],
-    "Bristol City FC": [
-      {
-        "date": "2026-11-07T12:30:00Z",
-        "opponent": "Norwich City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-24T19:45:00Z",
-        "opponent": "Wrexham FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-05T12:30:00Z",
-        "opponent": "Swansea City AFC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-19T12:30:00Z",
-        "opponent": "Cardiff City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-29T19:45:00Z",
-        "opponent": "Stoke City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-01T00:00:00Z",
-        "opponent": "West Ham United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-23T00:00:00Z",
-        "opponent": "Bolton Wanderers FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-06T00:00:00Z",
-        "opponent": "Middlesbrough FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-13T00:00:00Z",
-        "opponent": "Southampton FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-27T00:00:00Z",
-        "opponent": "Charlton Athletic FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-02T00:00:00Z",
-        "opponent": "Birmingham City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-13T00:00:00Z",
-        "opponent": "West Bromwich Albion FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-20T00:00:00Z",
-        "opponent": "Queens Park Rangers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-10T00:00:00Z",
-        "opponent": "Burnley FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-21T00:00:00Z",
-        "opponent": "Preston North End FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-24T00:00:00Z",
-        "opponent": "Derby County FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      }
-    ],
     "Queens Park Rangers": [
       {
         "date": "2026-11-07T15:00:00Z",
@@ -2167,67 +1867,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-13T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2265,67 +1965,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-24T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-14T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-02T00:00:00Z",
+        "date": "2027-03-02T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-21T00:00:00Z",
+        "date": "2027-04-21T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2363,67 +2063,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-17T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-02T00:00:00Z",
+        "date": "2027-03-02T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-20T00:00:00Z",
+        "date": "2027-04-20T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2443,7 +2143,7 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2026-12-05T15:00:00Z",
+        "date": "2026-12-05T12:30:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2461,67 +2161,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-17T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-02T00:00:00Z",
+        "date": "2027-03-02T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-21T00:00:00Z",
+        "date": "2027-04-21T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2559,67 +2259,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-07T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-17T00:00:00Z",
+        "date": "2027-03-17T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-21T00:00:00Z",
+        "date": "2027-04-21T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2657,67 +2357,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-07T00:00:00Z",
+        "date": "2027-04-07T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2755,67 +2455,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-22T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-07T00:00:00Z",
+        "date": "2027-04-07T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2835,7 +2535,7 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2026-12-08T19:45:00Z",
+        "date": "2026-12-08T20:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -2847,172 +2547,74 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2026-12-29T19:45:00Z",
+        "date": "2026-12-29T20:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-12T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-26T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-17T00:00:00Z",
+        "date": "2027-03-17T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-07T00:00:00Z",
+        "date": "2027-04-07T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Burnley FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      }
-    ],
-    "Sheffield United FC": [
-      {
-        "date": "2026-11-21T12:30:00Z",
-        "opponent": "Watford FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-24T19:45:00Z",
-        "opponent": "Southampton FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-04T20:00:00Z",
-        "opponent": "West Ham United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-12T15:00:00Z",
-        "opponent": "Burnley FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-26T12:30:00Z",
-        "opponent": "Middlesbrough FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-16T00:00:00Z",
-        "opponent": "Bristol City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-26T00:00:00Z",
-        "opponent": "Preston North End FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-30T00:00:00Z",
-        "opponent": "Charlton Athletic FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-16T00:00:00Z",
-        "opponent": "Portsmouth FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-20T00:00:00Z",
-        "opponent": "Stoke City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-03T00:00:00Z",
-        "opponent": "Swansea City AFC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-13T00:00:00Z",
-        "opponent": "Queens Park Rangers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-03T00:00:00Z",
-        "opponent": "West Bromwich Albion FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-07T00:00:00Z",
-        "opponent": "Blackburn Rovers FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-17T00:00:00Z",
-        "opponent": "Cardiff City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-24T00:00:00Z",
-        "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       }
@@ -3049,68 +2651,166 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-26T00:00:00Z",
+        "date": "2027-01-26T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-17T00:00:00Z",
+        "date": "2027-02-17T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-20T00:00:00Z",
+        "date": "2027-04-20T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Sheffield United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      }
+    ],
+    "Norwich City FC": [
+      {
+        "date": "2026-11-21T12:30:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-11-24T19:45:00Z",
+        "opponent": "Queens Park Rangers",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-05T15:00:00Z",
+        "opponent": "Wrexham FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-19T15:00:00Z",
+        "opponent": "Wolverhampton Wanderers",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-29T19:45:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-01T12:00:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-26T12:00:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-31T12:00:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-13T12:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-27T12:00:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-02T12:00:00Z",
+        "opponent": "Millwall FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-13T12:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-20T12:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-10T12:00:00Z",
+        "opponent": "Sheffield United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-20T12:00:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-24T12:00:00Z",
+        "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       }
@@ -3147,68 +2847,166 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-26T00:00:00Z",
+        "date": "2027-01-26T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-13T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-17T00:00:00Z",
+        "date": "2027-03-17T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Stoke City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      }
+    ],
+    "Sheffield United FC": [
+      {
+        "date": "2026-11-21T15:00:00Z",
+        "opponent": "Watford FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-11-24T19:45:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-04T20:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-12T15:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-26T12:30:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-16T12:00:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-26T12:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-30T12:00:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-16T12:00:00Z",
+        "opponent": "Portsmouth FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-20T12:00:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-03T12:00:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-13T12:00:00Z",
+        "opponent": "Queens Park Rangers",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-03T12:00:00Z",
+        "opponent": "West Bromwich Albion FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-07T12:00:00Z",
+        "opponent": "Blackburn Rovers FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-17T12:00:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-24T12:00:00Z",
+        "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       }
@@ -3245,67 +3043,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-27T00:00:00Z",
+        "date": "2027-01-27T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-17T00:00:00Z",
+        "date": "2027-02-17T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3343,67 +3141,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-27T00:00:00Z",
+        "date": "2027-01-27T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-17T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Stoke City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-19T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-02T00:00:00Z",
+        "date": "2027-03-02T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-20T00:00:00Z",
+        "date": "2027-04-20T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3441,67 +3239,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-26T00:00:00Z",
+        "date": "2027-01-26T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-17T00:00:00Z",
+        "date": "2027-02-17T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-02T00:00:00Z",
+        "date": "2027-03-02T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-20T00:00:00Z",
+        "date": "2027-04-20T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3539,166 +3337,68 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-26T00:00:00Z",
+        "date": "2027-01-26T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-13T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-03T00:00:00Z",
+        "date": "2027-03-03T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "Lincoln City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      }
-    ],
-    "Norwich City FC": [
-      {
-        "date": "2026-11-21T15:00:00Z",
-        "opponent": "Cardiff City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-11-24T19:45:00Z",
-        "opponent": "Queens Park Rangers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-05T15:00:00Z",
-        "opponent": "Wrexham FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-19T15:00:00Z",
-        "opponent": "Wolverhampton Wanderers",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2026-12-29T19:45:00Z",
-        "opponent": "Charlton Athletic FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-01T00:00:00Z",
-        "opponent": "Lincoln City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-26T00:00:00Z",
-        "opponent": "Derby County FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-01-30T00:00:00Z",
-        "opponent": "Bristol City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-13T00:00:00Z",
-        "opponent": "Middlesbrough FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-02-27T00:00:00Z",
-        "opponent": "Swansea City AFC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-02T00:00:00Z",
-        "opponent": "Millwall FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-13T00:00:00Z",
-        "opponent": "Preston North End FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-03-20T00:00:00Z",
-        "opponent": "West Ham United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-10T00:00:00Z",
-        "opponent": "Sheffield United FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-20T00:00:00Z",
-        "opponent": "Stoke City FC",
-        "competition": "Championship",
-        "competitionSlug": "england-championship"
-      },
-      {
-        "date": "2027-04-24T00:00:00Z",
-        "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       }
@@ -3723,7 +3423,7 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2026-12-12T15:00:00Z",
+        "date": "2026-12-13T14:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3735,67 +3435,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-26T00:00:00Z",
+        "date": "2027-01-26T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-29T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-13T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Derby County FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3815,7 +3515,7 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2026-12-08T20:45:00Z",
+        "date": "2026-12-08T20:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3833,67 +3533,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-15T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-27T00:00:00Z",
+        "date": "2027-01-27T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-21T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-17T00:00:00Z",
+        "date": "2027-03-17T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -3931,67 +3631,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-16T00:00:00Z",
+        "date": "2027-01-16T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-27T00:00:00Z",
+        "date": "2027-01-27T12:00:00Z",
         "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-13T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-03T00:00:00Z",
+        "date": "2027-03-03T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Lincoln City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-03T00:00:00Z",
+        "date": "2027-04-03T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "Birmingham City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-20T00:00:00Z",
+        "date": "2027-04-20T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
@@ -4029,68 +3729,344 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Sheffield United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-26T00:00:00Z",
+        "date": "2027-01-26T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-30T00:00:00Z",
+        "date": "2027-01-30T12:00:00Z",
         "opponent": "Cardiff City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-13T00:00:00Z",
+        "date": "2027-02-13T12:00:00Z",
         "opponent": "Swansea City AFC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-27T00:00:00Z",
+        "date": "2027-02-27T12:00:00Z",
         "opponent": "Watford FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-02T00:00:00Z",
+        "date": "2027-03-02T12:00:00Z",
         "opponent": "West Bromwich Albion FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-13T00:00:00Z",
+        "date": "2027-03-13T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Bolton Wanderers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-06T00:00:00Z",
+        "date": "2027-04-06T12:00:00Z",
         "opponent": "Wrexham FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-17T00:00:00Z",
+        "date": "2027-04-17T12:00:00Z",
         "opponent": "Norwich City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-24T00:00:00Z",
+        "date": "2027-04-24T12:00:00Z",
         "opponent": "Southampton FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      }
+    ],
+    "Portsmouth FC": [
+      {
+        "date": "2026-11-24T19:45:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-05T15:00:00Z",
+        "opponent": "West Bromwich Albion FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-12T15:00:00Z",
+        "opponent": "Birmingham City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-26T15:00:00Z",
+        "opponent": "Watford FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-16T12:00:00Z",
+        "opponent": "Norwich City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-23T12:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-06T12:00:00Z",
+        "opponent": "Bolton Wanderers FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-13T12:00:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-28T12:00:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-03T12:00:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-13T12:00:00Z",
+        "opponent": "Wrexham FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-03T12:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-06T12:00:00Z",
+        "opponent": "Wolverhampton Wanderers",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-17T12:00:00Z",
+        "opponent": "Bristol City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-24T12:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      }
+    ],
+    "Bristol City FC": [
+      {
+        "date": "2026-11-24T19:45:00Z",
+        "opponent": "Wrexham FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-05T12:30:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-19T12:30:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-29T19:45:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-01T12:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-23T12:00:00Z",
+        "opponent": "Bolton Wanderers FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-05T12:00:00Z",
+        "opponent": "Middlesbrough FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-13T12:00:00Z",
+        "opponent": "Southampton FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-27T12:00:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-02T12:00:00Z",
+        "opponent": "Birmingham City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-13T12:00:00Z",
+        "opponent": "West Bromwich Albion FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-20T12:00:00Z",
+        "opponent": "Queens Park Rangers",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-10T12:00:00Z",
+        "opponent": "Burnley FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-21T12:00:00Z",
+        "opponent": "Preston North End FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-24T12:00:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      }
+    ],
+    "Wrexham FC": [
+      {
+        "date": "2026-11-28T15:00:00Z",
+        "opponent": "Portsmouth FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-08T19:45:00Z",
+        "opponent": "Charlton Athletic FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-19T15:00:00Z",
+        "opponent": "Queens Park Rangers",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2026-12-29T18:00:00Z",
+        "opponent": "Blackburn Rovers FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-01T12:00:00Z",
+        "opponent": "Bolton Wanderers FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-01-23T12:00:00Z",
+        "opponent": "Sheffield United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-06T12:00:00Z",
+        "opponent": "Lincoln City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-13T12:00:00Z",
+        "opponent": "West Ham United FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-02-27T12:00:00Z",
+        "opponent": "Derby County FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-06T12:00:00Z",
+        "opponent": "Cardiff City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-16T12:00:00Z",
+        "opponent": "Norwich City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-03-20T12:00:00Z",
+        "opponent": "Stoke City FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-10T12:00:00Z",
+        "opponent": "Swansea City AFC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-04-20T12:00:00Z",
+        "opponent": "Millwall FC",
+        "competition": "Championship",
+        "competitionSlug": "england-championship"
+      },
+      {
+        "date": "2027-05-01T12:00:00Z",
+        "opponent": "Bristol City FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       }
@@ -4121,67 +4097,67 @@
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-01T00:00:00Z",
+        "date": "2027-01-01T12:00:00Z",
         "opponent": "Blackburn Rovers FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-01-23T00:00:00Z",
+        "date": "2027-01-23T12:00:00Z",
         "opponent": "Millwall FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-06T00:00:00Z",
+        "date": "2027-02-06T12:00:00Z",
         "opponent": "Southampton FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-16T00:00:00Z",
+        "date": "2027-02-16T12:00:00Z",
         "opponent": "Queens Park Rangers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-02-20T00:00:00Z",
+        "date": "2027-02-20T12:00:00Z",
         "opponent": "Burnley FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-06T00:00:00Z",
+        "date": "2027-03-06T12:00:00Z",
         "opponent": "Charlton Athletic FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-16T00:00:00Z",
+        "date": "2027-03-16T12:00:00Z",
         "opponent": "Middlesbrough FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-03-20T00:00:00Z",
+        "date": "2027-03-20T12:00:00Z",
         "opponent": "Preston North End FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-10T00:00:00Z",
+        "date": "2027-04-10T12:00:00Z",
         "opponent": "West Ham United FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-04-20T00:00:00Z",
+        "date": "2027-04-20T12:00:00Z",
         "opponent": "Portsmouth FC",
         "competition": "Championship",
         "competitionSlug": "england-championship"
       },
       {
-        "date": "2027-05-01T00:00:00Z",
+        "date": "2027-05-01T12:00:00Z",
         "opponent": "Wolverhampton Wanderers",
         "competition": "Championship",
         "competitionSlug": "england-championship"
