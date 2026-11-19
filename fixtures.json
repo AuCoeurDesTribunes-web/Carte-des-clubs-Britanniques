@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T23:50:10.863Z",
+  "generated_at": "2026-11-19T15:29:26.123Z",
   "clubs": {
     "Manchester City": [
       {
@@ -51,7 +51,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-31T16:30:00Z",
         "opponent": "Arsenal FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -137,7 +137,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-30T17:30:00Z",
         "opponent": "Nottingham Forest",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -223,7 +223,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-16T15:00:00Z",
+        "date": "2027-01-16T17:30:00Z",
         "opponent": "Manchester United",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -315,13 +315,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-16T15:00:00Z",
+        "date": "2027-01-17T14:00:00Z",
         "opponent": "Ipswich Town FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-31T14:00:00Z",
         "opponent": "Fulham FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -401,13 +401,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-16T15:00:00Z",
+        "date": "2027-01-17T16:30:00Z",
         "opponent": "Leeds United FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-31T14:00:00Z",
         "opponent": "Sunderland AFC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -487,13 +487,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-16T15:00:00Z",
+        "date": "2027-01-16T12:30:00Z",
         "opponent": "Everton FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-31T14:00:00Z",
         "opponent": "Leeds United FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -665,7 +665,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-31T14:00:00Z",
         "opponent": "Crystal Palace FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -763,7 +763,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-01-30T12:30:00Z",
         "opponent": "Everton FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -843,13 +843,13 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-16T15:00:00Z",
+        "date": "2027-01-18T20:00:00Z",
         "opponent": "Brighton and Hove Albion FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-30T15:00:00Z",
+        "date": "2027-02-01T20:00:00Z",
         "opponent": "Manchester United",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -929,7 +929,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-24T14:00:00Z",
         "opponent": "AFC Bournemouth",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1015,7 +1015,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-25T20:00:00Z",
         "opponent": "Chelsea FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1113,7 +1113,7 @@
         "competitionSlug": "ligue-des-champions"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-24T16:30:00Z",
         "opponent": "Liverpool FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1285,7 +1285,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-24T14:00:00Z",
         "opponent": "Brentford FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1457,7 +1457,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-23T20:00:00Z",
         "opponent": "Manchester City",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1543,7 +1543,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-24T14:00:00Z",
         "opponent": "Coventry City FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1629,7 +1629,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-24T14:00:00Z",
         "opponent": "Tottenham Hotspur",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
@@ -1727,7 +1727,7 @@
         "competitionSlug": "premier-league"
       },
       {
-        "date": "2027-01-23T15:00:00Z",
+        "date": "2027-01-23T17:30:00Z",
         "opponent": "Newcastle United FC",
         "competition": "Premier League",
         "competitionSlug": "premier-league"
